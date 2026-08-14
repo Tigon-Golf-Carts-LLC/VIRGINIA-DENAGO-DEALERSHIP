@@ -1,12 +1,13 @@
 import { Link } from 'wouter';
 import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
+import { denagoResources } from '@/data/resources';
 import { Zap, Phone, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
     <footer className="bg-foreground text-background border-t border-border/10 pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group w-max">
@@ -62,6 +63,22 @@ export function Footer() {
               <Link href="/reviews" className="text-white/70 hover:text-primary transition-colors w-max">Customer Reviews</Link>
               <Link href="/financing" className="text-white/70 hover:text-primary transition-colors w-max">Financing</Link>
               <Link href="/contact" className="text-white/70 hover:text-primary transition-colors w-max">Contact Dealership</Link>
+            </nav>
+          </div>
+
+          {/* DENAGO Resources */}
+          <div className="flex flex-col gap-4">
+            <h3 className="font-display font-bold tracking-widest text-sm uppercase text-white mb-2">DENAGO Resources</h3>
+            <nav className="flex flex-col gap-3 text-sm">
+              {denagoResources.map((resource) => (
+                <Link
+                  key={resource.slug}
+                  href={`/${resource.slug}`}
+                  className="text-white/70 hover:text-primary transition-colors w-max"
+                >
+                  {resource.cardTitle}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>
