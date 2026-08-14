@@ -43,8 +43,8 @@ export function Footer() {
               <Clock className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <div className="flex flex-col gap-2 w-full">
                 {HOURS.map((entry) => (
-                  <div key={entry.days} className="flex justify-between w-full max-w-[200px]">
-                    <span>{entry.days}</span>
+                  <div key={entry.days} className="whitespace-nowrap">
+                    <span>{entry.days}:</span>{' '}
                     <span className="font-medium text-white/90">{entry.hours}</span>
                   </div>
                 ))}
