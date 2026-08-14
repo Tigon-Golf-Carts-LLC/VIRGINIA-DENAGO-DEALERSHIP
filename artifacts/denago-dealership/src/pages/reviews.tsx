@@ -1,12 +1,22 @@
 import { Link } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
 import { Seo } from '@/components/seo';
 import { DEALERSHIP } from '@/data/denago-models';
-import {
-  customerReviews,
-  getAggregateRating,
-  REVIEWS_ARE_REAL,
-} from '@/data/reviews';
+import { ReviewForm } from '@/components/review-form';
 import { Phone, Star } from 'lucide-react';
+
+interface ApiReview {
+  id: number;
+  author: string;
+  location: string;
+  model: string | null;
+  rating: number;
+  title: string;
+  text: string;
+  createdAt: string;
+}
+
+const API_URL = `${import.meta.env.BASE_URL}api/reviews`;
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -22,40 +32,55 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export default function Reviews() {
-  const { ratingValue, reviewCount } = getAggregateRating();
+  const { data: reviews = [] } = useQuery<ApiReview[]>({
+    queryKey: ['reviews'],
+    queryFn: async () => {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('Failed to load reviews');
+      return res.json();
+    },
+    staleTime: 5 * 60 * 1000,
+  });
 
-  // Review/AggregateRating structured data. Only emitted once real customer
-  // reviews are in place (REVIEWS_ARE_REAL) — publishing placeholder ratings
-  // as schema violates Google's review-snippet guidelines.
-  const schema = REVIEWS_ARE_REAL
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'AutoDealer',
-        name: DEALERSHIP.name,
-        url: `${DEALERSHIP.domain}/reviews`,
-        telephone: DEALERSHIP.phone,
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue,
-          reviewCount,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        review: customerReviews.map((r) => ({
-          '@type': 'Review',
-          author: { '@type': 'Person', name: r.author },
-          datePublished: r.date,
-          name: r.title,
-          reviewBody: r.text,
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: r.rating,
+  const reviewCount = reviews.length;
+  const ratingValue =
+    reviewCount === 0
+      ? 0
+      : Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount) * 10) / 10;
+
+  // Review/AggregateRating structured data — emitted only when verified,
+  // approved customer reviews exist. Publishing placeholder ratings as schema
+  // violates Google's review-snippet guidelines.
+  const schema =
+    reviewCount > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'AutoDealer',
+          name: DEALERSHIP.name,
+          url: `${DEALERSHIP.domain}/reviews`,
+          telephone: DEALERSHIP.phone,
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue,
+            reviewCount,
             bestRating: 5,
             worstRating: 1,
           },
-        })),
-      }
-    : undefined;
+          review: reviews.map((r) => ({
+            '@type': 'Review',
+            author: { '@type': 'Person', name: r.author },
+            datePublished: r.createdAt.slice(0, 10),
+            name: r.title,
+            reviewBody: r.text,
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: r.rating,
+              bestRating: 5,
+              worstRating: 1,
+            },
+          })),
+        }
+      : undefined;
 
   return (
     <>
@@ -92,31 +117,45 @@ export default function Reviews() {
           </div>
 
           {/* Review cards */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl ${reviewCount > 0 ? 'mb-16' : ''}`}>
-            {customerReviews.map((review, i) => (
-              <article key={i} className="bg-card border border-border rounded-xl p-6 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <Stars rating={review.rating} />
-                  <time className="text-xs text-muted-foreground" dateTime={review.date}>
-                    {new Date(review.date).toLocaleDateString('en-US', {
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </time>
-                </div>
-                <h2 className="font-bold text-lg leading-snug">{review.title}</h2>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{review.text}</p>
-                <div className="pt-2 border-t border-border text-sm">
-                  <span className="font-semibold text-foreground">{review.author}</span>
-                  <span className="text-muted-foreground"> — {review.location}</span>
-                  {review.model && (
-                    <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-1">
-                      {review.model} owner
-                    </div>
-                  )}
-                </div>
-              </article>
-            ))}
+          {reviewCount > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl">
+              {reviews.map((review) => (
+                <article
+                  key={review.id}
+                  className="bg-card border border-border rounded-xl p-6 flex flex-col gap-3"
+                >
+                  <div className="flex items-center justify-between">
+                    <Stars rating={review.rating} />
+                    <time className="text-xs text-muted-foreground" dateTime={review.createdAt}>
+                      {new Date(review.createdAt).toLocaleDateString('en-US', {
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                  </div>
+                  <h2 className="font-bold text-lg leading-snug">{review.title}</h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                    {review.text}
+                  </p>
+                  <div className="pt-2 border-t border-border text-sm">
+                    <span className="font-semibold text-foreground">{review.author}</span>
+                    {review.location && (
+                      <span className="text-muted-foreground"> — {review.location}</span>
+                    )}
+                    {review.model && (
+                      <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-1">
+                        {review.model} owner
+                      </div>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+
+          {/* Write a review */}
+          <div className="mb-16">
+            <ReviewForm />
           </div>
 
           {/* What reviews highlight */}
@@ -151,8 +190,8 @@ export default function Reviews() {
               Own a Denago? <span className="text-primary">Share Your Review</span>
             </h2>
             <p className="text-muted-foreground mb-6">
-              We'd love to hear about your experience — call us or stop by any of our 16 locations,
-              or shop the lineup if you're still deciding.
+              We'd love to hear about your experience — scroll up to write a review, call us, or
+              stop by any of our 16 locations. Still deciding? Shop the lineup.
             </p>
             <div className="flex flex-wrap gap-4">
               <a

@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useParams, Link } from 'wouter';
 import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
 import { expertReviews } from '@/data/expert-reviews';
+import { modelReviews } from '@/data/model-reviews';
 import { Seo } from '@/components/seo';
 import NotFound from './not-found';
-import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent } from 'lucide-react';
+import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent, Star } from 'lucide-react';
 
 export default function ModelDetail({ slugOverride }: { slugOverride?: string; params?: unknown } = {}) {
   const params = useParams();
@@ -22,6 +23,7 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
 
   // 0% APR for 48 months with 20% down (same basis as the /financing offer)
   const expertReview = expertReviews[model.slug];
+  const ownerReview = modelReviews[model.slug];
   const msrp = Number(model.price.replace(/[^0-9.]/g, ''));
   const monthlyPayment = msrp > 0 ? ((msrp * 0.8) / 48).toFixed(2) : null;
 
@@ -78,7 +80,33 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
         "@type": "AutoDealer",
         "name": DEALERSHIP.name
       }
-    }
+    },
+    ...(ownerReview
+      ? {
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": ownerReview.rating,
+            "reviewCount": 1,
+            "bestRating": 5,
+            "worstRating": 1
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": ownerReview.author },
+              "datePublished": ownerReview.date,
+              "name": ownerReview.title,
+              "reviewBody": ownerReview.text,
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": ownerReview.rating,
+                "bestRating": 5,
+                "worstRating": 1
+              }
+            }
+          ]
+        }
+      : {})
   };
 
   const schema = {
@@ -286,6 +314,47 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
             </div>
           </div>
         </div>
+
+        {/* Owner Review */}
+        {ownerReview && (
+          <div className="container mx-auto px-4 max-w-4xl mt-4">
+            <section aria-label={`Customer review of the ${model.name}`}>
+              <h2 className="text-3xl lg:text-4xl font-display font-bold mb-8 uppercase tracking-tight">
+                What <span className="text-primary">Owners Say</span>
+              </h2>
+              <article className="bg-card border border-border rounded-xl p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-0.5" aria-label={`${ownerReview.rating} out of 5 stars`}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star
+                        key={i}
+                        className={`h-5 w-5 ${i <= ownerReview.rating ? 'text-primary fill-primary' : 'text-muted-foreground/30'}`}
+                      />
+                    ))}
+                  </div>
+                  <time className="text-sm text-muted-foreground" dateTime={ownerReview.date}>
+                    {new Date(ownerReview.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  </time>
+                </div>
+                <h3 className="font-bold text-xl mb-3">{ownerReview.title}</h3>
+                <p className="text-foreground/80 leading-relaxed mb-5">{ownerReview.text}</p>
+                <div className="pt-4 border-t border-border text-sm">
+                  <span className="font-semibold text-foreground">{ownerReview.author}</span>
+                  <span className="text-muted-foreground"> — {ownerReview.location}</span>
+                  <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-1">
+                    {model.name} owner
+                  </div>
+                </div>
+              </article>
+              <p className="text-sm text-muted-foreground mt-4">
+                Own a {model.name}?{' '}
+                <Link href="/reviews" className="text-primary font-semibold hover:underline">
+                  Share your review
+                </Link>.
+              </p>
+            </section>
+          </div>
+        )}
 
         {/* Expert Take */}
         {expertReview && (

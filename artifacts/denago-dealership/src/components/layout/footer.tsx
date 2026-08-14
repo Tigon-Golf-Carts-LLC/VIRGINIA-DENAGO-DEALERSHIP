@@ -88,6 +88,16 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="border-t border-white/10 pt-8 mb-8">
+          <p className="text-white/50 text-xs leading-relaxed max-w-4xl">
+            <span className="font-semibold text-white/70">Independent Dealership Disclaimer:</span>{' '}
+            We are not DENAGO EV, the manufacturer. This website is owned and operated by an
+            independent authorized DENAGO dealership and exists to provide you with model
+            information and a way to order. DENAGO and related trademarks are the property of
+            DENAGO EV. For manufacturer-direct information, visit the official DENAGO EV website.
+          </p>
+        </div>
+
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
             &copy; {new Date().getFullYear()} {DEALERSHIP.legalName}. All rights reserved.

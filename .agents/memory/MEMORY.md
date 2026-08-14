@@ -1,0 +1,1 @@
+- [API server conventions](api-server-conventions.md) — lib/db needs `tsc -b` after schema changes; use rightmost X-Forwarded-For for rate limits; reviews pending-until-approved.
