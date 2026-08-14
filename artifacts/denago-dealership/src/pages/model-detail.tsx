@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'wouter';
 import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
+import { expertReviews } from '@/data/expert-reviews';
 import { Seo } from '@/components/seo';
 import NotFound from './not-found';
 import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent } from 'lucide-react';
@@ -20,6 +21,7 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
   const modelUrl = `${DEALERSHIP.domain}${getModelPath(model)}`;
 
   // 0% APR for 48 months with 20% down (same basis as the /financing offer)
+  const expertReview = expertReviews[model.slug];
   const msrp = Number(model.price.replace(/[^0-9.]/g, ''));
   const monthlyPayment = msrp > 0 ? ((msrp * 0.8) / 48).toFixed(2) : null;
 
@@ -284,6 +286,80 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
             </div>
           </div>
         </div>
+
+        {/* Expert Take */}
+        {expertReview && (
+          <div className="bg-secondary/30 border-t border-border py-20">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <section>
+                <h2 className="text-3xl lg:text-4xl font-display font-bold mb-8 uppercase tracking-tight">
+                  My Expert Take on the <span className="text-primary">{model.name}</span>
+                </h2>
+                {expertReview.intro.map((p, idx) => (
+                  <p key={idx} className="text-lg leading-relaxed text-foreground/80 mb-5">{p}</p>
+                ))}
+
+                <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
+                  What the {model.name} Does — and What It Has
+                </h3>
+                <ul className="space-y-3 mb-8">
+                  {expertReview.strengths.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                      <span className="text-foreground/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
+                  What You Can Do With It
+                </h3>
+                <ul className="space-y-3 mb-8">
+                  {expertReview.useCases.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                      <span className="text-foreground/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
+                  Why the {model.name} Is a Good Golf Cart to Own
+                </h3>
+                {expertReview.whyBuy.map((p, idx) => (
+                  <p key={idx} className="text-lg leading-relaxed text-foreground/80 mb-5">{p}</p>
+                ))}
+
+                <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
+                  Warranty Coverage You Can Count On
+                </h3>
+                <p className="text-lg leading-relaxed text-foreground/80 mb-5">
+                  One more reason I stand behind every Denago I sell: the factory warranty is among the strongest in the industry. Denago models have a lifetime warranty on the Aluminum Chassis, an 8-year warranty on the LiFePO4 Lithium Battery, and a 2-year warranty on other major parts and components.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-3">
+                    <ShieldCheck className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                    <span className="text-foreground/90"><strong>Lifetime warranty</strong> on the Aluminum Chassis</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <ShieldCheck className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                    <span className="text-foreground/90"><strong>8-year warranty</strong> on the LiFePO4 Lithium Battery</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <ShieldCheck className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                    <span className="text-foreground/90"><strong>2-year warranty</strong> on other major parts and components</span>
+                  </li>
+                </ul>
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  You can find full warranty details in our{' '}
+                  <Link href="/warranty" className="text-primary font-semibold hover:underline">
+                    Warranty Terms and Conditions
+                  </Link>.
+                </p>
+              </section>
+            </div>
+          </div>
+        )}
 
       </article>
     </>
