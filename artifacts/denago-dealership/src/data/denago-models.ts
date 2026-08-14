@@ -11,6 +11,8 @@ export interface VehicleModel {
   topSpeed: string;
   driveType: string;
   image: string;
+  /** Optional alternate image used only on listing/model cards; product pages keep `image`/`gallery`. */
+  cardImage?: string;
   gallery?: string[];
   /** Custom URL path; defaults to /denago/{slug} */
   path?: string;
@@ -103,6 +105,7 @@ export const denagoModels: VehicleModel[] = [
     topSpeed: "25 mph",
     driveType: "2x4",
     image: "/assets/denago/denago-ev-nomad.jpg",
+    cardImage: "/assets/denago/denago-nomad-card.jpg",
     category: "Off-Road / Adventure",
     features: [
       "All-Terrain Tires",

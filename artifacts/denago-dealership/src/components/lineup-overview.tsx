@@ -45,18 +45,21 @@ const standardFeatures = [
   {
     icon: Battery,
     title: 'Power',
+    href: '/power',
     description:
       'Lithium-ion (LiFePO4) batteries paired with 5kW AC motors.',
   },
   {
     icon: MonitorSmartphone,
     title: 'Tech',
+    href: '/technology',
     description:
       '10.1-inch touchscreens with Apple CarPlay and Android Auto compatibility, backup cameras, and Bluetooth soundbars.',
   },
   {
     icon: ShieldCheck,
     title: 'Street Legality',
+    href: '/street-legal',
     description:
       'Many configurations are available as LSVs with headlights, turn signals, seat belts, and mirrors to meet local low-speed road requirements.',
   },
@@ -103,8 +106,13 @@ export function LineupOverview() {
                 <feature.icon className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-1">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                <Link href={feature.href} className="font-bold text-lg mb-1 block hover:text-primary transition-colors">
+                  {feature.title}
+                </Link>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-2">{feature.description}</p>
+                <Link href={feature.href} className="text-sm text-primary font-semibold hover:underline">
+                  Learn more →
+                </Link>
               </div>
             </div>
           ))}

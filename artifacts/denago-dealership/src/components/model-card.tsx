@@ -13,7 +13,7 @@ export function ModelCard({ model }: ModelCardProps) {
       <Link href={getModelPath(model)} className="relative aspect-[4/3] overflow-hidden bg-muted/30 block">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
         <img
-          src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.image}`}
+          src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.cardImage ?? model.image}`}
           alt={`${model.name} - ${model.category}`}
           width="800"
           height="600"

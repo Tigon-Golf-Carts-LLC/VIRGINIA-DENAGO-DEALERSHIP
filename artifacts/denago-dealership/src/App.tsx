@@ -13,6 +13,11 @@ import ModelDetail from '@/pages/model-detail';
 import Compare from '@/pages/compare';
 import Contact from '@/pages/contact';
 import Locations from '@/pages/locations';
+import FeaturePower from '@/pages/feature-power';
+import FeatureTech from '@/pages/feature-tech';
+import FeatureStreetLegal from '@/pages/feature-street-legal';
+import ResourcePage from '@/pages/resource-page';
+import { denagoResources } from '@/data/resources';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -39,6 +44,14 @@ function Router() {
           <Route path="/denago/:slug" component={ModelDetail} />
           <Route path="/compare" component={Compare} />
           <Route path="/locations" component={Locations} />
+          <Route path="/power" component={FeaturePower} />
+          <Route path="/technology" component={FeatureTech} />
+          <Route path="/street-legal" component={FeatureStreetLegal} />
+          {denagoResources.map((resource) => (
+            <Route key={resource.slug} path={`/${resource.slug}`}>
+              <ResourcePage resource={resource} />
+            </Route>
+          ))}
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

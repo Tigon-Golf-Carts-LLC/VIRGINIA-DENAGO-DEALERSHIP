@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'wouter';
 import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
 import { Seo } from '@/components/seo';
+import { ResourcesSection } from '@/components/resources-section';
 import NotFound from './not-found';
 import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft } from 'lucide-react';
 
@@ -267,6 +268,7 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
           </div>
         </div>
 
+        <ResourcesSection />
       </article>
     </>
   );
