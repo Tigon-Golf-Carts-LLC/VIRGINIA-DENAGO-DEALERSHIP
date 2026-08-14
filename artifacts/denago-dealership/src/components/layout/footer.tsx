@@ -32,7 +32,7 @@ export function Footer() {
             </a>
             <div className="flex items-start gap-3 text-white/70 text-sm">
               <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <span>123 Electric Ave<br />Austin, TX 78701</span>
+              <span>2333 Bethlehem Pike<br />Hatfield, PA 19440</span>
             </div>
             <div className="flex items-center gap-3 text-white/70 text-sm">
               <Mail className="h-4 w-4 text-primary" />

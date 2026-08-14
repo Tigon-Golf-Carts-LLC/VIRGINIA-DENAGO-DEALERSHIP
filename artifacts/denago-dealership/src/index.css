@@ -63,7 +63,7 @@
   
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 221 83% 53%;
+  --ring: 24 98% 49%;
 
   --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
@@ -73,7 +73,7 @@
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 91%;
 
-  --primary: 215 100% 50%; /* Electric Blue */
+  --primary: 24 98% 49%; /* Home Depot Orange */
   --primary-foreground: 210 40% 98%;
   
   --secondary: 210 40% 96%;
@@ -88,7 +88,7 @@
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --chart-1: 215 100% 50%;
+  --chart-1: 24 98% 49%;
   --chart-2: 210 100% 40%;
   --chart-3: 205 100% 30%;
   --chart-4: 200 100% 20%;
@@ -129,7 +129,7 @@
 
   --border: 217 32% 17%;
   --input: 217 32% 17%;
-  --ring: 215 100% 50%;
+  --ring: 24 98% 49%;
 
   --card: 222 47% 11%;
   --card-foreground: 210 40% 98%;
@@ -139,7 +139,7 @@
   --popover-foreground: 210 40% 98%;
   --popover-border: 217 32% 17%;
 
-  --primary: 215 100% 50%;
+  --primary: 24 98% 49%;
   --primary-foreground: 210 40% 98%;
 
   --secondary: 217 32% 17%;
@@ -154,7 +154,7 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --chart-1: 215 100% 50%;
+  --chart-1: 24 98% 49%;
   --chart-2: 210 100% 40%;
   --chart-3: 205 100% 30%;
   --chart-4: 200 100% 20%;

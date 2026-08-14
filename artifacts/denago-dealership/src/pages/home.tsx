@@ -48,10 +48,10 @@ export default function Home() {
         "telephone": DEALERSHIP.phone,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "123 Electric Ave",
-          "addressLocality": "Austin",
-          "addressRegion": "TX",
-          "postalCode": "78701",
+          "streetAddress": "2333 Bethlehem Pike",
+          "addressLocality": "Hatfield",
+          "addressRegion": "PA",
+          "postalCode": "19440",
           "addressCountry": "US"
         }
       },

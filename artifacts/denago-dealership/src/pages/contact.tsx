@@ -55,8 +55,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-bold mb-2 font-display uppercase">Location</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      123 Electric Ave<br />
-                      Austin, TX 78701<br />
+                      2333 Bethlehem Pike<br />
+                      Hatfield, PA 19440<br />
                       United States
                     </p>
                   </div>
