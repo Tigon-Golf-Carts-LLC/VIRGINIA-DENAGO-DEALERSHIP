@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
-import { Zap, Phone, MapPin, Mail, Clock } from 'lucide-react';
+import { Zap, Phone, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -30,10 +30,6 @@ export function Footer() {
               <Phone className="h-4 w-4 text-primary" />
               <span>{DEALERSHIP.phoneDisplay}</span>
             </a>
-            <div className="flex items-start gap-3 text-white/70 text-sm">
-              <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <span>{HEADQUARTERS.street}<br />{HEADQUARTERS.city}, {HEADQUARTERS.state} {HEADQUARTERS.zip}</span>
-            </div>
             <div className="flex items-center gap-3 text-white/70 text-sm">
               <Mail className="h-4 w-4 text-primary" />
               <span>{HEADQUARTERS.email}</span>

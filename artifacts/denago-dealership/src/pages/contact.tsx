@@ -50,20 +50,6 @@ export default function Contact() {
               <div className="flex flex-col gap-6">
                 <div className="bg-background border border-border p-8 rounded-2xl flex items-start gap-6">
                   <div className="bg-secondary p-4 rounded-full text-primary shrink-0">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 font-display uppercase">Location</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {HEADQUARTERS.street}<br />
-                      {HEADQUARTERS.city}, {HEADQUARTERS.state} {HEADQUARTERS.zip}<br />
-                      {HEADQUARTERS.country}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-background border border-border p-8 rounded-2xl flex items-start gap-6">
-                  <div className="bg-secondary p-4 rounded-full text-primary shrink-0">
                     <Clock className="h-6 w-6" />
                   </div>
                   <div className="w-full">
