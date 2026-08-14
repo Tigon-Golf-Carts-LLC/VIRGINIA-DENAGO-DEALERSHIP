@@ -5,9 +5,7 @@ import { ModelCard } from '@/components/model-card';
 import { Phone, ArrowRight, ShieldCheck, Zap, Wrench, FileText } from 'lucide-react';
 
 export default function Home() {
-  const featuredModels = denagoModels.filter(m => 
-    ['ev-city', 'ev-nomad', 'ev-rover-xl', 'oxen'].includes(m.slug)
-  );
+  const featuredModels = denagoModels;
 
   const faqData = [
     {
