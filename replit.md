@@ -1,6 +1,6 @@
-# [Project name]
+# DENAGO Dealership
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Ecommerce-style dealership catalog website for DENAGO electric golf carts (denagodealership.com) — customers browse the 8-model lineup, compare specs, and call the dealership to buy.
 
 ## Run & Operate
 
@@ -22,7 +22,11 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/denago-dealership/` — the website (React + Vite, wouter routing, frontend-only; no backend/DB used)
+- `artifacts/denago-dealership/src/data/denago-models.ts` — source of truth for all vehicle data, prices, specs, and dealership constants (name, phone, domain)
+- `artifacts/denago-dealership/public/assets/denago/` — model photos (OXEN and SCOUT 2 images are AI-generated; the rest came from the user's upload)
+- `public/robots.txt` and `public/sitemap.xml` — SEO crawl files (update sitemap when adding routes/models)
+- Reusable `<Seo />` component manages per-route titles, meta, canonical, OG/Twitter tags, and JSON-LD
 
 ## Architecture decisions
 

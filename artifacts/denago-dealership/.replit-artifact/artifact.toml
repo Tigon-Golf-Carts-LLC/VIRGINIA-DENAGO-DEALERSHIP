@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "DENAGO Dealership"
+description = "An ecommerce-style dealership website for DENAGO electric golf carts (denagodealership.com). Showcases the full DENAGO EV model lineup with SEO-structured product pages, schema.org markup, structured spec tables, and call-to-action buttons for calling the dealership or viewing product details."
+version = "1.0.0"
+id = "artifacts/denago-dealership"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19140
+
+[services.development]
+run = "pnpm --filter @workspace/denago-dealership run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/denago-dealership", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/denago-dealership/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19140"
+BASE_PATH = "/"
