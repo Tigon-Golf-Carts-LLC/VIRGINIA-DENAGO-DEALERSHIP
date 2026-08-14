@@ -22,6 +22,8 @@ import NotFound from '@/pages/not-found';
 import Accessories from '@/pages/accessories';
 import Reviews from '@/pages/reviews';
 import Financing from '@/pages/financing';
+import BlogIndex from '@/pages/blog-index';
+import BlogPost from '@/pages/blog-post';
 
 const queryClient = new QueryClient();
 
@@ -52,6 +54,9 @@ function Router() {
           <Route path="/street-legal" component={FeatureStreetLegal} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/financing" component={Financing} />
+          <Route path="/blog" component={BlogIndex} />
+          <Route path="/blog/page/:page" component={BlogIndex} />
+          <Route path="/blog/:slug" component={BlogPost} />
           <Route path="/accessories" component={Accessories} />
           {denagoResources.map((resource) => (
             <Route key={resource.slug} path={`/${resource.slug}`}>

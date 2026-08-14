@@ -13,7 +13,7 @@ export function Seo({
   title,
   description,
   url = 'https://denagodealership.com',
-  image = 'https://denagodealership.com/assets/denago/denago-ev-rover-xl.jpg',
+  image = 'https://denagodealership.com/og-image.png',
   type = 'website',
   schema,
 }: SeoProps) {

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'wouter';
-import { Phone, Menu, X, Zap } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { DEALERSHIP } from '@/data/denago-models';
 
@@ -22,9 +22,13 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="bg-primary text-primary-foreground p-2 rounded-lg transform group-hover:scale-105 transition-transform duration-300">
-            <Zap className="h-6 w-6" />
-          </div>
+          <img
+            src={`${import.meta.env.BASE_URL}brand/denago-logo.png`}
+            alt="DENAGO Dealership logo"
+            width="40"
+            height="40"
+            className="h-10 w-10 rounded-lg transform group-hover:scale-105 transition-transform duration-300"
+          />
           <div className="flex flex-col">
             <span className="font-display font-bold text-xl leading-none tracking-tight">DENAGO</span>
             <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">Dealership</span>

@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
 import { denagoResources } from '@/data/resources';
-import { Zap, Phone, Mail, Clock } from 'lucide-react';
+import { Phone, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -11,9 +11,13 @@ export function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group w-max">
-              <div className="bg-primary text-primary-foreground p-2 rounded-lg">
-                <Zap className="h-6 w-6" />
-              </div>
+              <img
+                src={`${import.meta.env.BASE_URL}brand/denago-logo.png`}
+                alt="DENAGO Dealership logo"
+                width="40"
+                height="40"
+                className="h-10 w-10 rounded-lg"
+              />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl leading-none tracking-tight text-white">DENAGO</span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-semibold">Dealership</span>

@@ -98,8 +98,11 @@ export default function Home() {
               The Future of Local Transport
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-6 leading-[1.1] animate-in slide-in-from-bottom-6 duration-700 delay-100">
-              ELECTRIFY YOUR <span className="text-primary">JOURNEY.</span>
+              DENAGO GOLF CART <span className="text-primary">DEALERSHIP</span>
             </h1>
+            <p className="text-2xl md:text-3xl font-display font-bold text-primary mb-6 uppercase tracking-wide animate-in slide-in-from-bottom-6 duration-700 delay-150">
+              Electrify Your Journey
+            </p>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed animate-in slide-in-from-bottom-8 duration-700 delay-200">
               Experience the unmatched performance, style, and reliability of the DENAGO EV lineup. From street-legal city cruisers to rugged off-road adventurers.
             </p>
