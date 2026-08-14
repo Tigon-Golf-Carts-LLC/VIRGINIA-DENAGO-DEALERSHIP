@@ -1,5 +1,5 @@
 import { Seo } from '@/components/seo';
-import { DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
+import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
 import { Phone, MapPin, Mail, Clock, ShieldCheck } from 'lucide-react';
 
 export default function Contact() {
@@ -68,18 +68,17 @@ export default function Contact() {
                   </div>
                   <div className="w-full">
                     <h3 className="text-xl font-bold mb-4 font-display uppercase">Showroom Hours</h3>
-                    <div className="flex justify-between items-center py-2 border-b border-border/50 text-muted-foreground">
-                      <span>Monday - Friday</span>
-                      <span className="font-bold text-foreground">9:00 AM - 5:00 PM</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-border/50 text-muted-foreground">
-                      <span>Saturday</span>
-                      <span className="font-bold text-foreground">9:00 AM - 5:00 PM</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 text-muted-foreground">
-                      <span>Sunday</span>
-                      <span className="font-bold text-muted-foreground">Closed</span>
-                    </div>
+                    {HOURS.map((entry, i) => (
+                      <div
+                        key={entry.days}
+                        className={`flex justify-between items-center py-2 text-muted-foreground ${i < HOURS.length - 1 ? 'border-b border-border/50' : ''}`}
+                      >
+                        <span>{entry.days}</span>
+                        <span className={`font-bold ${entry.closed ? 'text-muted-foreground' : 'text-foreground'}`}>
+                          {entry.hours}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 

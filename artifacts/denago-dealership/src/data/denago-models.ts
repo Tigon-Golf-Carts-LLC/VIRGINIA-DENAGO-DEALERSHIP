@@ -43,6 +43,13 @@ export const HEADQUARTERS = {
   email: "sales@denagodealership.com",
 };
 
+/** Single source of truth for showroom hours. Edit here to update the whole site. */
+export const HOURS: { days: string; hours: string; closed?: boolean }[] = [
+  { days: "Monday - Friday", hours: "9:00 AM - 5:00 PM" },
+  { days: "Saturday", hours: "9:00 AM - 5:00 PM" },
+  { days: "Sunday", hours: "Closed", closed: true },
+];
+
 export const denagoModels: VehicleModel[] = [
   {
     slug: "ev-city",

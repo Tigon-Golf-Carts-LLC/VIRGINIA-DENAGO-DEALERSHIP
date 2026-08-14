@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
+import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
 import { Zap, Phone, MapPin, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
@@ -46,18 +46,12 @@ export function Footer() {
             <div className="flex items-start gap-3 text-white/70 text-sm">
               <Clock className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <div className="flex flex-col gap-2 w-full">
-                <div className="flex justify-between w-full max-w-[200px]">
-                  <span>Mon - Fri</span>
-                  <span className="font-medium text-white/90">9:00 AM - 5:00 PM</span>
-                </div>
-                <div className="flex justify-between w-full max-w-[200px]">
-                  <span>Saturday</span>
-                  <span className="font-medium text-white/90">9:00 AM - 5:00 PM</span>
-                </div>
-                <div className="flex justify-between w-full max-w-[200px]">
-                  <span>Sunday</span>
-                  <span className="font-medium text-white/90">Closed</span>
-                </div>
+                {HOURS.map((entry) => (
+                  <div key={entry.days} className="flex justify-between w-full max-w-[200px]">
+                    <span>{entry.days}</span>
+                    <span className="font-medium text-white/90">{entry.hours}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
