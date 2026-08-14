@@ -331,6 +331,23 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
                 ))}
 
                 <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
+                  Engineering Every {model.name} Shares
+                </h3>
+                <p className="text-lg leading-relaxed text-foreground/80 mb-5">
+                  Under the bodywork, every Denago is built on the same modern core: a LiFePO4 lithium
+                  battery with integrated battery-management-system protection, a smooth AC drive motor,
+                  four-wheel disc brakes, fully independent front and rear suspension, an electric parking
+                  brake, and an onboard 110-volt charger that refills from a standard outlet. Range figures
+                  are "up to" estimates — speed, passenger load, hills, temperature, and tire pressure all
+                  play a part, so tell us your typical trip and we'll confirm this model covers it with room
+                  to spare. Learn more on our{' '}
+                  <Link href="/power" className="text-primary font-semibold hover:underline">lithium power</Link>{' '}
+                  and{' '}
+                  <Link href="/technology" className="text-primary font-semibold hover:underline">onboard tech</Link>{' '}
+                  pages.
+                </p>
+
+                <h3 className="text-2xl font-display font-bold mt-10 mb-5 uppercase tracking-tight">
                   Warranty Coverage You Can Count On
                 </h3>
                 <p className="text-lg leading-relaxed text-foreground/80 mb-5">

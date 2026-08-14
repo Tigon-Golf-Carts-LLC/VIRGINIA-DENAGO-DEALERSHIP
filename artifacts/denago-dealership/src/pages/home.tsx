@@ -168,6 +168,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Texas Assembly / Brand Story */}
+      <section className="py-24 bg-background border-b border-border">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">ASSEMBLED IN <span className="text-primary">TEXAS</span></h2>
+          <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              DENAGO EV is headquartered in Plano, Texas, where the company converted the former Dallas
+              Morning News printing plant — a roughly $43.5 million acquisition — into a major American
+              assembly and manufacturing facility. The company reports more than $180 million invested in
+              its Texas operations, over 400 Texas jobs created, and a nationwide network of more than 400
+              authorized dealers.
+            </p>
+            <p>
+              Every cart pairs that Texas assembly with a modern engineering core: a LiFePO4 lithium
+              battery with battery-management-system protection, a smooth AC drive motor, four-wheel disc
+              brakes, fully independent suspension, and an electric parking brake. It's a spec sheet that
+              legacy fleet carts simply don't match at these prices — see it in the{' '}
+              <Link href="/compare" className="text-primary font-semibold hover:underline">side-by-side comparison</Link>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section for AEO */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">

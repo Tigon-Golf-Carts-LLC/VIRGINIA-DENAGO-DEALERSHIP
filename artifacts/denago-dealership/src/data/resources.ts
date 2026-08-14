@@ -38,6 +38,14 @@ export const denagoResources: DenagoResource[] = [
         heading: 'Trade-Ins Welcome',
         text: 'Have an older gas or lead-acid cart? Ask about trade-in credit toward a new lithium-powered Denago.',
       },
+      {
+        heading: 'Our Pre-Delivery Checklist',
+        text: 'Before any cart leaves our lot we verify the VIN and certification label, check open recall status, test the pedestrian-warning system, confirm battery health, register the warranty, road test, torque the wheels, and hand you the written build sheet and warranty — with an itemized out-the-door price.',
+      },
+      {
+        heading: 'Part of a 400+ Dealer Network',
+        text: 'Denago EV backs its carts through more than 400 authorized dealers nationwide, with vehicles assembled at its Plano, Texas facility. Wherever life takes your cart, factory support travels with it.',
+      },
     ],
   },
   {
@@ -62,6 +70,14 @@ export const denagoResources: DenagoResource[] = [
       {
         heading: 'Schedule Service',
         text: 'Call your nearest location to book a service appointment. Mobile and pickup options may be available depending on your area.',
+      },
+      {
+        heading: 'Recall & Safety Work',
+        text: 'We perform open-recall checks by VIN on every cart we touch, including the free pedestrian-warning (AVAS) kit under NHTSA campaign 26V381 — a no-cost fix, handled here.',
+      },
+      {
+        heading: 'Seasonal & Commercial Care',
+        text: 'Winter storage prep, lug-torque and brake checks, alignment inspections, and scheduled fleet inspections for rental and commercial carts that work hard every day.',
       },
     ],
   },
@@ -138,6 +154,18 @@ export const denagoResources: DenagoResource[] = [
         heading: 'Registration Matters',
         text: 'Warranty coverage starts with proper registration at an authorized dealer. Buying from marketplaces or unauthorized resellers can leave you without coverage.',
       },
+      {
+        heading: 'Read the Fine Print',
+        text: 'Factory coverage is parts-based, applies to the original purchaser from the retail sale date, and excludes wear items and normal maintenance. We walk every buyer through the current written warranty for their model year and VIN before delivery.',
+      },
+      {
+        heading: 'Protect Your Coverage',
+        text: 'Unauthorized modifications — especially speed modifications or wiring accessories directly to the lithium battery — can void coverage. Have accessories installed by an authorized dealer and use only the factory charger.',
+      },
+      {
+        heading: 'Warranty Service Done Here',
+        text: 'Warranty repairs go through approved dealers, and we\'re one — all 16 locations handle claims, stock genuine parts, and register your warranty on delivery day.',
+      },
     ],
   },
   {
@@ -163,6 +191,18 @@ export const denagoResources: DenagoResource[] = [
         heading: 'Replacement & Upgrades',
         text: 'Need a replacement pack or want to verify battery health? Our service centers test, service, and replace Denago batteries with genuine factory packs.',
       },
+      {
+        heading: 'Built-In Protection',
+        text: 'Every pack includes a battery management system (BMS) that guards against over-charge, over-discharge, and temperature extremes — protection lead-acid packs never had.',
+      },
+      {
+        heading: 'Battery Care Rules',
+        text: 'Use only the matching onboard charger, never connect accessories directly to the battery terminals, never open the pack, keep connectors dry, and charge within the manufacturer\'s temperature limits.',
+      },
+      {
+        heading: 'Real-World Range',
+        text: 'Range ratings are estimates, not EPA figures. Speed, passenger weight, hills, tire pressure, temperature, and accessories all affect it — tell us your typical trip and we\'ll size the pack with margin.',
+      },
     ],
   },
   {
@@ -187,6 +227,18 @@ export const denagoResources: DenagoResource[] = [
       {
         heading: 'Owner Support',
         text: 'Questions about your touchscreen, charger, or street-legal registration? Call any of our 16 locations and talk to a Denago specialist.',
+      },
+      {
+        heading: 'Recall Check (Free Fix)',
+        text: 'NHTSA campaign 26V381 covers certain 2024–2026 Denago models for the pedestrian-warning sound system. The remedy is a free Acoustic Vehicle Alerting System kit — no "do not drive" warning applies. Check your 17-digit VIN at nhtsa.gov/recalls or call Denago recall support at 1-877-755-2453, and we\'ll handle the fix at any of our service centers.',
+      },
+      {
+        heading: 'Routine Checks That Matter',
+        text: 'Check tire pressure and wheel-lug torque, test lights, signals, horn, and the pedestrian-warning sound, inspect brakes and the parking brake, and keep electrical connectors dry — skip the pressure washer around electronics.',
+      },
+      {
+        heading: 'Owner\'s Manual',
+        text: 'The full Denago owner\'s manual covers operation, charging, storage, and troubleshooting. Ask at any location for the copy matching your model year, or call and we\'ll help you get the download.',
       },
     ],
   },

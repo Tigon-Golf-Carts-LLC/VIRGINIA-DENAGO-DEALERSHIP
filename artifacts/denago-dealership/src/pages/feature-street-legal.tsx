@@ -60,7 +60,7 @@ export default function FeatureStreetLegal() {
             ))}
           </div>
 
-          <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+          <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed mb-16">
             <h2 className="text-2xl font-display font-bold uppercase tracking-tight text-foreground">
               What Makes a Golf Cart Street Legal?
             </h2>
@@ -70,6 +70,36 @@ export default function FeatureStreetLegal() {
               Requirements vary by state and municipality — our team knows the rules in every market we serve
               and can help you configure, title, and register your cart correctly.
             </p>
+            <p>
+              Under federal law, a Low-Speed Vehicle is a four-wheeled vehicle that travels more than 20 mph
+              but no more than 25 mph, has a gross vehicle weight rating below 3,000 pounds, and carries the
+              required federal equipment: lighting, turn signals, mirrors, a windshield, reflectors, a parking
+              brake, seat belts, a 17-digit VIN, and a federal certification label. Lights and seat belts
+              alone do <em>not</em> make a cart street legal — the VIN and certification label are what
+              separate a factory LSV from a dressed-up golf cart. Always confirm the manufacturer's
+              certificate of origin identifies the correct vehicle class before registering.
+            </p>
+          </div>
+
+          <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed mb-16">
+            <h2 className="text-2xl font-display font-bold uppercase tracking-tight text-foreground">
+              Where Can You Drive an LSV?
+            </h2>
+            <p>
+              Street legality is never automatic — registration, insurance, inspection, licensing, and
+              approved roads are controlled by state and local law. Most jurisdictions limit LSVs to roads
+              posted at 35 mph or below, though rules vary town by town. Two cautions worth stating plainly:
+              a 25 mph LSV is not built to passenger-car crashworthiness standards, so drive it accordingly;
+              and modifying a cart to exceed 25 mph can remove it from the federal LSV classification,
+              make it unregistrable, and void the warranty. We don't sell or install speed modifications —
+              and we'd talk you out of them if we did.
+            </p>
+          </div>
+
+          <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+            <h2 className="text-2xl font-display font-bold uppercase tracking-tight text-foreground">
+              Factory Street-Legal, Not Retrofit
+            </h2>
             <p>
               The <Link href="/denago/ev-city" className="text-primary font-semibold hover:underline">Denago City</Link> is
               purpose-built for neighborhood streets, and most Nomad and Rover configurations can be equipped

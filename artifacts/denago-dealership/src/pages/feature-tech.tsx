@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { Seo } from '@/components/seo';
 import { DEALERSHIP } from '@/data/denago-models';
-import { MonitorSmartphone, Camera, Music, Smartphone } from 'lucide-react';
+import { MonitorSmartphone, Camera, Music, Smartphone, KeyRound, Usb, Gauge, Plug } from 'lucide-react';
 
 const highlights = [
   {
@@ -23,6 +23,26 @@ const highlights = [
     icon: Music,
     title: 'Bluetooth Soundbar',
     text: 'Weather-resistant Bluetooth audio built for the outdoors — stream your playlist on the course, around the neighborhood, or at the campsite.',
+  },
+  {
+    icon: KeyRound,
+    title: 'NFC Key-Card Ignition',
+    text: 'Tap-to-start NFC key cards alongside traditional keys — hand a card to family members instead of cutting spares.',
+  },
+  {
+    icon: Gauge,
+    title: 'Digital Instrument Display',
+    text: 'Digital speedometer, odometer, and real-time battery state of charge — no more guessing how much range is left.',
+  },
+  {
+    icon: Usb,
+    title: 'USB & USB-C Charging',
+    text: 'Fast-charge ports for every row keep phones and tablets topped up on long rides — plus lockable glove box storage for them.',
+  },
+  {
+    icon: Plug,
+    title: 'Inverter-Ready Power',
+    text: 'An optional 2,000-watt inverter (with 3,000–4,000W surge) turns the lithium pack into a mobile power source for lights, laptops, TVs, coffee makers, and tailgates.',
   },
 ];
 
@@ -58,6 +78,28 @@ export default function FeatureTech() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed mb-16">
+            <h2 className="text-2xl font-display font-bold uppercase tracking-tight text-foreground">
+              Standard Equipment That Reads Like an Options Sheet
+            </h2>
+            <p>
+              Depending on model and trim, Denago carts include equipment most brands sell as add-ons:
+              premium stitched seats with folding armrests, a tilt steering column, folding or ventilated
+              windshields, integrated LED headlights with high and low beams, self-canceling turn signals,
+              hazard lights, a horn, side mirrors with built-in signal indicators, three-point seat belts,
+              front brush guards, LED light bars, running boards, extended roofs, and DOT-rated street or
+              all-terrain tires. Front trunks, lockable glove compartments, and rear storage keep gear out
+              of the weather. A 110-volt power outlet or inverter-ready connection is available on
+              compatible models.
+            </p>
+            <p>
+              The flagship <Link href="/denago/ev-city" className="text-primary font-semibold hover:underline">Denago City</Link> steps
+              up further with a 13-inch touchscreen, panoramic see-through roof, electric windshield wiper,
+              DOT glass windshield, lounge-style seating with a reversible captain's chair, and ambient,
+              roof, and underbody lighting.
+            </p>
           </div>
 
           <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
