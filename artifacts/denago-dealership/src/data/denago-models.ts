@@ -283,6 +283,7 @@ export const denagoModels: VehicleModel[] = [
     topSpeed: "15 mph",
     driveType: "2x4",
     image: "/assets/denago/denago-ev-oxen.jpg",
+    cardImage: "/assets/denago/denago-oxen-card.jpg",
     gallery: [
       "/assets/denago/denago-ev-oxen.jpg",
       "/assets/denago/denago-ev-oxen-2.jpg",
