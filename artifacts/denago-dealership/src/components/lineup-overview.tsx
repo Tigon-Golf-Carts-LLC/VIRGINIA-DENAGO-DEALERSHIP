@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { denagoModels, getModelPath } from '@/data/denago-models';
-import { Battery, MonitorSmartphone, ShieldCheck } from 'lucide-react';
+import { Battery, MonitorSmartphone, ShieldCheck, Wrench } from 'lucide-react';
 
 interface LineupItem {
   title: string;
@@ -63,6 +63,13 @@ const standardFeatures = [
     description:
       'Many configurations are available as LSVs with headlights, turn signals, seat belts, and mirrors to meet local low-speed road requirements.',
   },
+  {
+    icon: Wrench,
+    title: 'Accessories & Parts',
+    href: '/accessories',
+    description:
+      'Golf bag holders, cargo racks, enclosures, covers, chargers, and genuine Denago replacement parts — stocked through our dealership parts departments.',
+  },
 ];
 
 function modelHref(slug?: string): string | undefined {
@@ -99,7 +106,7 @@ export function LineupOverview() {
         <h2 className="text-3xl font-display font-bold uppercase tracking-tight mb-8">
           Standard <span className="text-primary">Features</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {standardFeatures.map((feature) => (
             <div key={feature.title} className="bg-card border border-border rounded-xl p-6 flex items-start gap-4">
               <div className="bg-secondary p-3 rounded-full text-primary shrink-0">

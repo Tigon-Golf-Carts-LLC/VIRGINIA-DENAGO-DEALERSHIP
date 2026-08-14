@@ -30,6 +30,11 @@
     <loc>https://denagodealership.com/street-legal</loc>
   </url>
   <url>
+    <loc>https://denagodealership.com/accessories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://denagodealership.com/dealership</loc>
   </url>
   <url>

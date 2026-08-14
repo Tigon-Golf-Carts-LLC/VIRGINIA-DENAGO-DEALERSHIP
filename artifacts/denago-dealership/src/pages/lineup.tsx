@@ -3,7 +3,7 @@ import { Seo } from '@/components/seo';
 import { denagoModels, DEALERSHIP, getModelPath } from '@/data/denago-models';
 import { ModelCard } from '@/components/model-card';
 
-const faqs: { q: string; a: string }[] = [
+const faqs: { q: string; a: string; link?: { href: string; label: string } }[] = [
   {
     q: "What Denago golf cart models are for sale?",
     a: "We carry the full lineup of new Denago golf cart models for sale: the 2-passenger Scout 2, Nomad and Nomad XL, the lifted 4-seat Rover XL, 6-passenger Rover XL6, 8-passenger Rover XXL, the street-legal City NEV, and the Oxen utility cart with dump bed. Call us for current inventory and pricing.",
@@ -31,6 +31,7 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "Do Denago golf carts come with golf bag holders and cargo racks?",
     a: "Yes. The Scout 2 includes a golf bag holder with rear storage basket as standard, and the Oxen features a heavy-duty rear utility cargo bed with dump function. Additional accessories like cargo racks, enclosures, and covers are available through our parts department.",
+    link: { href: '/accessories', label: 'Browse Denago accessories & parts →' },
   },
   {
     q: "Should I buy a Denago golf cart from eBay or an authorized dealer?",
@@ -129,8 +130,11 @@ export default function Lineup() {
                 Looking for a specific color? Denago models are offered in black, white, gray, blue, navy
                 blue, and red depending on the series. Need exact dimensions for your garage, trailer, or
                 golf course? Each product page includes a full specification table, and our team can confirm
-                measurements before you buy. We also carry genuine Denago accessories and replacement parts —
-                golf bag holders, storage baskets, cargo racks, enclosures, and more — and can supply
+                measurements before you buy. We also carry genuine{' '}
+                <Link href="/accessories" className="text-primary font-semibold hover:underline">
+                  Denago accessories and replacement parts
+                </Link>{' '}
+                — golf bag holders, storage baskets, cargo racks, enclosures, and more — and can supply
                 owner's manuals and full Denago golf cart specs for every model in the lineup.
               </p>
               <p>
@@ -154,7 +158,14 @@ export default function Lineup() {
                     <h3 className="text-base font-bold">{faq.q}</h3>
                     <span className="text-primary shrink-0 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
                   </summary>
-                  <p className="px-6 pb-6 text-muted-foreground leading-relaxed">{faq.a}</p>
+                  <div className="px-6 pb-6">
+                    <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+                    {faq.link && (
+                      <Link href={faq.link.href} className="mt-3 inline-block text-sm text-primary font-semibold hover:underline">
+                        {faq.link.label}
+                      </Link>
+                    )}
+                  </div>
                 </details>
               ))}
             </div>

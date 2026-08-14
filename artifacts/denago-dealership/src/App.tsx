@@ -19,6 +19,7 @@ import FeatureStreetLegal from '@/pages/feature-street-legal';
 import ResourcePage from '@/pages/resource-page';
 import { denagoResources } from '@/data/resources';
 import NotFound from '@/pages/not-found';
+import Accessories from '@/pages/accessories';
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,12 @@ function Router() {
           <Route path="/power" component={FeaturePower} />
           <Route path="/technology" component={FeatureTech} />
           <Route path="/street-legal" component={FeatureStreetLegal} />
+          {denagoResources.map((resource) => (
+            <Route key={resource.slug} path={`/${resource.slug}`}>
+              <ResourcePage resource={resource} />
+            </Route>
+          ))}
+          <Route path="/accessories" component={Accessories} />
           {denagoResources.map((resource) => (
             <Route key={resource.slug} path={`/${resource.slug}`}>
               <ResourcePage resource={resource} />
