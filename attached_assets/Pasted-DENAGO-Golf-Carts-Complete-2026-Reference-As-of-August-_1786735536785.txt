@@ -1,0 +1,419 @@
+DENAGO Golf Carts: Complete 2026 Reference
+
+As of August 14, 2026, DENAGO is a rapidly growing, feature-heavy electric golf cart and low-speed vehicle brand. Its strongest selling points are lithium power, modern technology, aggressive pricing, comfortable independent suspension, four-wheel disc brakes, and factory-ready LSV equipment.
+
+The honest verdict: DENAGO offers excellent equipment for the money, but it is a younger brand than Club Car, E-Z-GO, or Yamaha. The strength of the servicing dealer, parts inventory, pre-delivery inspection, and written warranty matters enormously.
+
+Company background
+DENAGO EV entered the American golf cart and neighborhood-electric-vehicle market around 2023.
+DENAGO is backed by or associated with TAO Motor and Zhejiang Taotao Vehicles, an established powersports manufacturer. It is not a Kandi brand. Company profile and ownership background
+DENAGO EV should not be confused with:
+DENAGO eBikes
+DENAGO Powersports ATVs, dirt bikes and UTVs
+Their separate warranty and support departments
+DENAGO’s current headquarters is listed as 3900 W. Plano Parkway, Plano, Texas.
+The company purchased the former Dallas Morning News printing plant in Plano for approximately $43.5 million as a major American assembly and manufacturing facility. Plano factory acquisition
+DENAGO describes its vehicles as made or assembled in Plano. The supply chain remains global, including China-linked manufacturing resources. “Texas assembled” is more defensible than claiming every component is American-made.
+DENAGO currently reports more than 400 authorized dealers nationwide. Its website also claims more than $180 million invested in Texas factories and more than 400 Texas jobs created during 2024–2025. These are company-reported figures. DENAGO EV official website
+Current 2026 DENAGO lineup
+Model	Seating and purpose	Battery	Published range	Typical 2026 starting price
+Scout 2	Two-passenger compact or utility cart	51.2V 105Ah LiFePO₄	40+ miles	$8,495
+Scout 2 With Infotainment	Scout 2 with upgraded screen and entertainment	51.2V 105Ah	40+ miles	$9,495
+Nomad XL	Lifted 2+2 with rear flip seat and cargo deck	51.2V 105Ah	40+ miles	$9,995
+Rover XL	Four forward-facing seats	51.2V 105Ah	40+ miles	$10,995
+Rover XL6	Four forward-facing plus two rear-facing seats	51.2V 105Ah	32 miles with a 992-pound load	$12,995
+Rover XXL	Six forward-facing seats in three rows	51.2V 105Ah	32 miles with a 992-pound load	$12,995
+OXEN	Two-passenger commercial utility vehicle with dump bed	51.2V 205Ah	70+ miles advertised	$12,995
+CITY	Wide-body luxury urban vehicle, currently listed for six passengers	51.2V 205Ah	40+ miles on current official page	$16,500
+
+Prices exclude taxes, title, registration, delivery, dealer preparation and accessories. DENAGO’s current pricing and financing references can be found in its 2026 financing announcement and fleet vehicle guide.
+
+Other DENAGO models
+Nomad: Earlier non-lifted 2+2 configuration. It is still found in dealer inventory but is absent from DENAGO’s current main product page.
+Scout 4: A basic four-passenger cart sold through some dealers. It is included in the 2026 federal recall but is not currently shown in DENAGO’s main online product lineup.
+Previous model generations: Feature packages, batteries, screens, soundbars, suspension components and warranty terms can vary significantly between 2024, 2025 and 2026 vehicles.
+Core engineering
+
+Most current lifestyle models use:
+
+5 kW/6.3 kW AC electric motor
+Commonly listed 400-amp DENAGO controller
+51.2V 105Ah LiFePO₄ lithium battery
+Approximately 5.38 kWh of nominal battery capacity
+Onboard 110-volt charger
+Approximately five-hour published charging time
+Four-wheel disc brakes, commonly hydraulic
+Independent front and rear suspension
+Electric or electromagnetic parking brake
+Approximately 25 MPH maximum speed
+Aluminum chassis on core Nomad and Rover models
+Factory lift and all-terrain tires on XL models
+
+The CITY and OXEN use the larger 51.2V 205Ah battery, equivalent to approximately 10.5 kWh. OXEN’s official charging time is eight hours.
+
+LiFePO₄ battery advantages
+
+LiFePO₄ means lithium iron phosphate. Compared with traditional lead-acid batteries, it offers:
+
+No battery watering
+Lower weight
+More consistent voltage under load
+Faster charging
+Longer expected cycle life
+Less performance drop as the battery discharges
+Integrated battery-management-system protection
+
+The battery is still a high-voltage component. Owners should use the matching onboard charger and avoid opening the pack, installing incompatible batteries, connecting accessories directly to battery terminals or charging outside the manufacturer’s temperature limits.
+
+Technology and standard equipment
+
+Depending on model and trim, DENAGO vehicles may include:
+
+10.1-inch touchscreen
+Apple CarPlay and Android Auto
+Bluetooth audio
+Under-dash speakers or illuminated soundbar
+Rear backup camera
+NFC key-card ignition
+Digital speedometer, odometer and battery display
+USB and USB-C charging ports
+110-volt power outlet or inverter-ready connection
+Lockable glove compartments
+Front trunk or storage compartment
+Rear storage
+Premium stitched seats
+Folding armrests
+Tilt steering column
+Folding or ventilated windshield
+Integrated LED headlights
+High and low beams
+Brake lights and taillights
+Self-canceling turn signals
+Hazard lights
+Horn
+Side mirrors with signal indicators
+Rearview mirror
+Three-point seat belts
+Front brush guard
+LED light bar
+Running boards
+Extended roof
+DOT-rated street or all-terrain tires
+
+Not every feature is standard on every Scout, Nomad or commercial configuration. DENAGO itself warns that specifications can change without notice, so the VIN-specific build sheet should control.
+
+Individual model guide
+Scout 2
+
+Best for golf, security patrols, campuses and property maintenance.
+
+Two passengers
+Compact footprint
+105Ah lithium battery
+40+ mile published range
+Base and infotainment versions
+Utility or golf-oriented rear configurations depending on build
+Lowest-priced entry into the DENAGO lineup
+Nomad XL
+
+Best for couples, families needing occasional rear seating, campgrounds and cargo flexibility.
+
+Traditional 2+2 design
+Rear seat converts into a cargo platform
+Lifted suspension and all-terrain appearance
+40+ mile published range
+Easier to maneuver and store than a six-passenger cart
+One of DENAGO’s strongest value models
+Rover XL
+
+Best general-purpose family DENAGO.
+
+Four true forward-facing seats
+No passenger has to ride backward
+40+ mile range
+CarPlay, Android Auto and backup camera
+Comfortable independent suspension
+Good balance of size, seating, technology and price
+
+For most family buyers, this is the easiest DENAGO model to recommend.
+
+Rover XL6
+
+Best when six seats are needed without three full forward-facing rows.
+
+Four forward-facing seats
+Two rear-facing seats
+Rear seating may offer cargo flexibility
+Approximately 144 inches long
+Official load-tested range of 32 miles with 992 pounds aboard
+More maneuverable than the Rover XXL
+Rover XXL
+
+Best for resorts, large families, rentals and group transportation.
+
+Six passengers
+Three forward-facing rows
+Approximately 150 inches long
+105Ah lithium battery
+Official 32-mile load-tested range
+Large turning circle and greater storage/trailer requirements
+
+The current official Rover XXL is a six-passenger vehicle, not an eight-passenger vehicle.
+
+CITY
+
+DENAGO’s luxury urban flagship.
+
+Commonly published equipment includes:
+
+Six-passenger classification
+Wide-body design
+51.2V 205Ah lithium battery
+13-inch touchscreen
+Apple CarPlay and Android Auto
+Rear camera
+Panoramic see-through roof
+Electric windshield wiper
+DOT glass windshield
+Lounge-style seating
+Reversible captain’s chair
+Ambient, roof and underbody lighting
+Premium sound system
+Carbon-steel composite chassis
+
+It is considerably wider than a conventional golf cart. Published dimensions are approximately 150 × 74 × 78 inches.
+
+OXEN
+
+DENAGO’s work-focused utility vehicle.
+
+Commonly published equipment includes:
+
+Two-passenger front seating
+51.2V 205Ah battery
+Manual-tilt aluminum dump bed
+Approximately 880-pound bed capacity
+Two-inch receiver hitch
+Heavy-duty radial tires
+Brush guard
+Premium waterproof seats
+USB and USB-C ports
+Approximately 118 × 49 × 79 inches
+Carbon-steel frame
+
+DENAGO advertises 70+ miles, while some dealers describe approximately 50 miles under a heavy load. That difference likely reflects testing conditions.
+
+Real-world range
+
+DENAGO range ratings are not EPA estimates. Actual range depends on:
+
+Vehicle speed
+Passenger and cargo weight
+Hills
+Tire style and pressure
+Outside temperature
+Stop-and-go driving
+Headlights, sound system and accessories
+Battery age and state of charge
+Lift height and alignment
+
+For customer-facing copy, “up to” or “estimated” should accompany range claims.
+
+A properly loaded Rover XL6 will not normally travel as far as an unloaded Nomad XL. DENAGO’s newer 32-mile loaded figure for XL6 and XXL is more useful than an unloaded best-case claim.
+
+Important published-data conflicts
+
+DENAGO’s current website and older dealer materials do not always agree.
+
+CITY range: Current official page says 40+ miles. Many dealer sheets continue to advertise up to 80 miles. Do not use 80 miles as an unconditional claim without a current DENAGO test sheet.
+CITY seating: Current official information says six passengers. Some earlier launch materials described five seats.
+OXEN seating: DENAGO’s official page displays both “2” and “2+2.” The commercial dump-bed configuration is generally a two-passenger vehicle.
+OXEN range: Official claim is 70+ miles, while current dealer listings often say approximately 50 miles under load.
+Rover XXL seating: Current official figure is six passengers. Some online pages incorrectly describe it as eight passengers.
+Scout 4: Sold by dealers and included in the federal recall, but missing from the current official product grid.
+Warranty language: Current model pages advertise eight years on the lithium battery, while the available V3 written warranty contains an older contradictory reference to five years.
+
+For TIGON’s website, listings should be based on the VIN, manufacturer’s certificate of origin and current build sheet, not copied from an older generic brochure.
+
+Golf cart versus street-legal LSV
+
+DENAGO markets many vehicles as both golf carts and Low-Speed Vehicles.
+
+Under federal law, an LSV is a four-wheeled vehicle that:
+
+Travels more than 20 MPH but no more than 25 MPH
+Has a GVWR below 3,000 pounds
+Meets the applicable federal LSV equipment requirements
+
+Those requirements include lighting, turn signals, mirrors, windshield, reflectors, parking brake, seat belts, VIN and certification labeling. Federal LSV requirements
+
+Street legality is not automatic everywhere. Registration, insurance, inspections, licensing and approved roads are controlled by state and local law.
+
+Important points:
+
+Lights and seat belts alone do not make a cart street legal.
+Confirm the 17-digit VIN and federal certification label.
+Confirm that the MCO identifies the correct vehicle class.
+Many jurisdictions limit LSVs to roads posted at 35 MPH or below, but rules vary.
+A 25 MPH LSV is not built to the same crashworthiness standards as a passenger car.
+Increasing the maximum speed above 25 MPH can remove the vehicle from the federal LSV classification and may void the warranty.
+
+“Medium Speed Vehicle” is not the correct federal classification for a standard 25 MPH DENAGO. For compliance language, use Low-Speed Vehicle or LSV unless a particular state separately recognizes an MSV category.
+
+Warranty
+
+DENAGO’s current product pages advertise:
+
+Aluminum chassis: Limited lifetime
+LiFePO₄ lithium battery: Eight years
+Other major components: Two years
+
+However, the important fine print includes:
+
+Parts-only manufacturer warranty
+Generally limited to the original purchaser or lessee
+Coverage begins on the original retail sale date
+Labor and transportation may not be included
+Wear items and normal maintenance are excluded
+Unauthorized modifications can void coverage
+Directly connecting non-factory accessories to the battery can void battery coverage
+Repairs generally must be completed through an approved dealer
+Commercial and rental vehicles may have different coverage
+Warranty registration and purchase documentation are important
+
+The available written terms contain both an eight-year table and a contradictory five-year battery sentence. Every buyer should receive the current written warranty tied to the vehicle’s model year and VIN. DENAGO warranty terms PDF
+
+Dealers should avoid calling this a “bumper-to-bumper” warranty unless DENAGO supplies written language stating that.
+
+Current federal safety recall
+
+DENAGO currently has an important NHTSA recall, Campaign 26V381, affecting approximately 34,136 vehicles.
+
+Affected models include certain:
+
+2024–2025 Nomad
+2024–2026 Nomad XL
+2026 Scout 2
+2026 Scout 4
+2024–2026 Rover XL
+2024–2026 Rover XL6
+2024–2026 Rover XXL
+
+The issue is that affected vehicles may not produce the pedestrian-warning sound required under FMVSS 141. Because electric vehicles are quiet, pedestrians may not hear them moving.
+
+The remedy is a free Acoustic Vehicle Alerting System kit. The recall does not carry a “Do Not Drive” or “Park Outside” warning. CITY and OXEN were not named in the published campaign summary. Recall 26V381 summary
+
+Every owner and dealer should check the complete 17-character VIN using the official NHTSA recall lookup. DENAGO recall customer service is listed as 1-877-755-2453.
+
+Reliability and ownership assessment
+Strengths
+Excellent standard equipment for the price
+Modern styling
+Strong acceleration from the AC drivetrain
+Comfortable independent suspension
+Four-wheel disc brakes
+Lithium battery as standard equipment
+Rust-resistant aluminum chassis on core Rover and Nomad models
+Strong passenger configurations
+CarPlay and Android Auto
+Competitive advertised warranty
+Factory LSV capability on properly certified units
+Considerably less routine maintenance than a gasoline cart
+Weaknesses and risks
+Shorter reliability history than Club Car, E-Z-GO or Yamaha
+Resale values are still developing
+Parts availability depends heavily on the dealer
+Warranty is generally parts-only
+Model specifications can change during the same model year
+More electronics mean more potential screen, camera, soundbar, sensor and wiring issues
+Tall lifted carts may not fit every garage or trailer
+Dealer preparation quality can vary
+The current pedestrian-warning recall must be addressed
+Proprietary electrical parts are less universally available than legacy-brand components
+
+Owner discussions are mixed. Many owners praise the ride quality, features and value, while others report controller, sensor, soundbar, wiring, shock or parts-delay complaints. These reports are anecdotal, but they reinforce one conclusion: buy from a dealer that services the vehicle and stocks common parts. DENAGO owner discussion
+
+Recommended maintenance
+Keep the battery charged according to the owner’s manual.
+Never use an incompatible charger.
+Do not connect high-draw accessories directly to the lithium pack.
+Check tire pressure and wear regularly.
+Check wheel-lug torque after initial use and at service intervals.
+Inspect brake operation, fluid and parking brake.
+Test lights, turn signals, horn, camera and pedestrian-warning system.
+Inspect suspension, steering and alignment.
+Keep battery, controller, charger and electrical connectors dry.
+Avoid high-pressure washing around electrical equipment.
+Check for loose wiring or connectors.
+Use VIN-specific replacement parts.
+Schedule professional inspections for heavily used rental or commercial carts.
+Follow DENAGO instructions for long-term or winter storage.
+Never modify maximum speed without understanding warranty and LSV consequences.
+
+A 39-page DENAGO owner’s manual is available through this owner’s manual download.
+
+DENAGO inverter system
+
+DENAGO offers an optional external inverter that turns the cart’s lithium battery into a mobile power source.
+
+The current accessory is described as:
+
+2,000 watts continuous
+Approximately 3,000–4,000 watts of surge capacity
+42–58.4V DC input
+Suitable for lights, laptops, televisions, Wi-Fi, refrigerators, coffee makers and some tools
+Approximately $500 at authorized dealers
+Plug-and-play on compatible inverter-ready vehicles
+
+Heavy appliances must be managed carefully. A heater, induction cooktop, portable air conditioner or other large load can consume most of the inverter’s output. DENAGO inverter information
+
+Financing
+
+As of June 2026, DENAGO announced promotional financing of 0% APR for up to 48 months at participating dealers.
+
+Credit approval is required.
+Promotions may change or end.
+Dealer Direct, Octane and Sheffield Financial are listed as primary consumer financing partners.
+Taxes, title, registration and dealer fees are normally separate.
+Best DENAGO by customer
+Customer need	Best model
+Lowest-cost DENAGO	Scout 2
+Golf and light property use	Scout 2
+Rear cargo flexibility	Nomad XL
+Best family all-around model	Rover XL
+Six seats with rear cargo capability	Rover XL6
+Six passengers all facing forward	Rover XXL
+Resort or group transportation	Rover XXL
+Luxury neighborhood transportation	CITY
+Farm, campus, jobsite or security	OXEN
+Airbnb or vacation property	Nomad XL, Rover XL or Rover XXL
+Coastal use	Aluminum-chassis Nomad or Rover
+Long-range utility work	OXEN
+Most technology	CITY
+Pre-delivery checklist
+
+Before delivering any DENAGO, verify:
+
+Exact model year and VIN
+MCO and federal certification label
+Open recall status
+AVAS pedestrian-warning operation
+Battery voltage, capacity and serial number
+Warranty registration
+Correct charger and charging cord
+Full charge and road test
+Steering alignment
+Brake and parking-brake operation
+Tire pressure and wheel-lug torque
+Lights, signals, horn and mirrors
+Seat belts for every designated seating position
+Backup camera
+CarPlay and Android Auto
+NFC keys and physical keys
+Sound system
+Windshield and wiper operation
+Accessory wiring
+Written build sheet
+Written warranty
+Itemized out-the-door price
+Dealer service, pickup and labor policies
