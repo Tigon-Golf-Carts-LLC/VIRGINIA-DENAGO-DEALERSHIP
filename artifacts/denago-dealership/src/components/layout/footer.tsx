@@ -64,6 +64,7 @@ export function Footer() {
               <Link href="/compare" className="text-white/70 hover:text-primary transition-colors w-max">Compare Models</Link>
               <Link href="/locations" className="text-white/70 hover:text-primary transition-colors w-max">Locations</Link>
               <Link href="/reviews" className="text-white/70 hover:text-primary transition-colors w-max">Customer Reviews</Link>
+              <Link href="/financing" className="text-white/70 hover:text-primary transition-colors w-max">Financing</Link>
               <Link href="/contact" className="text-white/70 hover:text-primary transition-colors w-max">Contact Dealership</Link>
             </nav>
           </div>

@@ -13,6 +13,7 @@ export function Navbar() {
     { href: '/compare', label: 'Compare' },
     { href: '/locations', label: 'Locations' },
     { href: '/reviews', label: 'Reviews' },
+    { href: '/financing', label: 'Financing' },
     { href: '/contact', label: 'Contact' },
   ];
 
