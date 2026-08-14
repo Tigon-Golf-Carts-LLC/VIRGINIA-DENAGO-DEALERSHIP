@@ -134,10 +134,10 @@ function PaymentCalculator() {
     const safePrice = Number.isFinite(price) ? Math.max(price, 0) : 0;
     const safeDown = Number.isFinite(down) ? Math.min(Math.max(down, 0), safePrice) : 0;
     const principal = Math.max(safePrice - safeDown, 0);
-    if (principal === 0 || months <= 0) return { monthly: 0, financed: principal, totalPaid: principal };
+    if (principal === 0 || months <= 0) return { monthly: 0, financed: principal, totalPaid: principal + safeDown };
     const r = apr / 100 / 12;
     const payment = r === 0 ? principal / months : (principal * r) / (1 - Math.pow(1 + r, -months));
-    return { monthly: payment, financed: principal, totalPaid: payment * months };
+    return { monthly: payment, financed: principal, totalPaid: payment * months + safeDown };
   }, [price, down, apr, months]);
 
   const inputClass =
