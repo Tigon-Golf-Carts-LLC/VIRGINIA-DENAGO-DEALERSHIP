@@ -12,6 +12,7 @@ export function Navbar() {
     { href: '/denago', label: 'Models' },
     { href: '/compare', label: 'Compare' },
     { href: '/locations', label: 'Locations' },
+    { href: '/reviews', label: 'Reviews' },
     { href: '/contact', label: 'Contact' },
   ];
 
