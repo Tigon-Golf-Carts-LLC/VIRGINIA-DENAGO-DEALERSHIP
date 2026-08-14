@@ -105,7 +105,6 @@ export const denagoModels: VehicleModel[] = [
     topSpeed: "25 mph",
     driveType: "2x4",
     image: "/assets/denago/denago-ev-nomad.jpg",
-    cardImage: "/assets/denago/denago-nomad-card.jpg",
     category: "Off-Road / Adventure",
     features: [
       "All-Terrain Tires",
@@ -332,6 +331,7 @@ export const denagoModels: VehicleModel[] = [
     topSpeed: "25 mph",
     driveType: "2x4",
     image: "/assets/denago/denago-ev-scout-2.png",
+    cardImage: "/assets/denago/denago-scout-2-card.jpg",
     gallery: [
       "/assets/denago/denago-ev-scout-2.png",
       "/assets/denago/denago-ev-scout-2-2.png",
