@@ -1,5 +1,5 @@
 import { Seo } from '@/components/seo';
-import { DEALERSHIP } from '@/data/denago-models';
+import { DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { Phone, MapPin, Mail, Clock, ShieldCheck } from 'lucide-react';
 
 export default function Contact() {
@@ -55,9 +55,9 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-bold mb-2 font-display uppercase">Location</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      2333 Bethlehem Pike<br />
-                      Hatfield, PA 19440<br />
-                      United States
+                      {HEADQUARTERS.street}<br />
+                      {HEADQUARTERS.city}, {HEADQUARTERS.state} {HEADQUARTERS.zip}<br />
+                      {HEADQUARTERS.country}
                     </p>
                   </div>
                 </div>
@@ -89,8 +89,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 font-display uppercase">Email Us</h3>
-                    <a href="mailto:sales@denagodealership.com" className="text-primary hover:underline font-medium">
-                      sales@denagodealership.com
+                    <a href={`mailto:${HEADQUARTERS.email}`} className="text-primary hover:underline font-medium">
+                      {HEADQUARTERS.email}
                     </a>
                     <p className="text-sm text-muted-foreground mt-2">For service inquiries, please call.</p>
                   </div>

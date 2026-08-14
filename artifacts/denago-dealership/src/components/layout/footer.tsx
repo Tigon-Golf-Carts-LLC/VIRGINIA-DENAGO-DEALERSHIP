@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { DEALERSHIP } from '@/data/denago-models';
+import { DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { Zap, Phone, MapPin, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
@@ -32,11 +32,11 @@ export function Footer() {
             </a>
             <div className="flex items-start gap-3 text-white/70 text-sm">
               <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <span>2333 Bethlehem Pike<br />Hatfield, PA 19440</span>
+              <span>{HEADQUARTERS.street}<br />{HEADQUARTERS.city}, {HEADQUARTERS.state} {HEADQUARTERS.zip}</span>
             </div>
             <div className="flex items-center gap-3 text-white/70 text-sm">
               <Mail className="h-4 w-4 text-primary" />
-              <span>sales@denagodealership.com</span>
+              <span>{HEADQUARTERS.email}</span>
             </div>
           </div>
 

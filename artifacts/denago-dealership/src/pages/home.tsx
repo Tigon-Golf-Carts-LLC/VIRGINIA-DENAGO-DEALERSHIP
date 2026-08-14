@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Seo } from '@/components/seo';
-import { denagoModels, DEALERSHIP } from '@/data/denago-models';
+import { denagoModels, DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { ModelCard } from '@/components/model-card';
 import { Phone, ArrowRight, ShieldCheck, Zap, Wrench, FileText } from 'lucide-react';
 
@@ -48,11 +48,11 @@ export default function Home() {
         "telephone": DEALERSHIP.phone,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "2333 Bethlehem Pike",
-          "addressLocality": "Hatfield",
-          "addressRegion": "PA",
-          "postalCode": "19440",
-          "addressCountry": "US"
+          "streetAddress": HEADQUARTERS.street,
+          "addressLocality": HEADQUARTERS.city,
+          "addressRegion": HEADQUARTERS.state,
+          "postalCode": HEADQUARTERS.zip,
+          "addressCountry": HEADQUARTERS.countryCode
         }
       },
       {

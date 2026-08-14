@@ -28,6 +28,21 @@ export const DEALERSHIP = {
   brand: "DENAGO EV",
 };
 
+/** Single source of truth for the headquarters address & contact info. */
+export const HEADQUARTERS = {
+  street: "2333 Bethlehem Pike",
+  city: "Hatfield",
+  state: "PA",
+  zip: "19440",
+  country: "United States",
+  countryCode: "US",
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=2333+Bethlehem+Pike,+Hatfield,+PA+19440",
+  phone: DEALERSHIP.phone,
+  phoneDisplay: DEALERSHIP.phoneDisplay,
+  email: "sales@denagodealership.com",
+};
+
 export const denagoModels: VehicleModel[] = [
   {
     slug: "ev-city",
