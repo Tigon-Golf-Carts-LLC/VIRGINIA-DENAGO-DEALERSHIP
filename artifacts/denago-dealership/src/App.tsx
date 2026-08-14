@@ -12,6 +12,7 @@ import Lineup from '@/pages/lineup';
 import ModelDetail from '@/pages/model-detail';
 import Compare from '@/pages/compare';
 import Contact from '@/pages/contact';
+import Locations from '@/pages/locations';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ function Router() {
           </Route>
           <Route path="/denago/:slug" component={ModelDetail} />
           <Route path="/compare" component={Compare} />
+          <Route path="/locations" component={Locations} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

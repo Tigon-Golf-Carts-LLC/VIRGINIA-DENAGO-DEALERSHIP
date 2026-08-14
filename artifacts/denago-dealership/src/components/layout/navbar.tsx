@@ -11,6 +11,7 @@ export function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/denago', label: 'Models' },
     { href: '/compare', label: 'Compare' },
+    { href: '/locations', label: 'Locations' },
     { href: '/contact', label: 'Contact' },
   ];
 

@@ -68,6 +68,7 @@ export function Footer() {
             <nav className="flex flex-col gap-3 text-sm">
               <Link href="/denago" className="text-white/70 hover:text-primary transition-colors w-max">View Inventory</Link>
               <Link href="/compare" className="text-white/70 hover:text-primary transition-colors w-max">Compare Models</Link>
+              <Link href="/locations" className="text-white/70 hover:text-primary transition-colors w-max">Locations</Link>
               <Link href="/contact" className="text-white/70 hover:text-primary transition-colors w-max">Contact Dealership</Link>
             </nav>
           </div>
