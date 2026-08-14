@@ -48,11 +48,11 @@ export function Footer() {
               <div className="flex flex-col gap-2 w-full">
                 <div className="flex justify-between w-full max-w-[200px]">
                   <span>Mon - Fri</span>
-                  <span className="font-medium text-white/90">9:00 AM - 6:00 PM</span>
+                  <span className="font-medium text-white/90">9:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex justify-between w-full max-w-[200px]">
                   <span>Saturday</span>
-                  <span className="font-medium text-white/90">10:00 AM - 4:00 PM</span>
+                  <span className="font-medium text-white/90">9:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex justify-between w-full max-w-[200px]">
                   <span>Sunday</span>

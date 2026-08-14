@@ -70,11 +70,11 @@ export default function Contact() {
                     <h3 className="text-xl font-bold mb-4 font-display uppercase">Showroom Hours</h3>
                     <div className="flex justify-between items-center py-2 border-b border-border/50 text-muted-foreground">
                       <span>Monday - Friday</span>
-                      <span className="font-bold text-foreground">9:00 AM - 6:00 PM</span>
+                      <span className="font-bold text-foreground">9:00 AM - 5:00 PM</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-border/50 text-muted-foreground">
                       <span>Saturday</span>
-                      <span className="font-bold text-foreground">10:00 AM - 4:00 PM</span>
+                      <span className="font-bold text-foreground">9:00 AM - 5:00 PM</span>
                     </div>
                     <div className="flex justify-between items-center py-2 text-muted-foreground">
                       <span>Sunday</span>
