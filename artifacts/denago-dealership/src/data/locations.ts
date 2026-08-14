@@ -4,6 +4,8 @@ export interface DealershipLocation {
   address: string;
   city: string;
   state: string;
+  lat: number;
+  lng: number;
   mapUrl?: string;
   facebook?: string;
   youtube?: string;
@@ -14,6 +16,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Hatfield, PA",
     phone: "215-595-8736",
+    lat: 40.29839945958623,
+    lng: -75.28308913039525,
     address: "2333 Bethlehem Pike, Hatfield, PA 19440",
     city: "Hatfield",
     state: "PA",
@@ -25,6 +29,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Ocean View, NJ",
     phone: "609-840-0404",
+    lat: 39.22254797811702,
+    lng: -74.70417212536503,
     address: "101 NJ-50, Ocean View, NJ 08230",
     city: "Ocean View",
     state: "NJ",
@@ -36,6 +42,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Long Pond, PA",
     phone: "570-580-0567",
+    lat: 41.053988,
+    lng: -75.534146,
     address: "4738 PA-115, Long Pond, PA 18334",
     city: "Long Pond",
     state: "PA",
@@ -46,6 +54,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Pocono Pines, PA",
     phone: "570-643-0152",
+    lat: 41.10286354605563,
+    lng: -75.48758590250345,
     address: "1712 Pennsylvania 940, Pocono Pines, PA 18350",
     city: "Pocono Pines",
     state: "PA",
@@ -57,6 +67,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Dover, DE",
     phone: "302-546-0010",
+    lat: 39.22044318468275,
+    lng: -75.57452048907642,
     address: "5158 N Dupont Hwy, Dover, DE 19901",
     city: "Dover",
     state: "DE",
@@ -68,6 +80,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Scranton / Wilkes-Barre, PA",
     phone: "570-344-4443",
+    lat: 41.4374075,
+    lng: -75.6835104,
     address: "1225 N Keyser Ave #2, Scranton, PA 18504",
     city: "Scranton",
     state: "PA",
@@ -79,6 +93,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Raleigh, NC",
     phone: "984-489-0296",
+    lat: 35.7471032,
+    lng: -78.6452007,
     address: "2700 S Wilmington St, Raleigh, NC 27603",
     city: "Raleigh",
     state: "NC",
@@ -90,6 +106,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "South Bend, IN",
     phone: "574-703-0456",
+    lat: 41.7360283,
+    lng: -86.2511865,
     address: "52129 State Road 933, South Bend, IN 46637",
     city: "South Bend",
     state: "IN",
@@ -101,6 +119,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Gloucester Point, VA",
     phone: "804-792-0234",
+    lat: 37.2850625,
+    lng: -76.5074161,
     address: "2810 George Washington Memorial Hwy, Gloucester Point, VA 23072",
     city: "Gloucester Point",
     state: "VA",
@@ -112,6 +132,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Bayville, NJ",
     phone: "732-908-7166",
+    lat: 39.9277698,
+    lng: -74.1748497,
     address: "155 Atlantic City Blvd, Bayville, NJ 08721",
     city: "Bayville",
     state: "NJ",
@@ -122,6 +144,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Waretown, NJ",
     phone: "732-998-8146",
+    lat: 39.7998853,
+    lng: -74.1971619,
     address: "526 US-9, Waretown, NJ 08758",
     city: "Waretown",
     state: "NJ",
@@ -132,6 +156,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Orangeburg, SC",
     phone: "803-596-0246",
+    lat: 33.547201,
+    lng: -80.9162039,
     address: "4166 North Rd, Orangeburg, SC 29118",
     city: "Orangeburg",
     state: "SC",
@@ -143,6 +169,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Swanton, OH",
     phone: "419-402-8400",
+    lat: 41.6013184,
+    lng: -83.7926472,
     address: "10420 Airport Hwy, Swanton, OH 43558",
     city: "Swanton",
     state: "OH",
@@ -154,6 +182,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Lecanto, FL",
     phone: "352-453-0345",
+    lat: 28.858622,
+    lng: -82.4295381,
     address: "299 E. Gulf to Lake Hwy, Lecanto, FL 34461",
     city: "Lecanto",
     state: "FL",
@@ -165,6 +195,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Rio Grande, NJ",
     phone: "609-551-0234",
+    lat: 39.0128,
+    lng: -74.8779,
     address: "1304 NJ-47 b, Rio Grande, NJ 08242",
     city: "Rio Grande",
     state: "NJ",
@@ -175,6 +207,8 @@ export const dealershipLocations: DealershipLocation[] = [
   {
     name: "Wichita Falls, TX",
     phone: "940-716-3334",
+    lat: 33.9456,
+    lng: -98.493,
     address: "3904 Sheppard Access Rd, Wichita Falls, TX 76306",
     city: "Wichita Falls",
     state: "TX",

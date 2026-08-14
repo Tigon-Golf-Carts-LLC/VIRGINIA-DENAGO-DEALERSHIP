@@ -2,6 +2,7 @@ import { Seo } from '@/components/seo';
 import { DEALERSHIP } from '@/data/denago-models';
 import { dealershipLocations } from '@/data/locations';
 import { Phone, MapPin, Facebook, Youtube, Globe } from 'lucide-react';
+import { LocationsMap } from '@/components/locations-map';
 
 export default function Locations() {
   const schema = {
@@ -43,6 +44,10 @@ export default function Locations() {
             <p className="text-lg text-muted-foreground max-w-2xl">
               Visit any of our dealership locations to see the DENAGO lineup in person, take a test drive, and talk to our team.
             </p>
+          </div>
+
+          <div className="mb-12">
+            <LocationsMap locations={dealershipLocations} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
