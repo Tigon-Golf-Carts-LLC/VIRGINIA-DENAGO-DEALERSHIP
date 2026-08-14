@@ -76,21 +76,23 @@ export default function Reviews() {
               What customers say about their Denago golf carts — battery life, standard tech, and
               the buying experience across our 16 dealership locations.
             </p>
-            <div className="inline-flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-3">
-              <span className="text-3xl font-display font-bold text-foreground">
-                {ratingValue.toFixed(1)}
-              </span>
-              <div className="flex flex-col">
-                <Stars rating={Math.round(ratingValue)} />
-                <span className="text-xs text-muted-foreground mt-1">
-                  Based on {reviewCount} customer review{reviewCount === 1 ? '' : 's'}
+            {reviewCount > 0 && (
+              <div className="inline-flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-3">
+                <span className="text-3xl font-display font-bold text-foreground">
+                  {ratingValue.toFixed(1)}
                 </span>
+                <div className="flex flex-col">
+                  <Stars rating={Math.round(ratingValue)} />
+                  <span className="text-xs text-muted-foreground mt-1">
+                    Based on {reviewCount} customer review{reviewCount === 1 ? '' : 's'}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Review cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl ${reviewCount > 0 ? 'mb-16' : ''}`}>
             {customerReviews.map((review, i) => (
               <article key={i} className="bg-card border border-border rounded-xl p-6 flex flex-col gap-3">
                 <div className="flex items-center justify-between">

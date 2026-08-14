@@ -22,35 +22,7 @@ export interface CustomerReview {
   model?: string;
 }
 
-export const customerReviews: CustomerReview[] = [
-  {
-    author: 'Sample Customer',
-    location: 'Hatfield, PA',
-    rating: 5,
-    date: '2026-06-02',
-    title: 'Example review — replace with a real one',
-    text: 'This is a placeholder review showing how a real customer testimonial will appear. Ask your sales and service teams for recent happy customers willing to share a few sentences about their Denago.',
-    model: 'EV Rover XL',
-  },
-  {
-    author: 'Sample Customer',
-    location: 'Doylestown, PA',
-    rating: 5,
-    date: '2026-04-18',
-    title: 'Example review — replace with a real one',
-    text: 'Placeholder testimonial. Real reviews should mention specifics buyers care about: battery life, the CarPlay touchscreen, street-legal registration help, or the buying experience at a specific location.',
-    model: 'EV Nomad',
-  },
-  {
-    author: 'Sample Customer',
-    location: 'Quakertown, PA',
-    rating: 4,
-    date: '2026-03-09',
-    title: 'Example review — replace with a real one',
-    text: 'Placeholder testimonial. A mix of 4- and 5-star reviews reads as more credible than a perfect wall of five stars.',
-    model: 'EV City',
-  },
-];
+export const customerReviews: CustomerReview[] = [];
 
 export function getAggregateRating() {
   const count = customerReviews.length;
