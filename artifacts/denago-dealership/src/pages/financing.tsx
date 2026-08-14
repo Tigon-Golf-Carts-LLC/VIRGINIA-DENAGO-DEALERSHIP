@@ -126,7 +126,7 @@ function formatMoney(n: number) {
 
 function PaymentCalculator() {
   const [price, setPrice] = useState(9995);
-  const [down, setDown] = useState(1000);
+  const [down, setDown] = useState(1999);
   const [apr, setApr] = useState(0);
   const [months, setMonths] = useState(48);
 
