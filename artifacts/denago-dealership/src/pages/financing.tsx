@@ -256,6 +256,40 @@ export default function Financing() {
             ))}
           </div>
 
+          {/* Denago Direct Financing */}
+          <section className="mb-16 max-w-6xl">
+            <div className="bg-foreground text-background rounded-xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative flex flex-col lg:flex-row lg:items-center gap-8">
+                <div className="flex-1">
+                  <div className="inline-block bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+                    Exclusive Offer
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight text-white mb-3">
+                    DENAGO <span className="text-primary">DIRECT FINANCING</span>
+                  </h2>
+                  <p className="text-white/70 max-w-xl">
+                    0% financing for 48 months — monthly payments starting at{' '}
+                    <span className="text-white font-bold">$166.58</span>. Call to get DENAGO DIRECT
+                    FINANCING.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row lg:flex-col gap-4 shrink-0">
+                  <div className="text-center lg:text-right">
+                    <div className="text-4xl font-display font-bold text-primary">0% APR</div>
+                    <div className="text-sm text-white/60 uppercase tracking-wide font-semibold">for 48 months</div>
+                  </div>
+                  <a
+                    href={`tel:${DEALERSHIP.phone}`}
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    <Phone className="h-5 w-5" /> Call {DEALERSHIP.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Lenders */}
           <section id="apply" className="mb-16 scroll-mt-24">
             <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tight mb-2">
