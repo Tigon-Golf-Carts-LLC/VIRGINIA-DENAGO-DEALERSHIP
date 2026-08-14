@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://denagodealership.com/denago/ev-city</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-city.jpg</image:loc>
+      <image:title>DENAGO CITY</image:title>
+      <image:caption>DENAGO CITY — Street-legal NEV / LSV, 2 seats, 40–50 miles range, starting at $16,500</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-nomad</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-nomad.jpg</image:loc>
+      <image:title>DENAGO NOMAD</image:title>
+      <image:caption>DENAGO NOMAD — Lifted 4-passenger golf cart, 4 seats, 45 miles range, starting at $9,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-nomad-xl</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-nomad-xl.jpg</image:loc>
+      <image:title>DENAGO NOMAD XL</image:title>
+      <image:caption>DENAGO NOMAD XL — Lifted 4-passenger golf cart, 4 seats, 45 miles range, starting at $9,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xl</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xl.jpg</image:loc>
+      <image:title>DENAGO ROVER XL</image:title>
+      <image:caption>DENAGO ROVER XL — 6-passenger golf cart, 6 seats, 45 miles range, starting at $10,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xl6</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xl6.jpg</image:loc>
+      <image:title>DENAGO ROVER XL6</image:title>
+      <image:caption>DENAGO ROVER XL6 — Lifted 6-passenger golf cart, 6 seats, 45 miles range, starting at $12,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xxl</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xxl.jpg</image:loc>
+      <image:title>DENAGO ROVER XXL</image:title>
+      <image:caption>DENAGO ROVER XXL — 8-passenger golf cart, 8 seats, 45 miles range, starting at $12,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/oxen</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-oxen.jpg</image:loc>
+      <image:title>DENAGO OXEN</image:title>
+      <image:caption>DENAGO OXEN — Electric utility cart with dump bed, 2 seats, 70+ miles range, starting at $12,995</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/scout2</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-scout-2.png</image:loc>
+      <image:title>DENAGO SCOUT 2</image:title>
+      <image:caption>DENAGO SCOUT 2 — Compact 2-passenger golf cart, 2 seats, 40+ miles range, starting at $8,995</image:caption>
+    </image:image>
+  </url>
+</urlset>

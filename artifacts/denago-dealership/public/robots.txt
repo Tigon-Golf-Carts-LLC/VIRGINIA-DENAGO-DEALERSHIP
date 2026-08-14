@@ -1,4 +1,177 @@
+# DENAGO Dealership — robots.txt
+# Maximum accessibility: all legitimate crawlers welcome.
+
 User-agent: *
 Allow: /
+Crawl-delay: 0
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: InstagramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: rogerbot
+Allow: /
+
+User-agent: ScreamingFrogSEOSpider
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: YelpBot
+Allow: /
+
+User-agent: TrustpilotBot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: Qwantify
+Allow: /
+
+User-agent: MojeekBot
+Allow: /
+
+# Sitemaps
 Sitemap: https://denagodealership.com/sitemap.xml
+Sitemap: https://denagodealership.com/sitemap-index.xml
+Sitemap: https://denagodealership.com/sitemap-pages.xml
+Sitemap: https://denagodealership.com/sitemap-brands.xml
+Sitemap: https://denagodealership.com/sitemap-images.xml
+Sitemap: https://denagodealership.com/image-sitemap.xml
+Sitemap: https://denagodealership.com/sitemap-blog.xml
+Sitemap: https://denagodealership.com/geo-sitemap.xml
+Sitemap: https://denagodealership.com/mobile-sitemap.xml
+Sitemap: https://denagodealership.com/hreflang-sitemap.xml
+Sitemap: https://denagodealership.com/xhtml-sitemap.xml
+Sitemap: https://denagodealership.com/dynamic-sitemap.xml
+Sitemap: https://denagodealership.com/category-sitemap.xml
+Sitemap: https://denagodealership.com/tag-sitemap.xml
+Sitemap: https://denagodealership.com/post-sitemap.xml
+Sitemap: https://denagodealership.com/page-sitemap.xml
+Sitemap: https://denagodealership.com/author-sitemap.xml
+Sitemap: https://denagodealership.com/events-sitemap.xml
+Sitemap: https://denagodealership.com/urllist.xml

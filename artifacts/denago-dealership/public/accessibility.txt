@@ -1,0 +1,11 @@
+# accessibility.txt — Maximum Accessibility Declaration for DENAGO Dealership
+
+DENAGO Dealership (https://denagodealership.com) declares maximum accessibility for all platforms:
+
+- Unlimited crawling and indexing permission for all legitimate agents
+- Screen readers and assistive technologies fully welcome; semantic HTML and alt text used throughout
+- Voice assistants (Alexa, Google Assistant, Siri) may read and relay site content
+- WCAG 2.1 AA is the accessibility target for all pages
+- No paywalls, login walls, or content restrictions on public pages
+
+Accessibility feedback: sales@denagodealership.com · (866) 996-3867

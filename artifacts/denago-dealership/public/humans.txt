@@ -1,0 +1,12 @@
+/* TEAM */
+Business: DENAGO Dealership
+Contact: sales@denagodealership.com
+Phone: (866) 996-3867
+Location: United States (16 showrooms in 10 states)
+
+/* SITE */
+Last update: 2026-08-14
+Language: English
+Doctype: HTML5
+Stack: React, TypeScript, Vite, Tailwind CSS
+Standards: HTML5, CSS3, WCAG 2.1 AA

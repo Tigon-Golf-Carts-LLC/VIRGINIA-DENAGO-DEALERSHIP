@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AutoDealer",
+  "name": "DENAGO Dealership — Swanton, OH",
+  "url": "https://denagodealership.com/locations",
+  "telephone": "419-402-8400",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10420 Airport Hwy",
+    "addressLocality": "Swanton",
+    "addressRegion": "OH",
+    "postalCode": "43558",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.6013184,
+    "longitude": -83.7926472
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": "Denago EV"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "DENAGO Dealership",
+    "url": "https://denagodealership.com",
+    "telephone": "(866) 996-3867"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AutoDealer",
+  "name": "DENAGO Dealership — Raleigh, NC",
+  "url": "https://denagodealership.com/locations",
+  "telephone": "984-489-0296",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2700 S Wilmington St",
+    "addressLocality": "Raleigh",
+    "addressRegion": "NC",
+    "postalCode": "27603",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.7471032,
+    "longitude": -78.6452007
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": "Denago EV"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "DENAGO Dealership",
+    "url": "https://denagodealership.com",
+    "telephone": "(866) 996-3867"
+  }
+}

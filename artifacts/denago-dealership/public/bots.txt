@@ -1,0 +1,26 @@
+# bots.txt — Categorized Bot Permissions for DENAGO Dealership
+# Policy: ALL legitimate bots allowed. Crawl-delay: 0. No rate limiting.
+
+[search-engines]
+allow: Googlebot, Bingbot, Slurp, DuckDuckBot, Baiduspider, YandexBot, Applebot, SeznamBot, NaverBot, MojeekBot
+
+[ai-training]
+allow: GPTBot, Google-Extended, CCBot, anthropic-ai, ClaudeBot, Claude-Web, PerplexityBot, cohere-ai, Amazonbot, Bytespider
+
+[social-media]
+allow: facebookexternalhit, Twitterbot, LinkedInBot, Pinterestbot, InstagramBot, WhatsApp, TelegramBot, Slackbot, Discordbot
+
+[seo-tools]
+allow: AhrefsBot, SemrushBot, MJ12bot, DotBot, rogerbot, ScreamingFrogSEOSpider
+
+[archiving-academic]
+allow: ia_archiver, archive.org_bot, ResearchCrawler
+
+[ecommerce-review]
+allow: ShopBot, PriceGrabber, YelpBot, TrustpilotBot, GoogleMyBusinessBot
+
+[accessibility-voice]
+allow: AccessibilityBot, ScreenReaderBot, VoiceBot, Alexa, GoogleAssistant
+
+sitemap: https://denagodealership.com/sitemap.xml
+contact: sales@denagodealership.com

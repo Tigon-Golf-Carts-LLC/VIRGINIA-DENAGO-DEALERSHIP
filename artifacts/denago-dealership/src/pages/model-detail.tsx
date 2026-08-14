@@ -3,7 +3,7 @@ import { useParams, Link } from 'wouter';
 import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
 import { Seo } from '@/components/seo';
 import NotFound from './not-found';
-import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft } from 'lucide-react';
+import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent } from 'lucide-react';
 
 export default function ModelDetail({ slugOverride }: { slugOverride?: string; params?: unknown } = {}) {
   const params = useParams();
@@ -18,6 +18,10 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
   const gallery = model.gallery && model.gallery.length > 0 ? model.gallery : [model.image];
   const currentImage = gallery[Math.min(activeImage, gallery.length - 1)];
   const modelUrl = `${DEALERSHIP.domain}${getModelPath(model)}`;
+
+  // 0% APR for 48 months with 20% down (same basis as the /financing offer)
+  const msrp = Number(model.price.replace(/[^0-9.]/g, ''));
+  const monthlyPayment = msrp > 0 ? ((msrp * 0.8) / 48).toFixed(2) : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -120,11 +124,6 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
                   loading="eager"
                   className="w-full h-full object-contain object-center"
                 />
-                <div className="absolute top-6 left-6">
-                  <span className="bg-background text-foreground text-sm font-bold uppercase tracking-wider py-2 px-4 rounded-full shadow-lg">
-                    {model.category}
-                  </span>
-                </div>
               </div>
               {gallery.length > 1 && (
                 <div className="grid grid-cols-4 gap-3">
@@ -172,16 +171,35 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
                   <div>
                     <span className="text-muted-foreground text-sm font-semibold uppercase tracking-wider block mb-1">Starting Price</span>
                     <span className="text-4xl font-bold text-primary">{model.price}</span>
+                    {monthlyPayment && (
+                      <span className="block mt-1 text-sm font-semibold text-foreground/80">
+                        or <span className="text-primary">${monthlyPayment}/mo</span> for 48 months at 0% APR*
+                      </span>
+                    )}
                   </div>
                   
-                  <a 
-                    href={`tel:${DEALERSHIP.phone.replace(/[^0-9+]/g, '')}`}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 transition-colors shadow-lg clip-path-slant"
-                  >
-                    <Phone className="h-6 w-6" />
-                    Call to Buy
-                  </a>
+                  <div className="flex flex-col gap-3">
+                    <a 
+                      href={`tel:${DEALERSHIP.phone.replace(/[^0-9+]/g, '')}`}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 transition-colors shadow-lg clip-path-slant"
+                    >
+                      <Phone className="h-6 w-6" />
+                      Call to Buy
+                    </a>
+                    <Link
+                      href="/financing"
+                      className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-bold text-lg flex items-center justify-center gap-3 transition-colors clip-path-slant"
+                    >
+                      <BadgePercent className="h-6 w-6" />
+                      0% Financing
+                    </Link>
+                  </div>
                 </div>
+                {monthlyPayment && (
+                  <p className="text-xs text-muted-foreground -mt-4 mb-6">
+                    *${monthlyPayment}/month based on {model.price} MSRP with 20% down, financed for 48 months at 0% APR with approved credit through participating lenders. Taxes, fees, and optional equipment not included.
+                  </p>
+                )}
                 
                 <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border/50">
                   <div className="flex flex-col items-center text-center gap-2">

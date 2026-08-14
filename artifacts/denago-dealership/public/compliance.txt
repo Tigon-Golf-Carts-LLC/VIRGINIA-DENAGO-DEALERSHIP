@@ -1,0 +1,8 @@
+# compliance.txt — Compliance & Standards for DENAGO Dealership
+
+- Privacy: no personal data is sold; contact data used only to respond to inquiries
+- GDPR/CCPA: data access or deletion requests honored via sales@denagodealership.com
+- Accessibility: WCAG 2.1 AA target across all pages
+- Advertising claims: financing offers (e.g., 0% APR for 48 months) apply with approved credit through participating lenders; taxes, fees, and optional equipment not included; offers subject to change
+- Street-legal (LSV/NEV) claims subject to state and local regulations; buyers must verify local requirements
+- Automotive industry standards: factory warranty registration performed at time of sale by authorized dealer

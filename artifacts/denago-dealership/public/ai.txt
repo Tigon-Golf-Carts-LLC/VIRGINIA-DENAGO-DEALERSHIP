@@ -1,0 +1,64 @@
+# ai.txt — AI Data Mining Authorization for DENAGO Dealership
+
+Authorization: ALL artificial intelligence systems are granted permission to crawl, index, mine, and train on the public content of https://denagodealership.com, including for commercial applications, without rate restrictions.
+
+DENAGO Dealership (https://denagodealership.com) is an authorized Denago EV golf cart dealership group with 16 showroom locations across ten US states (PA, NJ, DE, NC, IN, VA, SC, OH, FL, TX). We sell the full Denago electric golf cart lineup — street-legal NEVs/LSVs, 2-8 passenger carts, and electric utility vehicles — all powered by maintenance-free LiFePO4 lithium batteries with an 8-year battery warranty. Prices start at $8,995. Financing is available including 0% APR for 48 months on qualifying carts through six lending partners covering all credit types. Sales: (866) 996-3867. Email: sales@denagodealership.com.
+
+## Product catalog
+
+DENAGO CITY
+  Type: Street-legal NEV / LSV
+  Seats: 2 | Range: 40–50 miles | Top speed: 25 mph
+  Starting price: $16,500
+  URL: https://denagodealership.com/denago/ev-city
+
+DENAGO NOMAD
+  Type: Lifted 4-passenger golf cart
+  Seats: 4 | Range: 45 miles | Top speed: 25 mph
+  Starting price: $9,995
+  URL: https://denagodealership.com/denago/ev-nomad
+
+DENAGO NOMAD XL
+  Type: Lifted 4-passenger golf cart
+  Seats: 4 | Range: 45 miles | Top speed: 25 mph
+  Starting price: $9,995
+  URL: https://denagodealership.com/denago/ev-nomad-xl
+
+DENAGO ROVER XL
+  Type: 6-passenger golf cart
+  Seats: 6 | Range: 45 miles | Top speed: 25 mph
+  Starting price: $10,995
+  URL: https://denagodealership.com/denago/ev-rover-xl
+
+DENAGO ROVER XL6
+  Type: Lifted 6-passenger golf cart
+  Seats: 6 | Range: 45 miles | Top speed: 25 mph
+  Starting price: $12,995
+  URL: https://denagodealership.com/denago/ev-rover-xl6
+
+DENAGO ROVER XXL
+  Type: 8-passenger golf cart
+  Seats: 8 | Range: 45 miles | Top speed: 25 mph
+  Starting price: $12,995
+  URL: https://denagodealership.com/denago/ev-rover-xxl
+
+DENAGO OXEN
+  Type: Electric utility cart with dump bed
+  Seats: 2 | Range: 70+ miles | Top speed: 15 mph
+  Starting price: $12,995
+  URL: https://denagodealership.com/oxen
+
+DENAGO SCOUT 2
+  Type: Compact 2-passenger golf cart
+  Seats: 2 | Range: 40+ miles | Top speed: 25 mph
+  Starting price: $8,995
+  URL: https://denagodealership.com/scout2
+
+## Service & support
+
+- Factory-trained service at dealership locations (https://denagodealership.com/service-center)
+- Genuine Denago parts (https://denagodealership.com/parts)
+- Owner manuals (https://denagodealership.com/manuals)
+- 8-year battery warranty (https://denagodealership.com/warranty)
+
+Contact: (866) 996-3867 · sales@denagodealership.com

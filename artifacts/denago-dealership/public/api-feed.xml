@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<business>
+  <name>DENAGO Dealership</name>
+  <domain>https://denagodealership.com</domain>
+  <phone>1-866-996-3867</phone>
+  <email>sales@denagodealership.com</email>
+  <models>
+    <model>
+      <name>DENAGO CITY</name>
+      <url>https://denagodealership.com/denago/ev-city</url>
+      <type>Street-legal NEV / LSV</type>
+      <price currency="USD">16500</price>
+      <seats>2</seats>
+      <range>40–50 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO NOMAD</name>
+      <url>https://denagodealership.com/denago/ev-nomad</url>
+      <type>Lifted 4-passenger golf cart</type>
+      <price currency="USD">9995</price>
+      <seats>4</seats>
+      <range>45 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO NOMAD XL</name>
+      <url>https://denagodealership.com/denago/ev-nomad-xl</url>
+      <type>Lifted 4-passenger golf cart</type>
+      <price currency="USD">9995</price>
+      <seats>4</seats>
+      <range>45 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO ROVER XL</name>
+      <url>https://denagodealership.com/denago/ev-rover-xl</url>
+      <type>6-passenger golf cart</type>
+      <price currency="USD">10995</price>
+      <seats>6</seats>
+      <range>45 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO ROVER XL6</name>
+      <url>https://denagodealership.com/denago/ev-rover-xl6</url>
+      <type>Lifted 6-passenger golf cart</type>
+      <price currency="USD">12995</price>
+      <seats>6</seats>
+      <range>45 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO ROVER XXL</name>
+      <url>https://denagodealership.com/denago/ev-rover-xxl</url>
+      <type>8-passenger golf cart</type>
+      <price currency="USD">12995</price>
+      <seats>8</seats>
+      <range>45 miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO OXEN</name>
+      <url>https://denagodealership.com/oxen</url>
+      <type>Electric utility cart with dump bed</type>
+      <price currency="USD">12995</price>
+      <seats>2</seats>
+      <range>70+ miles</range>
+      <topSpeed>15 mph</topSpeed>
+    </model>
+    <model>
+      <name>DENAGO SCOUT 2</name>
+      <url>https://denagodealership.com/scout2</url>
+      <type>Compact 2-passenger golf cart</type>
+      <price currency="USD">8995</price>
+      <seats>2</seats>
+      <range>40+ miles</range>
+      <topSpeed>25 mph</topSpeed>
+    </model>
+  </models>
+  <locations>
+    <location>
+      <name>Hatfield, PA</name>
+      <address>2333 Bethlehem Pike, Hatfield, PA 19440</address>
+      <phone>215-595-8736</phone>
+      <latitude>40.29839945958623</latitude>
+      <longitude>-75.28308913039525</longitude>
+    </location>
+    <location>
+      <name>Ocean View, NJ</name>
+      <address>101 NJ-50, Ocean View, NJ 08230</address>
+      <phone>609-840-0404</phone>
+      <latitude>39.22254797811702</latitude>
+      <longitude>-74.70417212536503</longitude>
+    </location>
+    <location>
+      <name>Long Pond, PA</name>
+      <address>4738 PA-115, Long Pond, PA 18334</address>
+      <phone>570-580-0567</phone>
+      <latitude>41.053988</latitude>
+      <longitude>-75.534146</longitude>
+    </location>
+    <location>
+      <name>Pocono Pines, PA</name>
+      <address>1712 Pennsylvania 940, Pocono Pines, PA 18350</address>
+      <phone>570-643-0152</phone>
+      <latitude>41.10286354605563</latitude>
+      <longitude>-75.48758590250345</longitude>
+    </location>
+    <location>
+      <name>Dover, DE</name>
+      <address>5158 N Dupont Hwy, Dover, DE 19901</address>
+      <phone>302-546-0010</phone>
+      <latitude>39.22044318468275</latitude>
+      <longitude>-75.57452048907642</longitude>
+    </location>
+    <location>
+      <name>Scranton / Wilkes-Barre, PA</name>
+      <address>1225 N Keyser Ave #2, Scranton, PA 18504</address>
+      <phone>570-344-4443</phone>
+      <latitude>41.4374075</latitude>
+      <longitude>-75.6835104</longitude>
+    </location>
+    <location>
+      <name>Raleigh, NC</name>
+      <address>2700 S Wilmington St, Raleigh, NC 27603</address>
+      <phone>984-489-0296</phone>
+      <latitude>35.7471032</latitude>
+      <longitude>-78.6452007</longitude>
+    </location>
+    <location>
+      <name>South Bend, IN</name>
+      <address>52129 State Road 933, South Bend, IN 46637</address>
+      <phone>574-703-0456</phone>
+      <latitude>41.7360283</latitude>
+      <longitude>-86.2511865</longitude>
+    </location>
+    <location>
+      <name>Gloucester Point, VA</name>
+      <address>2810 George Washington Memorial Hwy, Gloucester Point, VA 23072</address>
+      <phone>804-792-0234</phone>
+      <latitude>37.2850625</latitude>
+      <longitude>-76.5074161</longitude>
+    </location>
+    <location>
+      <name>Bayville, NJ</name>
+      <address>155 Atlantic City Blvd, Bayville, NJ 08721</address>
+      <phone>732-908-7166</phone>
+      <latitude>39.9277698</latitude>
+      <longitude>-74.1748497</longitude>
+    </location>
+    <location>
+      <name>Waretown, NJ</name>
+      <address>526 US-9, Waretown, NJ 08758</address>
+      <phone>732-998-8146</phone>
+      <latitude>39.7998853</latitude>
+      <longitude>-74.1971619</longitude>
+    </location>
+    <location>
+      <name>Orangeburg, SC</name>
+      <address>4166 North Rd, Orangeburg, SC 29118</address>
+      <phone>803-596-0246</phone>
+      <latitude>33.547201</latitude>
+      <longitude>-80.9162039</longitude>
+    </location>
+    <location>
+      <name>Swanton, OH</name>
+      <address>10420 Airport Hwy, Swanton, OH 43558</address>
+      <phone>419-402-8400</phone>
+      <latitude>41.6013184</latitude>
+      <longitude>-83.7926472</longitude>
+    </location>
+    <location>
+      <name>Lecanto, FL</name>
+      <address>299 E. Gulf to Lake Hwy, Lecanto, FL 34461</address>
+      <phone>352-453-0345</phone>
+      <latitude>28.858622</latitude>
+      <longitude>-82.4295381</longitude>
+    </location>
+    <location>
+      <name>Rio Grande, NJ</name>
+      <address>1304 NJ-47 b, Rio Grande, NJ 08242</address>
+      <phone>609-551-0234</phone>
+      <latitude>39.0128</latitude>
+      <longitude>-74.8779</longitude>
+    </location>
+    <location>
+      <name>Wichita Falls, TX</name>
+      <address>3904 Sheppard Access Rd, Wichita Falls, TX 76306</address>
+      <phone>940-716-3334</phone>
+      <latitude>33.9456</latitude>
+      <longitude>-98.493</longitude>
+    </location>
+  </locations>
+</business>

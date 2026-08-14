@@ -1,0 +1,167 @@
+{
+  "business": "DENAGO Dealership",
+  "domain": "https://denagodealership.com",
+  "phone": "(866) 996-3867",
+  "locations": [
+    {
+      "name": "Hatfield, PA",
+      "address": "2333 Bethlehem Pike, Hatfield, PA 19440",
+      "city": "Hatfield",
+      "state": "PA",
+      "zip": "19440",
+      "phone": "215-595-8736",
+      "latitude": 40.29839945958623,
+      "longitude": -75.28308913039525
+    },
+    {
+      "name": "Ocean View, NJ",
+      "address": "101 NJ-50, Ocean View, NJ 08230",
+      "city": "Ocean View",
+      "state": "NJ",
+      "zip": "08230",
+      "phone": "609-840-0404",
+      "latitude": 39.22254797811702,
+      "longitude": -74.70417212536503
+    },
+    {
+      "name": "Long Pond, PA",
+      "address": "4738 PA-115, Long Pond, PA 18334",
+      "city": "Long Pond",
+      "state": "PA",
+      "zip": "18334",
+      "phone": "570-580-0567",
+      "latitude": 41.053988,
+      "longitude": -75.534146
+    },
+    {
+      "name": "Pocono Pines, PA",
+      "address": "1712 Pennsylvania 940, Pocono Pines, PA 18350",
+      "city": "Pocono Pines",
+      "state": "PA",
+      "zip": "18350",
+      "phone": "570-643-0152",
+      "latitude": 41.10286354605563,
+      "longitude": -75.48758590250345
+    },
+    {
+      "name": "Dover, DE",
+      "address": "5158 N Dupont Hwy, Dover, DE 19901",
+      "city": "Dover",
+      "state": "DE",
+      "zip": "19901",
+      "phone": "302-546-0010",
+      "latitude": 39.22044318468275,
+      "longitude": -75.57452048907642
+    },
+    {
+      "name": "Scranton / Wilkes-Barre, PA",
+      "address": "1225 N Keyser Ave #2, Scranton, PA 18504",
+      "city": "Scranton",
+      "state": "PA",
+      "zip": "18504",
+      "phone": "570-344-4443",
+      "latitude": 41.4374075,
+      "longitude": -75.6835104
+    },
+    {
+      "name": "Raleigh, NC",
+      "address": "2700 S Wilmington St, Raleigh, NC 27603",
+      "city": "Raleigh",
+      "state": "NC",
+      "zip": "27603",
+      "phone": "984-489-0296",
+      "latitude": 35.7471032,
+      "longitude": -78.6452007
+    },
+    {
+      "name": "South Bend, IN",
+      "address": "52129 State Road 933, South Bend, IN 46637",
+      "city": "South Bend",
+      "state": "IN",
+      "zip": "46637",
+      "phone": "574-703-0456",
+      "latitude": 41.7360283,
+      "longitude": -86.2511865
+    },
+    {
+      "name": "Gloucester Point, VA",
+      "address": "2810 George Washington Memorial Hwy, Gloucester Point, VA 23072",
+      "city": "Gloucester Point",
+      "state": "VA",
+      "zip": "23072",
+      "phone": "804-792-0234",
+      "latitude": 37.2850625,
+      "longitude": -76.5074161
+    },
+    {
+      "name": "Bayville, NJ",
+      "address": "155 Atlantic City Blvd, Bayville, NJ 08721",
+      "city": "Bayville",
+      "state": "NJ",
+      "zip": "08721",
+      "phone": "732-908-7166",
+      "latitude": 39.9277698,
+      "longitude": -74.1748497
+    },
+    {
+      "name": "Waretown, NJ",
+      "address": "526 US-9, Waretown, NJ 08758",
+      "city": "Waretown",
+      "state": "NJ",
+      "zip": "08758",
+      "phone": "732-998-8146",
+      "latitude": 39.7998853,
+      "longitude": -74.1971619
+    },
+    {
+      "name": "Orangeburg, SC",
+      "address": "4166 North Rd, Orangeburg, SC 29118",
+      "city": "Orangeburg",
+      "state": "SC",
+      "zip": "29118",
+      "phone": "803-596-0246",
+      "latitude": 33.547201,
+      "longitude": -80.9162039
+    },
+    {
+      "name": "Swanton, OH",
+      "address": "10420 Airport Hwy, Swanton, OH 43558",
+      "city": "Swanton",
+      "state": "OH",
+      "zip": "43558",
+      "phone": "419-402-8400",
+      "latitude": 41.6013184,
+      "longitude": -83.7926472
+    },
+    {
+      "name": "Lecanto, FL",
+      "address": "299 E. Gulf to Lake Hwy, Lecanto, FL 34461",
+      "city": "Lecanto",
+      "state": "FL",
+      "zip": "34461",
+      "phone": "352-453-0345",
+      "latitude": 28.858622,
+      "longitude": -82.4295381
+    },
+    {
+      "name": "Rio Grande, NJ",
+      "address": "1304 NJ-47 b, Rio Grande, NJ 08242",
+      "city": "Rio Grande",
+      "state": "NJ",
+      "zip": "08242",
+      "phone": "609-551-0234",
+      "latitude": 39.0128,
+      "longitude": -74.8779
+    },
+    {
+      "name": "Wichita Falls, TX",
+      "address": "3904 Sheppard Access Rd, Wichita Falls, TX 76306",
+      "city": "Wichita Falls",
+      "state": "TX",
+      "zip": "76306",
+      "phone": "940-716-3334",
+      "latitude": 33.9456,
+      "longitude": -98.493
+    }
+  ]
+}

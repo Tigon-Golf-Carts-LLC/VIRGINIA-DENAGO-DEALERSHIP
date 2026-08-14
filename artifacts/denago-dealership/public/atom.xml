@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>DENAGO Dealership</title>
+  <link href="https://denagodealership.com"/>
+  <link rel="self" href="https://denagodealership.com/atom.xml"/>
+  <updated>2026-08-14T18:44:25.741Z</updated>
+  <id>https://denagodealership.com/</id>
+  <entry>
+    <title>DENAGO CITY — Urban mobility redefined.</title>
+    <link href="https://denagodealership.com/denago/ev-city"/>
+    <id>https://denagodealership.com/denago/ev-city</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Street-legal NEV / LSV. 2 seats, 40–50 miles range. Starting at $16,500.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO NOMAD — Adventure-ready for any terrain.</title>
+    <link href="https://denagodealership.com/denago/ev-nomad"/>
+    <id>https://denagodealership.com/denago/ev-nomad</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Lifted 4-passenger golf cart. 4 seats, 45 miles range. Starting at $9,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO NOMAD XL — More room. More adventure.</title>
+    <link href="https://denagodealership.com/denago/ev-nomad-xl"/>
+    <id>https://denagodealership.com/denago/ev-nomad-xl</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Lifted 4-passenger golf cart. 4 seats, 45 miles range. Starting at $9,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO ROVER XL — Room for the whole crew.</title>
+    <link href="https://denagodealership.com/denago/ev-rover-xl"/>
+    <id>https://denagodealership.com/denago/ev-rover-xl</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>6-passenger golf cart. 6 seats, 45 miles range. Starting at $10,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO ROVER XL6 — Six seats, elevated.</title>
+    <link href="https://denagodealership.com/denago/ev-rover-xl6"/>
+    <id>https://denagodealership.com/denago/ev-rover-xl6</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Lifted 6-passenger golf cart. 6 seats, 45 miles range. Starting at $12,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO ROVER XXL — Maximum capacity, maximum capability.</title>
+    <link href="https://denagodealership.com/denago/ev-rover-xxl"/>
+    <id>https://denagodealership.com/denago/ev-rover-xxl</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>8-passenger golf cart. 8 seats, 45 miles range. Starting at $12,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO OXEN — Haul more. Work smarter.</title>
+    <link href="https://denagodealership.com/oxen"/>
+    <id>https://denagodealership.com/oxen</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Electric utility cart with dump bed. 2 seats, 70+ miles range. Starting at $12,995.</summary>
+  </entry>
+  <entry>
+    <title>DENAGO SCOUT 2 — Premium lithium performance. Unmatched value.</title>
+    <link href="https://denagodealership.com/scout2"/>
+    <id>https://denagodealership.com/scout2</id>
+    <updated>2026-08-14T18:44:25.741Z</updated>
+    <summary>Compact 2-passenger golf cart. 2 seats, 40+ miles range. Starting at $8,995.</summary>
+  </entry>
+</feed>

@@ -1,0 +1,8 @@
+# performance.txt — Performance Guidelines for DENAGO Dealership
+
+- Mobile-first responsive layout (Tailwind CSS breakpoints)
+- Vite production build: code-splitting, minification, hashed assets for long-term caching
+- Core Web Vitals targets: LCP < 2.5s, INP < 200ms, CLS < 0.1
+- Images lazy-loaded below the fold; hero images prioritized
+- Static assets served with cache headers via CDN-backed hosting
+- No render-blocking third-party scripts

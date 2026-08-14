@@ -1,0 +1,725 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Hatfield, PA",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "215-595-8736",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2333 Bethlehem Pike",
+        "addressLocality": "Hatfield",
+        "addressRegion": "PA",
+        "postalCode": "19440",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.29839945958623,
+        "longitude": -75.28308913039525
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Ocean View, NJ",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "609-840-0404",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "101 NJ-50",
+        "addressLocality": "Ocean View",
+        "addressRegion": "NJ",
+        "postalCode": "08230",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.22254797811702,
+        "longitude": -74.70417212536503
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Long Pond, PA",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "570-580-0567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4738 PA-115",
+        "addressLocality": "Long Pond",
+        "addressRegion": "PA",
+        "postalCode": "18334",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.053988,
+        "longitude": -75.534146
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Pocono Pines, PA",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "570-643-0152",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1712 Pennsylvania 940",
+        "addressLocality": "Pocono Pines",
+        "addressRegion": "PA",
+        "postalCode": "18350",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.10286354605563,
+        "longitude": -75.48758590250345
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Dover, DE",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "302-546-0010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5158 N Dupont Hwy",
+        "addressLocality": "Dover",
+        "addressRegion": "DE",
+        "postalCode": "19901",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.22044318468275,
+        "longitude": -75.57452048907642
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Scranton / Wilkes-Barre, PA",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "570-344-4443",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1225 N Keyser Ave #2",
+        "addressLocality": "Scranton",
+        "addressRegion": "PA",
+        "postalCode": "18504",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.4374075,
+        "longitude": -75.6835104
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Raleigh, NC",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "984-489-0296",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2700 S Wilmington St",
+        "addressLocality": "Raleigh",
+        "addressRegion": "NC",
+        "postalCode": "27603",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.7471032,
+        "longitude": -78.6452007
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — South Bend, IN",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "574-703-0456",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "52129 State Road 933",
+        "addressLocality": "South Bend",
+        "addressRegion": "IN",
+        "postalCode": "46637",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.7360283,
+        "longitude": -86.2511865
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Gloucester Point, VA",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "804-792-0234",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2810 George Washington Memorial Hwy",
+        "addressLocality": "Gloucester Point",
+        "addressRegion": "VA",
+        "postalCode": "23072",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.2850625,
+        "longitude": -76.5074161
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Bayville, NJ",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "732-908-7166",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "155 Atlantic City Blvd",
+        "addressLocality": "Bayville",
+        "addressRegion": "NJ",
+        "postalCode": "08721",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.9277698,
+        "longitude": -74.1748497
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Waretown, NJ",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "732-998-8146",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "526 US-9",
+        "addressLocality": "Waretown",
+        "addressRegion": "NJ",
+        "postalCode": "08758",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.7998853,
+        "longitude": -74.1971619
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Orangeburg, SC",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "803-596-0246",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4166 North Rd",
+        "addressLocality": "Orangeburg",
+        "addressRegion": "SC",
+        "postalCode": "29118",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.547201,
+        "longitude": -80.9162039
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Swanton, OH",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "419-402-8400",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "10420 Airport Hwy",
+        "addressLocality": "Swanton",
+        "addressRegion": "OH",
+        "postalCode": "43558",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.6013184,
+        "longitude": -83.7926472
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Lecanto, FL",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "352-453-0345",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "299 E. Gulf to Lake Hwy",
+        "addressLocality": "Lecanto",
+        "addressRegion": "FL",
+        "postalCode": "34461",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.858622,
+        "longitude": -82.4295381
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Rio Grande, NJ",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "609-551-0234",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1304 NJ-47 b",
+        "addressLocality": "Rio Grande",
+        "addressRegion": "NJ",
+        "postalCode": "08242",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.0128,
+        "longitude": -74.8779
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "DENAGO Dealership — Wichita Falls, TX",
+      "url": "https://denagodealership.com/locations",
+      "telephone": "940-716-3334",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3904 Sheppard Access Rd",
+        "addressLocality": "Wichita Falls",
+        "addressRegion": "TX",
+        "postalCode": "76306",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.9456,
+        "longitude": -98.493
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Denago EV"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DENAGO Dealership",
+        "url": "https://denagodealership.com",
+        "telephone": "(866) 996-3867"
+      }
+    }
+  ]
+}

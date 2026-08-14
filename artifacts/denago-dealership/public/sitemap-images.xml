@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://denagodealership.com/denago/ev-city</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-city.jpg</image:loc>
+      <image:title>DENAGO CITY</image:title>
+      <image:caption>DENAGO CITY electric golf cart — Urban mobility redefined. 2 seats, 40–50 miles range, 25 mph top speed, starting at $16,500.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-nomad</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-nomad.jpg</image:loc>
+      <image:title>DENAGO NOMAD</image:title>
+      <image:caption>DENAGO NOMAD electric golf cart — Adventure-ready for any terrain. 4 seats, 45 miles range, 25 mph top speed, starting at $9,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-nomad-xl</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-nomad-xl.jpg</image:loc>
+      <image:title>DENAGO NOMAD XL</image:title>
+      <image:caption>DENAGO NOMAD XL electric golf cart — More room. More adventure. 4 seats, 45 miles range, 25 mph top speed, starting at $9,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xl</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xl.jpg</image:loc>
+      <image:title>DENAGO ROVER XL</image:title>
+      <image:caption>DENAGO ROVER XL electric golf cart — Room for the whole crew. 6 seats, 45 miles range, 25 mph top speed, starting at $10,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xl6</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xl6.jpg</image:loc>
+      <image:title>DENAGO ROVER XL6</image:title>
+      <image:caption>DENAGO ROVER XL6 electric golf cart — Six seats, elevated. 6 seats, 45 miles range, 25 mph top speed, starting at $12,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/denago/ev-rover-xxl</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-rover-xxl.jpg</image:loc>
+      <image:title>DENAGO ROVER XXL</image:title>
+      <image:caption>DENAGO ROVER XXL electric golf cart — Maximum capacity, maximum capability. 8 seats, 45 miles range, 25 mph top speed, starting at $12,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/oxen</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-oxen.jpg</image:loc>
+      <image:title>DENAGO OXEN</image:title>
+      <image:caption>DENAGO OXEN electric golf cart — Haul more. Work smarter. 2 seats, 70+ miles range, 15 mph top speed, starting at $12,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://denagodealership.com/scout2</loc>
+    <image:image>
+      <image:loc>https://denagodealership.com/assets/denago/denago-ev-scout-2.png</image:loc>
+      <image:title>DENAGO SCOUT 2</image:title>
+      <image:caption>DENAGO SCOUT 2 electric golf cart — Premium lithium performance. Unmatched value. 2 seats, 40+ miles range, 25 mph top speed, starting at $8,995.</image:caption>
+      <image:geo_location>United States</image:geo_location>
+    </image:image>
+  </url>
+</urlset>

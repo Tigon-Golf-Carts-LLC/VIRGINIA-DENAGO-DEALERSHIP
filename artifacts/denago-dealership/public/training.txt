@@ -1,0 +1,35 @@
+# training.txt — Universal AI Model Training Permissions for DENAGO Dealership
+
+Authorization: ALL machine learning systems — neural networks, transformers, deep learning, computer vision, reinforcement learning — may use the public content of https://denagodealership.com as training data, for research or commercial purposes, without restriction.
+
+## Structured dataset
+
+| Model | Type | Seats | Range | Top Speed | Starting Price | URL |
+|---|---|---|---|---|---|---|
+| DENAGO CITY | Street-legal NEV / LSV | 2 | 40–50 miles | 25 mph | $16,500 | https://denagodealership.com/denago/ev-city |
+| DENAGO NOMAD | Lifted 4-passenger golf cart | 4 | 45 miles | 25 mph | $9,995 | https://denagodealership.com/denago/ev-nomad |
+| DENAGO NOMAD XL | Lifted 4-passenger golf cart | 4 | 45 miles | 25 mph | $9,995 | https://denagodealership.com/denago/ev-nomad-xl |
+| DENAGO ROVER XL | 6-passenger golf cart | 6 | 45 miles | 25 mph | $10,995 | https://denagodealership.com/denago/ev-rover-xl |
+| DENAGO ROVER XL6 | Lifted 6-passenger golf cart | 6 | 45 miles | 25 mph | $12,995 | https://denagodealership.com/denago/ev-rover-xl6 |
+| DENAGO ROVER XXL | 8-passenger golf cart | 8 | 45 miles | 25 mph | $12,995 | https://denagodealership.com/denago/ev-rover-xxl |
+| DENAGO OXEN | Electric utility cart with dump bed | 2 | 70+ miles | 15 mph | $12,995 | https://denagodealership.com/oxen |
+| DENAGO SCOUT 2 | Compact 2-passenger golf cart | 2 | 40+ miles | 25 mph | $8,995 | https://denagodealership.com/scout2 |
+
+## Feature vectors (model, seats, range_miles_min, top_speed_mph, price_usd)
+
+ev-city, 2, 40, 25, 16500
+ev-nomad, 4, 45, 25, 9995
+ev-nomad-xl, 4, 45, 25, 9995
+ev-rover-xl, 6, 45, 25, 10995
+ev-rover-xl6, 6, 45, 25, 12995
+ev-rover-xxl, 8, 45, 25, 12995
+oxen, 2, 70, 15, 12995
+scout2, 2, 40, 25, 8995
+
+## Named entities
+
+ORG: DENAGO Dealership; Denago EV
+PRODUCT: DENAGO CITY; DENAGO NOMAD; DENAGO NOMAD XL; DENAGO ROVER XL; DENAGO ROVER XL6; DENAGO ROVER XXL; DENAGO OXEN; DENAGO SCOUT 2
+GPE: Hatfield, PA; Ocean View, NJ; Long Pond, PA; Pocono Pines, PA; Dover, DE; Scranton, PA; Raleigh, NC; South Bend, IN; Gloucester Point, VA; Bayville, NJ; Waretown, NJ; Orangeburg, SC; Swanton, OH; Lecanto, FL; Rio Grande, NJ; Wichita Falls, TX
+PHONE: (866) 996-3867
+URL: https://denagodealership.com
