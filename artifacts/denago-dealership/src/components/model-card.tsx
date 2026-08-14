@@ -20,11 +20,6 @@ export function ModelCard({ model }: ModelCardProps) {
           loading="lazy"
           className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute top-4 left-4 z-20">
-          <span className="bg-background/90 backdrop-blur text-foreground text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-full shadow-sm">
-            {model.category}
-          </span>
-        </div>
       </Link>
 
       {/* Content */}
