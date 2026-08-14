@@ -89,14 +89,6 @@ export default function Reviews() {
             </div>
           </div>
 
-          {!REVIEWS_ARE_REAL && (
-            <div className="max-w-5xl mb-10 border border-dashed border-primary/50 bg-primary/5 rounded-xl p-5 text-sm text-muted-foreground">
-              <span className="font-bold text-foreground">Sample reviews shown below.</span>{' '}
-              These are placeholder examples — real customer testimonials are being collected and
-              will replace them shortly.
-            </div>
-          )}
-
           {/* Review cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl">
             {customerReviews.map((review, i) => (
