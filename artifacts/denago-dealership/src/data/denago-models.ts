@@ -11,6 +11,9 @@ export interface VehicleModel {
   topSpeed: string;
   driveType: string;
   image: string;
+  gallery?: string[];
+  /** Custom URL path; defaults to /denago/{slug} */
+  path?: string;
   features: string[];
   specs: { label: string; value: string }[];
   category: string;
@@ -242,79 +245,109 @@ export const denagoModels: VehicleModel[] = [
     ],
   },
   {
-    slug: "ev-oxen",
+    slug: "oxen",
+    path: "/oxen",
     name: "DENAGO OXEN",
     series: "OXEN",
     tagline: "Haul more. Work smarter.",
     description:
-      "The DENAGO OXEN is a purpose-built electric utility vehicle engineered for real work, real loads, and real-world reliability. With a whisper-quiet electric drivetrain, generous cargo capacity, and a rugged powder-coated chassis, the OXEN redefines what a low-speed utility vehicle can do.",
+      "The 2026 Denago EV Oxen is a lithium-powered electric utility cart built for real work. With a heavy-duty rear dump bed, powerful electric drivetrain, advanced LiFePO₄ battery system, durable steel front bumper, and a lifted stance with independent suspension, the Oxen is ideal for property management, resorts, farms, and job sites.",
     price: "$12,995",
     priceNumber: 12995,
     seats: "2",
-    range: "50–70+ miles",
+    range: "70+ miles",
     topSpeed: "15 mph",
     driveType: "2x4",
     image: "/assets/denago/denago-ev-oxen.jpg",
+    gallery: [
+      "/assets/denago/denago-ev-oxen.jpg",
+      "/assets/denago/denago-ev-oxen-2.jpg",
+      "/assets/denago/denago-ev-oxen-3.jpg",
+      "/assets/denago/denago-ev-oxen-4.jpg",
+    ],
     category: "Utility / Work",
     features: [
-      "Purpose-Built Utility Bed",
-      "Whisper-Quiet Electric Drivetrain",
-      "Lithium Ion Powertrain",
-      "Heavy-Duty Payload Capacity",
-      "Powder-Coated Chassis",
-      "LED Work Lighting",
-      "All-Weather Durability",
-      "2-Year Warranty",
+      "Dump Bed",
+      "Powerful Electric Drivetrain",
+      "Advanced Lithium Battery System",
+      "Heavy-Duty Rear Utility Cargo Bed",
+      "Durable Steel Front Bumper",
+      "Comfortable Seating & Ergonomic Controls",
+      "LED Lighting Package",
+      "Low-Maintenance Electric Operation",
     ],
     specs: [
+      { label: "Year", value: "2026" },
+      { label: "Make / Model", value: "Denago Oxen" },
+      { label: "Motor", value: "5 kW / 6.3 kW AC Motor" },
+      { label: "Battery", value: "LiFePO₄ 51.2V / 205Ah" },
+      { label: "Range", value: "70+ Miles" },
+      { label: "Charge Time", value: "8 Hours" },
       { label: "Top Speed", value: "15 mph" },
-      { label: "Range", value: "50–70+ miles" },
       { label: "Seating", value: "2 Passengers" },
-      { label: "Motor", value: "AC Electric Motor" },
-      { label: "Battery", value: "Lithium Ion" },
-      { label: "Charging", value: "6–8 hours (110V)" },
-      { label: "Height", value: "79 inches" },
-      { label: "Warranty", value: "2 Years" },
+      { label: "Brakes", value: "4-Wheel Disc" },
+      { label: "Suspension", value: "Independent Front & Rear" },
+      { label: "Lifted", value: "Yes" },
+      { label: "Power Type", value: "Lithium-Ion" },
+      { label: "Street Legal", value: "No" },
     ],
   },
   {
-    slug: "ev-scout-2",
+    slug: "scout2",
+    path: "/scout2",
     name: "DENAGO SCOUT 2",
     series: "SCOUT 2",
-    tagline: "Small footprint, big personality.",
+    tagline: "Premium lithium performance. Unmatched value.",
     description:
-      "The DENAGO SCOUT 2 is nimble enough for the golf course and ready for the neighborhood. With a refined design, whisper-quiet electric drivetrain, and a compact two-passenger footprint, the SCOUT 2 is the most accessible way into the DENAGO EV lineup.",
-    price: "$8,495",
-    priceNumber: 8495,
+      "The 2026 Denago EV Scout 2 is built to handle daily drives with confidence and style. This 2-passenger lithium golf cart delivers a smooth, responsive ride with modern styling and dependable power. Equipped with advanced LiFePO₄ lithium technology and designed for comfort, storage, and convenience, the Scout 2 blends functionality and value for use in your neighborhood, at the golf course, and everything in between.",
+    price: "$8,995",
+    priceNumber: 8995,
     seats: "2",
     range: "40+ miles",
     topSpeed: "25 mph",
     driveType: "2x4",
-    image: "/assets/denago/denago-ev-scout-2.jpg",
+    image: "/assets/denago/denago-ev-scout-2.png",
+    gallery: [
+      "/assets/denago/denago-ev-scout-2.png",
+      "/assets/denago/denago-ev-scout-2-2.png",
+      "/assets/denago/denago-ev-scout-2-3.png",
+    ],
     category: "Golf / Neighborhood",
     features: [
-      "Compact 2-Passenger Design",
-      "LED Headlights & Brake Lights",
-      "Powder-Coated Aluminum Chassis",
-      "Integrated Turn Signals",
-      "Lithium Ion Battery",
-      "Radial Turf Tires",
-      "Key Ignition",
-      "Whisper-Quiet Drivetrain",
+      "LiFePO₄ Lithium Battery – 8-Year Warranty",
+      "6.3kW AC Electric Motor",
+      "4-Wheel Electromagnetic Disc Brakes",
+      "LED Headlights & Taillights",
+      "Premium 2-Passenger Seating",
+      "On-Board Lithium Charger",
+      "Golf Bag Holder w/ Storage Basket",
+      "Integrated Turn Signals & Seatbelt Kit",
+      "Molded Roof & Clear Folding Windshield",
+      "Front Brush Guard",
+      "Side & Rear View Mirrors",
+      "USB and USB-C Charging Ports",
     ],
     specs: [
-      { label: "Top Speed", value: "25 mph" },
-      { label: "Range", value: "40+ miles" },
-      { label: "Seating", value: "2 Passengers" },
-      { label: "Motor", value: "AC Electric Motor" },
-      { label: "Battery", value: "Lithium Ion" },
-      { label: "Charging", value: "6–8 hours (110V)" },
-      { label: "Chassis", value: "Powder-Coated Aluminum" },
-      { label: "Tires", value: "225/35-12 Radial Turf" },
+      { label: "Condition", value: "New" },
+      { label: "Year", value: "2026" },
+      { label: "Make / Model", value: "Denago EV Scout 2" },
+      { label: "Vehicle Type", value: "Golf Cart" },
+      { label: "Category", value: "2 Passenger – Lithium" },
+      { label: "Fuel Type", value: "Electric" },
+      { label: "Motor", value: "6.3kW AC Electric Motor" },
+      { label: "Battery", value: "LiFePO₄ Lithium" },
+      { label: "Brakes", value: "4-Wheel Electromagnetic Disc" },
+      { label: "Charger", value: "On-Board Lithium Charger" },
+      { label: "Battery Warranty", value: "8 Years" },
     ],
   },
 ];
 
 export function getModelBySlug(slug: string): VehicleModel | undefined {
   return denagoModels.find((m) => m.slug === slug);
+}
+
+/** Site-relative URL path for a model's product page. */
+export function getModelPath(model: VehicleModel): string {
+  return model.path ?? `/denago/${model.slug}`;
 }

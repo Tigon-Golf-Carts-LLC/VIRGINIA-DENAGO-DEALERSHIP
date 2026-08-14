@@ -6,7 +6,7 @@ import { Phone, ArrowRight, ShieldCheck, Zap, Wrench, FileText } from 'lucide-re
 
 export default function Home() {
   const featuredModels = denagoModels.filter(m => 
-    ['ev-city', 'ev-nomad', 'ev-rover-xl', 'ev-oxen'].includes(m.slug)
+    ['ev-city', 'ev-nomad', 'ev-rover-xl', 'oxen'].includes(m.slug)
   );
 
   const faqData = [

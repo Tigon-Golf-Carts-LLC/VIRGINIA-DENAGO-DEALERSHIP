@@ -1,16 +1,23 @@
+import { useState } from 'react';
 import { useParams, Link } from 'wouter';
-import { getModelBySlug, DEALERSHIP } from '@/data/denago-models';
+import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
 import { Seo } from '@/components/seo';
 import NotFound from './not-found';
 import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft } from 'lucide-react';
 
-export default function ModelDetail() {
-  const { slug } = useParams();
+export default function ModelDetail({ slugOverride }: { slugOverride?: string; params?: unknown } = {}) {
+  const params = useParams();
+  const slug = slugOverride ?? params.slug;
   const model = slug ? getModelBySlug(slug) : undefined;
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!model) {
     return <NotFound />;
   }
+
+  const gallery = model.gallery && model.gallery.length > 0 ? model.gallery : [model.image];
+  const currentImage = gallery[Math.min(activeImage, gallery.length - 1)];
+  const modelUrl = `${DEALERSHIP.domain}${getModelPath(model)}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -32,7 +39,7 @@ export default function ModelDetail() {
         "@type": "ListItem",
         "position": 3,
         "name": model.name,
-        "item": `${DEALERSHIP.domain}/denago/${model.slug}`
+        "item": modelUrl
       }
     ]
   };
@@ -41,7 +48,7 @@ export default function ModelDetail() {
     "@context": "https://schema.org",
     "@type": ["Product", "Vehicle"],
     "name": model.name,
-    "image": `${DEALERSHIP.domain}${model.image}`,
+    "image": gallery.map((img) => `${DEALERSHIP.domain}${img}`),
     "description": model.description,
     "brand": {
       "@type": "Brand",
@@ -57,7 +64,7 @@ export default function ModelDetail() {
     },
     "offers": {
       "@type": "Offer",
-      "url": `${DEALERSHIP.domain}/denago/${model.slug}`,
+      "url": modelUrl,
       "priceCurrency": "USD",
       "price": model.priceNumber,
       "availability": "https://schema.org/InStock",
@@ -78,7 +85,7 @@ export default function ModelDetail() {
       <Seo 
         title={`${model.name} | Premium Electric Golf Cart`}
         description={`Discover the ${model.name}. ${model.tagline} Starting at ${model.price}. Call ${DEALERSHIP.name} today.`}
-        url={`${DEALERSHIP.domain}/denago/${model.slug}`}
+        url={modelUrl}
         image={`${DEALERSHIP.domain}${model.image}`}
         type="product"
         schema={schema}
@@ -103,20 +110,48 @@ export default function ModelDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* Image */}
-            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-4/3 shadow-xl">
-              <img 
-                src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.image}`}
-                alt={model.name}
-                width="1200"
-                height="900"
-                loading="eager"
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute top-6 left-6">
-                <span className="bg-background text-foreground text-sm font-bold uppercase tracking-wider py-2 px-4 rounded-full shadow-lg">
-                  {model.category}
-                </span>
+            <div className="flex flex-col gap-4">
+              <div className="relative rounded-2xl overflow-hidden bg-muted aspect-4/3 shadow-xl">
+                <img 
+                  src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${currentImage}`}
+                  alt={model.name}
+                  width="1200"
+                  height="900"
+                  loading="eager"
+                  className="w-full h-full object-contain object-center"
+                />
+                <div className="absolute top-6 left-6">
+                  <span className="bg-background text-foreground text-sm font-bold uppercase tracking-wider py-2 px-4 rounded-full shadow-lg">
+                    {model.category}
+                  </span>
+                </div>
               </div>
+              {gallery.length > 1 && (
+                <div className="grid grid-cols-4 gap-3">
+                  {gallery.map((img, idx) => (
+                    <button
+                      key={img}
+                      type="button"
+                      onClick={() => setActiveImage(idx)}
+                      aria-label={`View photo ${idx + 1} of ${model.name}`}
+                      className={`relative rounded-lg overflow-hidden bg-muted aspect-4/3 border-2 transition-colors ${
+                        idx === Math.min(activeImage, gallery.length - 1)
+                          ? 'border-primary'
+                          : 'border-transparent hover:border-border'
+                      }`}
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${img}`}
+                        alt={`${model.name} photo ${idx + 1}`}
+                        width="300"
+                        height="225"
+                        loading="lazy"
+                        className="w-full h-full object-contain object-center"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Header Info */}

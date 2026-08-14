@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { VehicleModel, DEALERSHIP } from '@/data/denago-models';
+import { VehicleModel, DEALERSHIP, getModelPath } from '@/data/denago-models';
 import { Phone, Users, Battery, Gauge } from 'lucide-react';
 
 interface ModelCardProps {
@@ -10,7 +10,7 @@ export function ModelCard({ model }: ModelCardProps) {
   return (
     <article className="group bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
       {/* Image container */}
-      <Link href={`/denago/${model.slug}`} className="relative aspect-[4/3] overflow-hidden bg-muted/30 block">
+      <Link href={getModelPath(model)} className="relative aspect-[4/3] overflow-hidden bg-muted/30 block">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
         <img
           src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.image}`}
@@ -61,7 +61,7 @@ export function ModelCard({ model }: ModelCardProps) {
         {/* Actions (Hard Requirement: TWO buttons) */}
         <div className="grid grid-cols-2 gap-3 mt-auto pt-2">
           <Link
-            href={`/denago/${model.slug}`}
+            href={getModelPath(model)}
             className="flex items-center justify-center gap-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 py-3 rounded-lg font-bold text-sm transition-colors border border-border"
           >
             View Model

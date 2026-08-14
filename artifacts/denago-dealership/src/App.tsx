@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
+import { Redirect, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import { Shell } from '@/components/layout/shell';
 
 // Pages
@@ -23,6 +23,18 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/denago" component={Lineup} />
+          <Route path="/denago/ev-oxen">
+            <Redirect to="/oxen" replace />
+          </Route>
+          <Route path="/denago/ev-scout-2">
+            <Redirect to="/scout2" replace />
+          </Route>
+          <Route path="/scout2">
+            <ModelDetail slugOverride="scout2" />
+          </Route>
+          <Route path="/oxen">
+            <ModelDetail slugOverride="oxen" />
+          </Route>
           <Route path="/denago/:slug" component={ModelDetail} />
           <Route path="/compare" component={Compare} />
           <Route path="/contact" component={Contact} />

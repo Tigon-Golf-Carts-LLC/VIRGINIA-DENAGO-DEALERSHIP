@@ -1,5 +1,5 @@
 import { Seo } from '@/components/seo';
-import { denagoModels, DEALERSHIP } from '@/data/denago-models';
+import { denagoModels, DEALERSHIP, getModelPath } from '@/data/denago-models';
 import { ModelCard } from '@/components/model-card';
 
 export default function Lineup() {
@@ -11,7 +11,7 @@ export default function Lineup() {
     "itemListElement": denagoModels.map((model, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `${DEALERSHIP.domain}/denago/${model.slug}`,
+      "url": `${DEALERSHIP.domain}${getModelPath(model)}`,
       "name": model.name
     }))
   };

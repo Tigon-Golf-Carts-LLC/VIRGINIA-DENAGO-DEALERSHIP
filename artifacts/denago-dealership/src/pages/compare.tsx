@@ -1,5 +1,5 @@
 import { Seo } from '@/components/seo';
-import { denagoModels, DEALERSHIP } from '@/data/denago-models';
+import { denagoModels, DEALERSHIP, getModelPath } from '@/data/denago-models';
 import { Link } from 'wouter';
 import { Check, Phone, ArrowRight } from 'lucide-react';
 
@@ -50,7 +50,7 @@ export default function Compare() {
                   </th>
                   {denagoModels.map(model => (
                     <th key={model.slug} className="p-6 text-center border-l border-border min-w-[180px]">
-                      <Link href={`/denago/${model.slug}`} className="block group">
+                      <Link href={getModelPath(model)} className="block group">
                         <div className="relative aspect-video rounded-lg overflow-hidden bg-background mb-4 border border-border/50 group-hover:border-primary transition-colors">
                           <img 
                             src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.image}`} 
@@ -137,7 +137,7 @@ export default function Compare() {
                     <td key={model.slug} className="p-6 text-center border-r border-border last:border-r-0">
                       <div className="flex flex-col gap-3">
                         <Link 
-                          href={`/denago/${model.slug}`}
+                          href={getModelPath(model)}
                           className="flex items-center justify-center gap-2 text-sm font-bold bg-secondary hover:bg-secondary/80 text-foreground py-2 rounded-md transition-colors"
                         >
                           Details <ArrowRight className="h-4 w-4" />
