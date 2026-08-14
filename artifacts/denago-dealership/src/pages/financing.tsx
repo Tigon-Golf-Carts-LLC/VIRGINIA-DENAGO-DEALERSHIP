@@ -287,6 +287,11 @@ export default function Financing() {
                   </a>
                 </div>
               </div>
+              <p className="relative text-[11px] text-white/50 leading-relaxed mt-6">
+                $166.58/month based on $9,995 MSRP with 20% down, financed for 48 months at 0% APR with
+                approved credit through participating lenders. Taxes, fees, and optional equipment not
+                included. Offer subject to change and availability.
+              </p>
             </div>
           </section>
 
