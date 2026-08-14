@@ -297,9 +297,8 @@ export default function Financing() {
 
           {/* Lenders */}
           <section id="apply" className="mb-16 scroll-mt-24">
-            <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tight mb-2">
-              Apply with Any of Our Partners
-            </h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tight mb-2">Apply with Any of Our Partner LENDERS.
+</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl">
               Flexible options, quick approval, competitive rates, and no hidden fees. Every application goes
               directly to the lender — most return a decision in minutes.
