@@ -18,7 +18,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: "Where can I find Denago golf cart models nearby?",
-    a: "We have 16 dealership locations across Pennsylvania, New Jersey, Delaware, North Carolina, Indiana, Virginia, South Carolina, Ohio, Florida, and Texas. Visit our Locations page to find the closest showroom, or call (844) 336-2461.",
+    a: "We have 16 dealership locations across Pennsylvania, New Jersey, Delaware, North Carolina, Indiana, Virginia, South Carolina, Ohio, Florida, and Texas. Visit our Locations page to find the closest showroom, or call (866) 996-3867.",
   },
   {
     q: "What colors do Denago golf cart models come in?",
@@ -47,7 +47,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: "Where can I get a Denago golf cart manual?",
-    a: "Owner's manuals for every Denago golf cart model are available through our dealership — including operation guides, battery care, charging instructions, and maintenance schedules. Call (844) 336-2461 or stop by any of our locations and we'll get you the manual for your model.",
+    a: "Owner's manuals for every Denago golf cart model are available through our dealership — including operation guides, battery care, charging instructions, and maintenance schedules. Call (866) 996-3867 or stop by any of our locations and we'll get you the manual for your model.",
   },
   {
     q: "Where can I find Denago golf cart specs?",

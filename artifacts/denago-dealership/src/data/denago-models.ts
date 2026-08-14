@@ -25,8 +25,8 @@ export const DEALERSHIP = {
   name: "DENAGO Dealership",
   legalName: "DENAGO Dealership",
   domain: "https://denagodealership.com",
-  phone: "+1-844-336-2461",
-  phoneDisplay: "(844) 336-2461",
+  phone: "1-866-996-3867",
+  phoneDisplay: "(866) 996-3867",
   brand: "DENAGO EV",
 };
 
