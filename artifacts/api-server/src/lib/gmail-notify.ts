@@ -242,6 +242,12 @@ export async function sendTestNotification(): Promise<{ ok: boolean; error?: str
         return { ok: false, error: message };
       }
 
+      if (typeof profileData.emailAddress !== "string" || !profileData.emailAddress) {
+        const message = `Gmail profile response is missing the emailAddress field (unexpected API shape)`;
+        await setNotificationError(message);
+        return { ok: false, error: message };
+      }
+
       cachedEmail = profileData.emailAddress;
       email = cachedEmail;
     }
