@@ -283,4 +283,70 @@ describe("sendReviewNotification", () => {
     // Must resolve (not reject) — failures are swallowed to avoid blocking reviews.
     await expect(promise).resolves.toBeUndefined();
   });
+
+  it("resolves silently and records the error when Gmail access is permanently revoked (403 on every attempt)", async () => {
+    let sendCallCount = 0;
+
+    // Track DB upsert calls — chain: insert().values().onConflictDoUpdate()
+    const onConflictDoUpdateSpy = vi.fn().mockResolvedValue(undefined);
+    const valuesSpy = vi.fn().mockReturnValue({ onConflictDoUpdate: onConflictDoUpdateSpy });
+    const dbInsertSpy = vi.fn().mockReturnValue({ values: valuesSpy });
+    const dbDeleteSpy = vi.fn().mockReturnValue({
+      where: vi.fn().mockResolvedValue(undefined),
+    });
+
+    vi.doMock("@workspace/db", () => ({
+      db: {
+        insert: dbInsertSpy,
+        delete: dbDeleteSpy,
+      },
+      appSettingsTable: {},
+      eq: vi.fn(),
+    }));
+
+    class PermanentlyRevokedConnectors {
+      proxy = vi.fn(async (_service: string, path: string) => {
+        if (path.endsWith("/me/profile")) {
+          return {
+            ok: true,
+            status: 200,
+            json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+            text: async () => "",
+          };
+        }
+        if (path.endsWith("/messages/send")) {
+          sendCallCount++;
+          // Every attempt returns 403 — access is permanently revoked
+          return {
+            ok: false,
+            status: 403,
+            text: async () => "Access Denied",
+            json: async () => ({}),
+          };
+        }
+        return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+      });
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: PermanentlyRevokedConnectors,
+    }));
+
+    const { sendReviewNotification, NOTIFICATION_ERROR_KEY } = await import("./gmail-notify.js");
+    const promise = sendReviewNotification(sampleReview);
+    await vi.runAllTimersAsync();
+
+    // Must resolve, never reject — review submissions must not be blocked
+    await expect(promise).resolves.toBeUndefined();
+
+    // All attempts must have been made (1 initial + MAX_RETRIES retries = 3 total)
+    expect(sendCallCount).toBe(3);
+
+    // The error must be persisted in the DB so the admin panel can surface it
+    expect(dbInsertSpy).toHaveBeenCalled();
+    expect(valuesSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ value: expect.stringContaining("403") })
+    );
+    expect(onConflictDoUpdateSpy).toHaveBeenCalled();
+  });
 });
