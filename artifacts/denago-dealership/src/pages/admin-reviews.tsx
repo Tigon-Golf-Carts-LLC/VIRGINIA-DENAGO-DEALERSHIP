@@ -200,6 +200,8 @@ export default function AdminReviews() {
     queryKey: ['admin-reviews', secret],
     enabled: !!secret,
     retry: false,
+    refetchInterval: 60_000,
+    refetchIntervalInBackground: true,
     queryFn: async () => {
       const res = await fetch(`${API_BASE}/admin/reviews`, {
         headers: { 'x-admin-secret': secret! },
