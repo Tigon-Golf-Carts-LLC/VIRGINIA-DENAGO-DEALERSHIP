@@ -160,13 +160,94 @@ async function clearNotificationError(): Promise<void> {
 /**
  * Sends a short test email to confirm the Gmail connection is healthy.
  * Returns true on success, false on failure (and persists the error flag).
+ *
+ * Both the profile fetch and the send call use the same 5xx-only retry
+ * classifier inside a single loop (up to MAX_RETRIES retries with exponential
+ * back-off), matching sendReviewNotification's behaviour.  A brief Gmail
+ * hiccup during either step therefore doesn't produce a false "broken
+ * connection" report.
+ *
+ * All other failures are reported immediately without retrying:
+ *   - Constructor throws (connector absent/unconfigured)
+ *   - Non-5xx HTTP responses (401/403, 400, 404, …) — auth or config problems
+ *   - Thrown transport/proxy/JSON exceptions — not a 5xx server response
  */
 export async function sendTestNotification(): Promise<{ ok: boolean; error?: string }> {
-  try {
-    const connectors = new ReplitConnectors();
-    const email = await getAccountEmail(connectors);
-    const recipient = process.env.REVIEW_NOTIFY_EMAIL || email;
+  let lastError: string | undefined;
 
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    if (attempt > 0) {
+      const delay = RETRY_BASE_DELAY_MS * attempt;
+      console.warn(
+        `[review-notify] Retrying test notification (attempt ${attempt}/${MAX_RETRIES}) after ${delay} ms …`
+      );
+      await sleep(delay);
+    }
+
+    // Constructor failure means the connector is absent — report immediately.
+    let connectors: ReplitConnectors;
+    try {
+      connectors = new ReplitConnectors();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      await setNotificationError(message);
+      return { ok: false, error: message };
+    }
+
+    // ── Profile fetch ────────────────────────────────────────────────────────
+    // Use cached email when available; otherwise fetch and classify the response.
+    // Transport/JSON exceptions → immediate fail (not a 5xx HTTP response).
+    // Non-5xx HTTP errors       → immediate fail (auth/config, won't resolve).
+    // 5xx HTTP errors           → transient; continue the retry loop.
+    let email: string;
+    if (cachedEmail) {
+      email = cachedEmail;
+    } else {
+      let profileResp: Awaited<ReturnType<ReplitConnectors["proxy"]>>;
+      try {
+        profileResp = await connectors.proxy("google-mail", "/gmail/v1/users/me/profile", {
+          method: "GET",
+        });
+      } catch (err) {
+        // Transport/proxy exception — not a server response; report immediately.
+        const message = err instanceof Error ? err.message : String(err);
+        await setNotificationError(message);
+        return { ok: false, error: message };
+      }
+
+      if (!profileResp.ok) {
+        const detail = await profileResp.text().catch(() => "(no body)");
+        const message = `Gmail profile fetch failed: ${profileResp.status}: ${detail}`;
+        if (profileResp.status >= 500) {
+          // Transient server error — retry.
+          lastError = message;
+          console.warn(
+            `[review-notify] Test notification attempt ${attempt + 1}/${MAX_RETRIES + 1} failed:`,
+            message
+          );
+          continue;
+        }
+        // Non-5xx (401, 403, 400, 404, …) — report immediately.
+        await setNotificationError(message);
+        return { ok: false, error: message };
+      }
+
+      let profileData: { emailAddress: string };
+      try {
+        profileData = (await profileResp.json()) as { emailAddress: string };
+      } catch (err) {
+        // JSON parse error — not a 5xx; report immediately.
+        const message = err instanceof Error ? err.message : String(err);
+        await setNotificationError(message);
+        return { ok: false, error: message };
+      }
+
+      cachedEmail = profileData.emailAddress;
+      email = cachedEmail;
+    }
+
+    // ── Send ─────────────────────────────────────────────────────────────────
+    const recipient = process.env.REVIEW_NOTIFY_EMAIL || email;
     const body = [
       `This is a test notification from DENAGO Dealership.`,
       ``,
@@ -177,41 +258,57 @@ export async function sendTestNotification(): Promise<{ ok: boolean; error?: str
       `Sent from the DENAGO admin panel.`,
     ].join("\n");
 
-    const raw = buildMessage(
-      email,
-      recipient,
-      `[DENAGO] Test notification`,
-      body
-    );
+    const raw = buildMessage(email, recipient, `[DENAGO] Test notification`, body);
 
-    const resp = await connectors.proxy(
-      "google-mail",
-      "/gmail/v1/users/me/messages/send",
-      {
+    let resp: Awaited<ReturnType<ReplitConnectors["proxy"]>>;
+    try {
+      resp = await connectors.proxy("google-mail", "/gmail/v1/users/me/messages/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ raw: toBase64Url(raw) }),
-      }
-    );
-
-    if (!resp.ok) {
-      if (resp.status === 401 || resp.status === 403) {
-        cachedEmail = null;
-      }
-      const text = await resp.text().catch(() => "(no body)");
-      const message = `Gmail send failed ${resp.status}: ${text}`;
+      });
+    } catch (err) {
+      // Transport/proxy exception — not a 5xx; report immediately.
+      const message = err instanceof Error ? err.message : String(err);
       await setNotificationError(message);
       return { ok: false, error: message };
     }
 
-    // Success — clear any existing error flag.
-    await clearNotificationError();
-    return { ok: true };
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    if (resp.ok) {
+      await clearNotificationError();
+      return { ok: true };
+    }
+
+    const text = await resp.text().catch(() => "(no body)");
+    const message = `Gmail send failed ${resp.status}: ${text}`;
+
+    if (resp.status === 401 || resp.status === 403) {
+      // Auth failure — retrying won't help; report immediately.
+      cachedEmail = null;
+      await setNotificationError(message);
+      return { ok: false, error: message };
+    }
+
+    if (resp.status >= 500) {
+      // Transient server error — record and retry.
+      lastError = message;
+      console.warn(
+        `[review-notify] Test notification attempt ${attempt + 1}/${MAX_RETRIES + 1} failed:`,
+        message
+      );
+      continue;
+    }
+
+    // Other non-ok status (400, 404, …) — config/validation problem;
+    // retrying won't help; report immediately.
     await setNotificationError(message);
     return { ok: false, error: message };
   }
+
+  // All retries exhausted — persist the error so the admin banner shows.
+  const message = lastError ?? "Unknown error";
+  await setNotificationError(message);
+  return { ok: false, error: message };
 }
 
 export async function sendReviewNotification(review: ReviewPayload): Promise<void> {

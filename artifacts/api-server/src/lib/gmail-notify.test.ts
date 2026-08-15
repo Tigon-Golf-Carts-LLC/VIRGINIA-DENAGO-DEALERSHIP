@@ -652,11 +652,14 @@ describe("sendTestNotification", () => {
     expect(insertSpy).toHaveBeenCalled();
   });
 
-  it("surfaces the error banner when the profile fetch itself throws", async () => {
+  it("surfaces the error banner immediately when the profile fetch returns 401 — no retries", async () => {
     const { insertSpy } = mockDb();
+
+    let profileCallCount = 0;
 
     const proxySpy = vi.fn(async (_service: string, path: string) => {
       if (path.endsWith("/me/profile")) {
+        profileCallCount++;
         return {
           ok: false,
           status: 401,
@@ -664,23 +667,184 @@ describe("sendTestNotification", () => {
           json: async () => ({}),
         };
       }
-      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
     });
 
-    class FailProfileConnectors {
+    class FailProfile401Connectors {
       proxy = proxySpy;
     }
     vi.doMock("@replit/connectors-sdk", () => ({
-      ReplitConnectors: FailProfileConnectors,
+      ReplitConnectors: FailProfile401Connectors,
     }));
 
     const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately, no retry delay.
     const result = await sendTestNotification();
 
     expect(result.ok).toBe(false);
     expect(result.error).toBeDefined();
+    // Must not retry — a 401 profile response is not transient.
+    expect(profileCallCount).toBe(1);
     // Error banner was persisted
     expect(insertSpy).toHaveBeenCalled();
+  });
+
+  it("surfaces the error banner immediately when the profile fetch returns 400 — no retries", async () => {
+    const { insertSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        return {
+          ok: false,
+          status: 400,
+          text: async () => "Bad Request",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class FailProfile400Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: FailProfile400Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately, no retry delay.
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/400/);
+    // Must not retry — 400 is a configuration error, not transient.
+    expect(profileCallCount).toBe(1);
+    expect(insertSpy).toHaveBeenCalled();
+  });
+
+  it("surfaces the error banner immediately when the profile fetch returns 404 — no retries", async () => {
+    const { insertSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        return {
+          ok: false,
+          status: 404,
+          text: async () => "Not Found",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class FailProfile404Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: FailProfile404Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately, no retry delay.
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/404/);
+    // Must not retry — 404 is a configuration error, not transient.
+    expect(profileCallCount).toBe(1);
+    expect(insertSpy).toHaveBeenCalled();
+  });
+
+  it("reports a 400 immediately without retrying — non-5xx errors are not transient", async () => {
+    mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: false,
+          status: 400,
+          text: async () => "Bad Request",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class Bad400Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: Bad400Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately, no retry delay.
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/400/);
+    // Must stop immediately — 400 is a configuration error, not a transient failure.
+    expect(sendCallCount).toBe(1);
+  });
+
+  it("reports a 404 immediately without retrying — non-5xx errors are not transient", async () => {
+    mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: false,
+          status: 404,
+          text: async () => "Not Found",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 999, text: async () => "unexpected", json: async () => ({}) };
+    });
+
+    class NotFound404Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: NotFound404Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately, no retry delay.
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/404/);
+    // Must stop immediately — 404 is not a transient failure.
+    expect(sendCallCount).toBe(1);
   });
 
   it("returns ok:false and persists the error when ReplitConnectors constructor throws (connector not installed)", async () => {
@@ -709,6 +873,373 @@ describe("sendTestNotification", () => {
     expect(insertSpy).toHaveBeenCalled();
     // clearNotificationError must NOT run on failure
     expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
+  it("retries on a transient profile 5xx and succeeds when the second attempt's profile returns 200", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    let profileCallCount = 0;
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        if (profileCallCount === 1) {
+          // First attempt: transient Gmail outage on profile endpoint
+          return {
+            ok: false,
+            status: 503,
+            text: async () => "Service Unavailable",
+            json: async () => ({}),
+          };
+        }
+        // Second attempt: outage resolved
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ id: "msg-after-profile-retry" }),
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class ProfileTransientOutageConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: ProfileTransientOutageConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    // Must ultimately succeed — a single profile 5xx should not mislead the owner
+    expect(result).toEqual({ ok: true });
+    expect(profileCallCount).toBe(2);
+    expect(sendCallCount).toBe(1);
+
+    // Success clears the error banner
+    expect(deleteSpy).toHaveBeenCalled();
+    expect(insertSpy).not.toHaveBeenCalled();
+  });
+
+  it("reports failure after exhausting all retries when every profile attempt returns 5xx", async () => {
+    const { insertSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        return {
+          ok: false,
+          status: 500,
+          text: async () => "Internal Server Error",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class PersistentProfileOutageConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: PersistentProfileOutageConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    // Reports failure — but only after all retries are exhausted
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/500/);
+    // 1 initial attempt + MAX_RETRIES (2) retries = 3 total
+    expect(profileCallCount).toBe(3);
+    // Error banner is persisted
+    expect(insertSpy).toHaveBeenCalled();
+  });
+
+  it("retries on a transient 5xx and succeeds when the second attempt returns 200", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        if (sendCallCount === 1) {
+          // First attempt: transient Gmail outage
+          return {
+            ok: false,
+            status: 500,
+            text: async () => "Internal Server Error",
+            json: async () => ({}),
+          };
+        }
+        // Second attempt: outage resolved
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ id: "msg-after-retry" }),
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class TransientOutageConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: TransientOutageConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    // Must ultimately succeed — a single 5xx should not mislead the owner
+    expect(result).toEqual({ ok: true });
+    expect(sendCallCount).toBe(2);
+
+    // Success clears the error banner
+    expect(deleteSpy).toHaveBeenCalled();
+    expect(insertSpy).not.toHaveBeenCalled();
+  });
+
+  it("reports failure only after exhausting all retries when every attempt returns 5xx", async () => {
+    const { insertSpy } = mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: false,
+          status: 503,
+          text: async () => "Service Unavailable",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class PersistentOutageConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: PersistentOutageConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    // Reports failure — but only after all retries are exhausted
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/503/);
+    // 1 initial attempt + MAX_RETRIES (2) retries = 3 total
+    expect(sendCallCount).toBe(3);
+    // Error banner is persisted
+    expect(insertSpy).toHaveBeenCalled();
+  });
+
+  it("does not retry a 401 — auth failures are reported immediately with a single send attempt", async () => {
+    mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: false,
+          status: 401,
+          text: async () => "Token expired",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class Instant401Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: Instant401Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/401/);
+    // Must stop immediately — no retries for auth errors
+    expect(sendCallCount).toBe(1);
+  });
+
+  it("does not retry a 403 — auth failures are reported immediately with a single send attempt", async () => {
+    mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        return {
+          ok: false,
+          status: 403,
+          text: async () => "Access Denied",
+          json: async () => ({}),
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class Instant403Connectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: Instant403Connectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const promise = sendTestNotification();
+    await vi.runAllTimersAsync();
+    const result = await promise;
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/403/);
+    // Must stop immediately — no retries for auth errors
+    expect(sendCallCount).toBe(1);
+  });
+
+  it("reports failure immediately when the send proxy throws a transport error — does not retry", async () => {
+    mockDb();
+
+    let sendCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        // Simulate a transport/proxy exception (not an HTTP error response)
+        throw new Error("ECONNRESET: connection reset by peer");
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class TransportErrorConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: TransportErrorConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately (thrown errors are not 5xx responses).
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/ECONNRESET/);
+    // Must not retry — a thrown transport exception is not a 5xx HTTP response.
+    expect(sendCallCount).toBe(1);
+  });
+
+  it("reports failure immediately when the profile JSON parse throws — does not retry", async () => {
+    const { insertSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        return {
+          ok: true,
+          status: 200,
+          // Simulate a corrupted/non-JSON response body
+          json: async () => { throw new SyntaxError("Unexpected token < in JSON"); },
+          text: async () => "<!DOCTYPE html>",
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class BadJsonConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: BadJsonConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — Phase 1 (profile fetch) always bails immediately on error.
+    const result = await sendTestNotification();
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toBeDefined();
+    // Profile fetch is Phase 1 — any error bails immediately, no retry.
+    expect(profileCallCount).toBe(1);
+    expect(insertSpy).toHaveBeenCalled();
   });
 
   it("respects REVIEW_NOTIFY_EMAIL as the recipient for the test email", async () => {
