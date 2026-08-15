@@ -1,5 +1,6 @@
 import app from "./app";
 import { logger } from "./lib/logger";
+import { seedReviews } from "./lib/seed-reviews.js";
 import { ensureSchema } from "./lib/ensure-schema";
 
 const rawPort = process.env["PORT"];
@@ -18,6 +19,7 @@ if (Number.isNaN(port) || port <= 0) {
 
 async function start() {
   await ensureSchema();
+  await seedReviews();
   app.listen(port, (err) => {
     if (err) {
       logger.error({ err }, "Error listening on port");

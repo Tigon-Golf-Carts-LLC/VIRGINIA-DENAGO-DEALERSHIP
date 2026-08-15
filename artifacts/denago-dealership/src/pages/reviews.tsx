@@ -5,6 +5,7 @@ import { DEALERSHIP } from '@/data/denago-models';
 import { ReviewForm } from '@/components/review-form';
 import { useReviews, type ApiReview } from '@/hooks/use-reviews';
 import { Phone, Star, ChevronDown } from 'lucide-react';
+import { REVIEWS_ARE_REAL } from '@/data/reviews';
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -74,11 +75,12 @@ export default function Reviews() {
     return () => observer.disconnect();
   }, [showAll, reviewCount]);
 
-  // Review/AggregateRating structured data — emitted only when verified,
-  // approved customer reviews exist. Publishing placeholder ratings as schema
+  // Review/AggregateRating structured data — emitted only when REVIEWS_ARE_REAL
+  // is true AND verified approved reviews exist. The flag must stay false until
+  // real customer reviews are loaded; publishing placeholder ratings as schema
   // violates Google's review-snippet guidelines.
   const schema =
-    reviewCount > 0
+    REVIEWS_ARE_REAL && reviewCount > 0
       ? {
           '@context': 'https://schema.org',
           '@type': 'AutoDealer',
