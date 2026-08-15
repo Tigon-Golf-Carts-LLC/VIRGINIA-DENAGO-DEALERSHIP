@@ -683,6 +683,34 @@ describe("sendTestNotification", () => {
     expect(insertSpy).toHaveBeenCalled();
   });
 
+  it("returns ok:false and persists the error when ReplitConnectors constructor throws (connector not installed)", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    // Simulate the connector not being installed: constructor throws synchronously.
+    class ThrowingConnectors {
+      constructor() {
+        throw new Error("Connector not configured: google-mail");
+      }
+      proxy = vi.fn();
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: ThrowingConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const result = await sendTestNotification();
+
+    // Must resolve with ok:false, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/Connector not configured/);
+
+    // Error must be persisted to DB so the admin panel can surface it
+    expect(insertSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
   it("respects REVIEW_NOTIFY_EMAIL as the recipient for the test email", async () => {
     mockDb();
 
