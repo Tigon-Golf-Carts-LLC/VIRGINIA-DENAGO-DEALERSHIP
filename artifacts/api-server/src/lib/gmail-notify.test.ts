@@ -1242,6 +1242,34 @@ describe("sendTestNotification", () => {
     expect(insertSpy).toHaveBeenCalled();
   });
 
+  it("returns ok:false and persists the error when the proxy throws synchronously on every call (no OAuth session)", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    // Simulate no OAuth session: every proxy call throws synchronously instead
+    // of returning a response object.
+    class NoSessionConnectors {
+      proxy = vi.fn(() => {
+        throw new Error("No OAuth session for google-mail");
+      });
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: NoSessionConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    const result = await sendTestNotification();
+
+    // Must resolve with ok:false, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/No OAuth session/);
+
+    // Error must be persisted to DB so the admin panel can surface it
+    expect(insertSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
   it("respects REVIEW_NOTIFY_EMAIL as the recipient for the test email", async () => {
     mockDb();
 
