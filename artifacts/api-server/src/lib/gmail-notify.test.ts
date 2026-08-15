@@ -374,6 +374,94 @@ describe("sendReviewNotification", () => {
     );
     expect(onConflictDoUpdateSpy).toHaveBeenCalled();
   });
+
+  it("resolves silently and records the error when ReplitConnectors constructor throws (connector not installed)", async () => {
+    const onConflictDoUpdateSpy = vi.fn().mockResolvedValue(undefined);
+    const valuesSpy = vi.fn().mockReturnValue({ onConflictDoUpdate: onConflictDoUpdateSpy });
+    const dbInsertSpy = vi.fn().mockReturnValue({ values: valuesSpy });
+    const dbDeleteSpy = vi.fn().mockReturnValue({
+      where: vi.fn().mockResolvedValue(undefined),
+    });
+
+    vi.doMock("@workspace/db", () => ({
+      db: {
+        insert: dbInsertSpy,
+        delete: dbDeleteSpy,
+      },
+      appSettingsTable: {},
+      eq: vi.fn(),
+    }));
+
+    // Simulate the connector not being installed: constructor throws synchronously.
+    class ThrowingConnectors {
+      constructor() {
+        throw new Error("Connector not configured: google-mail");
+      }
+      proxy = vi.fn();
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: ThrowingConnectors,
+    }));
+
+    const { sendReviewNotification } = await import("./gmail-notify.js");
+    const promise = sendReviewNotification(sampleReview);
+    await vi.runAllTimersAsync();
+
+    // Must resolve, never reject — review submissions must not be blocked
+    await expect(promise).resolves.toBeUndefined();
+
+    // The error must be persisted in the DB so the admin panel can surface it
+    expect(dbInsertSpy).toHaveBeenCalled();
+    expect(valuesSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ value: expect.stringContaining("Connector not configured") })
+    );
+    expect(onConflictDoUpdateSpy).toHaveBeenCalled();
+  });
+
+  it("resolves silently and records the error when the proxy call throws synchronously (no OAuth session)", async () => {
+    const onConflictDoUpdateSpy = vi.fn().mockResolvedValue(undefined);
+    const valuesSpy = vi.fn().mockReturnValue({ onConflictDoUpdate: onConflictDoUpdateSpy });
+    const dbInsertSpy = vi.fn().mockReturnValue({ values: valuesSpy });
+    const dbDeleteSpy = vi.fn().mockReturnValue({
+      where: vi.fn().mockResolvedValue(undefined),
+    });
+
+    vi.doMock("@workspace/db", () => ({
+      db: {
+        insert: dbInsertSpy,
+        delete: dbDeleteSpy,
+      },
+      appSettingsTable: {},
+      eq: vi.fn(),
+    }));
+
+    // Simulate no OAuth session at all: proxy throws on every call instead of
+    // returning a response object.
+    class NoSessionConnectors {
+      proxy = vi.fn(() => {
+        throw new Error("No OAuth session for google-mail");
+      });
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: NoSessionConnectors,
+    }));
+
+    const { sendReviewNotification } = await import("./gmail-notify.js");
+    const promise = sendReviewNotification(sampleReview);
+    await vi.runAllTimersAsync();
+
+    // Must resolve, never reject — review submissions must not be blocked
+    await expect(promise).resolves.toBeUndefined();
+
+    // The error must be persisted in the DB so the admin panel can surface it
+    expect(dbInsertSpy).toHaveBeenCalled();
+    expect(valuesSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ value: expect.stringContaining("No OAuth session") })
+    );
+    expect(onConflictDoUpdateSpy).toHaveBeenCalled();
+  });
 });
 
 // ---------------------------------------------------------------------------
