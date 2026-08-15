@@ -192,6 +192,66 @@ describe("sendReviewNotification", () => {
     expect(extractToAddress(proxySpy)).toBe(ACCOUNT_EMAIL);
   });
 
+  it("clears cachedEmail and retries successfully after a 403 from the send endpoint", async () => {
+    let sendCallCount = 0;
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string, _opts?: unknown) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: ACCOUNT_EMAIL }),
+          text: async () => "",
+        };
+      }
+      if (path.endsWith("/messages/send")) {
+        sendCallCount++;
+        if (sendCallCount === 1) {
+          // First attempt: simulate a revoked OAuth token (403 Access Denied)
+          return {
+            ok: false,
+            status: 403,
+            text: async () => "Access Denied",
+            json: async () => ({}),
+          };
+        }
+        // Second attempt (retry): succeed
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ id: "msg-retry-403" }),
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 404, text: async () => "not found", json: async () => ({}) };
+    });
+
+    class Retry403Connectors {
+      proxy = proxySpy;
+    }
+
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: Retry403Connectors,
+    }));
+
+    const { sendReviewNotification } = await import("./gmail-notify.js");
+    const promise = sendReviewNotification(sampleReview);
+    await vi.runAllTimersAsync();
+    await promise;
+
+    // Message must ultimately be delivered
+    expect(sendCallCount).toBe(2);
+
+    // cachedEmail was cleared after the 403, so the profile must be fetched
+    // again on the retry (two profile calls total: one before each send)
+    expect(profileCallCount).toBe(2);
+
+    // The final send must have gone to the right address
+    expect(extractToAddress(proxySpy)).toBe(ACCOUNT_EMAIL);
+  });
+
   it("does not throw even when the Gmail API returns an error on every attempt", async () => {
     class FailConnectors {
       proxy = vi.fn(async (_service: string, path: string) => {
