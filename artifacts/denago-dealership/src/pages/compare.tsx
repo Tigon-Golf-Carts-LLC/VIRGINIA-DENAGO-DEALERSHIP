@@ -53,7 +53,7 @@ export default function Compare() {
                       <Link href={getModelPath(model)} className="block group">
                         <div className="relative aspect-video rounded-lg overflow-hidden bg-background mb-4 border border-border/50 group-hover:border-primary transition-colors">
                           <img 
-                            src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.image}`} 
+                            src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${model.cardImage ?? model.image}`} 
                             alt={model.name} 
                             width="400"
                             height="300"
