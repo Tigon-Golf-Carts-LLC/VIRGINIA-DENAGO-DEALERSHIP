@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Star, CheckCircle, XCircle, LogOut, Clock } from 'lucide-react';
 
@@ -215,6 +215,18 @@ export default function AdminReviews() {
       return res.json();
     },
   });
+
+  useEffect(() => {
+    const base = 'Review Moderation';
+    if (secret && !isLoading && !isError) {
+      document.title = reviews.length > 0 ? `(${reviews.length}) ${base}` : base;
+    } else {
+      document.title = base;
+    }
+    return () => {
+      document.title = base;
+    };
+  }, [reviews.length, isLoading, isError, secret]);
 
   if (!secret) {
     return <LoginForm onLogin={handleLogin} />;
