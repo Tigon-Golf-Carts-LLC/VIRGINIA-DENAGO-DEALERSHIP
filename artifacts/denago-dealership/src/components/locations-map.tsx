@@ -9,6 +9,8 @@ import type { DealershipLocation } from '@/data/locations';
 import { Phone, Navigation } from 'lucide-react';
 import { getMapsUrl } from '@/lib/maps';
 
+type LocationWithDistance = DealershipLocation & { distance?: number | null };
+
 const defaultIcon = L.icon({
   iconUrl: markerIcon,
   iconRetinaUrl: markerIcon2x,
@@ -35,7 +37,7 @@ function PanToNearest({
   locations,
   nearestPhone,
 }: {
-  locations: DealershipLocation[];
+  locations: LocationWithDistance[];
   nearestPhone: string | null;
 }) {
   const map = useMap();
@@ -57,7 +59,7 @@ export function LocationsMap({
   locations,
   nearestPhone = null,
 }: {
-  locations: DealershipLocation[];
+  locations: LocationWithDistance[];
   nearestPhone?: string | null;
 }) {
   const bounds = L.latLngBounds(locations.map((loc) => [loc.lat, loc.lng]));
@@ -93,6 +95,13 @@ export function LocationsMap({
                   )}
                   <span className="font-bold">{loc.name}</span>
                   <span className="text-sm">{loc.address}</span>
+                  {loc.distance != null && (
+                    <span className="text-xs font-semibold text-orange-500">
+                      {loc.distance < 1
+                        ? `${(loc.distance * 5280).toFixed(0)} ft away`
+                        : `${loc.distance.toFixed(1)} mi away`}
+                    </span>
+                  )}
                   <a
                     href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}
                     className="inline-flex items-center gap-1.5 font-semibold text-sm mt-1"

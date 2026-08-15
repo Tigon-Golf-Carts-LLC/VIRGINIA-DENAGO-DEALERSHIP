@@ -170,7 +170,7 @@ export default function Locations() {
           </div>
 
           <div className="mb-12">
-            <LocationsMap locations={dealershipLocations} nearestPhone={nearestPhone} />
+            <LocationsMap locations={sortedLocations} nearestPhone={nearestPhone} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
