@@ -4,6 +4,7 @@ import { DEALERSHIP } from '@/data/denago-models';
 import { dealershipLocations } from '@/data/locations';
 import { Phone, MapPin, Facebook, Youtube, Globe, Navigation, Loader2, Star } from 'lucide-react';
 import { LocationsMap } from '@/components/locations-map';
+import { getMapsUrl } from '@/lib/maps';
 
 function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 3958.8; // Earth radius in miles
@@ -217,7 +218,7 @@ export default function Locations() {
                   </div>
 
                   <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.address)}`}
+                    href={getMapsUrl(loc.address)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
