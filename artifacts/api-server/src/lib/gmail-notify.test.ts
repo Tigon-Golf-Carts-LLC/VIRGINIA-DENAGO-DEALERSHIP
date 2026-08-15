@@ -761,6 +761,43 @@ describe("sendTestNotification", () => {
     expect(insertSpy).toHaveBeenCalled();
   });
 
+  it("returns ok:false and persists the error when the profile fetch throws synchronously (no OAuth session)", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        throw new Error("No OAuth session for google-mail");
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class ThrowingProfileConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: ThrowingProfileConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — must return immediately without retrying.
+    const result = await sendTestNotification();
+
+    // Must resolve, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/No OAuth session/);
+
+    // A thrown transport exception is not transient — must not retry
+    expect(profileCallCount).toBe(1);
+
+    // Error must be persisted to DB so the admin panel can surface it
+    expect(insertSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
   it("reports a 400 immediately without retrying — non-5xx errors are not transient", async () => {
     mockDb();
 
