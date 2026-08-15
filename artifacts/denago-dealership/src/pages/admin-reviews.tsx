@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Seo } from '../components/seo';
-import { Star, CheckCircle, XCircle, LogOut, Clock, AlertTriangle, X } from 'lucide-react';
+import { Star, CheckCircle, XCircle, LogOut, Clock, AlertTriangle, X, Send } from 'lucide-react';
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
 
@@ -252,6 +252,38 @@ export default function AdminReviews() {
     },
   });
 
+  const [testStatus, setTestStatus] = useState<'idle' | 'sending' | 'success' | 'failure'>('idle');
+
+  const sendTestEmail = useCallback(async () => {
+    setTestStatus('sending');
+    try {
+      const res = await fetch(`${API_BASE}/admin/test-notification`, {
+        method: 'POST',
+        headers: { 'x-admin-secret': secret! },
+      });
+      if (res.ok) {
+        setTestStatus('success');
+        // Clear the error banner since the send succeeded.
+        queryClient.setQueryData<NotificationStatus>(
+          ['admin-notification-status', secret],
+          { error: null },
+        );
+      } else {
+        const body = await res.json().catch(() => ({}));
+        setTestStatus('failure');
+        // Reflect the new error in the banner.
+        queryClient.setQueryData<NotificationStatus>(
+          ['admin-notification-status', secret],
+          { error: (body as { error?: string }).error ?? `HTTP ${res.status}` },
+        );
+      }
+    } catch {
+      setTestStatus('failure');
+    }
+    // Reset button label after 4 s.
+    setTimeout(() => setTestStatus('idle'), 4_000);
+  }, [secret, queryClient]);
+
   useEffect(() => {
     const base = 'Review Moderation';
     if (secret && !isLoading && !isError) {
@@ -295,13 +327,36 @@ export default function AdminReviews() {
             <span className="text-gray-600">›</span>
             <span className="text-sm font-semibold text-white">Review Moderation</span>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
-          >
-            <LogOut className="h-3.5 w-3.5" />
-            Sign out
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={sendTestEmail}
+              disabled={testStatus === 'sending'}
+              className={`flex items-center gap-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${
+                testStatus === 'success'
+                  ? 'text-green-400'
+                  : testStatus === 'failure'
+                  ? 'text-red-400'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Send className="h-3.5 w-3.5" />
+              {testStatus === 'sending'
+                ? 'Sending…'
+                : testStatus === 'success'
+                ? 'Email sent!'
+                : testStatus === 'failure'
+                ? 'Send failed'
+                : 'Send test email'}
+            </button>
+            <span className="text-gray-700">|</span>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              Sign out
+            </button>
+          </div>
         </div>
       </header>
 

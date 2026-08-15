@@ -7,7 +7,7 @@ import {
 } from "express";
 import { db, reviewsTable, appSettingsTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
-import { NOTIFICATION_ERROR_KEY } from "../lib/gmail-notify";
+import { NOTIFICATION_ERROR_KEY, sendTestNotification } from "../lib/gmail-notify";
 
 const router: IRouter = Router();
 
@@ -75,6 +75,16 @@ router.get("/admin/notification-status", adminAuth, async (_req, res) => {
     return;
   }
   res.json({ error: row.value, updatedAt: row.updatedAt });
+});
+
+// Send a test notification email to verify the Gmail connection.
+router.post("/admin/test-notification", adminAuth, async (_req, res) => {
+  const result = await sendTestNotification();
+  if (result.ok) {
+    res.json({ ok: true });
+  } else {
+    res.status(502).json({ ok: false, error: result.error });
+  }
 });
 
 // Dismiss the notification error banner (deletes the flag).

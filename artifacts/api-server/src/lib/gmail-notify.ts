@@ -157,6 +157,63 @@ async function clearNotificationError(): Promise<void> {
   }
 }
 
+/**
+ * Sends a short test email to confirm the Gmail connection is healthy.
+ * Returns true on success, false on failure (and persists the error flag).
+ */
+export async function sendTestNotification(): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const connectors = new ReplitConnectors();
+    const email = await getAccountEmail(connectors);
+    const recipient = process.env.REVIEW_NOTIFY_EMAIL || email;
+
+    const body = [
+      `This is a test notification from DENAGO Dealership.`,
+      ``,
+      `Your Gmail connection is working correctly. Review alerts will be`,
+      `delivered to this address when new customer reviews are submitted.`,
+      ``,
+      `---`,
+      `Sent from the DENAGO admin panel.`,
+    ].join("\n");
+
+    const raw = buildMessage(
+      email,
+      recipient,
+      `[DENAGO] Test notification`,
+      body
+    );
+
+    const resp = await connectors.proxy(
+      "google-mail",
+      "/gmail/v1/users/me/messages/send",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ raw: toBase64Url(raw) }),
+      }
+    );
+
+    if (!resp.ok) {
+      if (resp.status === 401 || resp.status === 403) {
+        cachedEmail = null;
+      }
+      const text = await resp.text().catch(() => "(no body)");
+      const message = `Gmail send failed ${resp.status}: ${text}`;
+      await setNotificationError(message);
+      return { ok: false, error: message };
+    }
+
+    // Success — clear any existing error flag.
+    await clearNotificationError();
+    return { ok: true };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    await setNotificationError(message);
+    return { ok: false, error: message };
+  }
+}
+
 export async function sendReviewNotification(review: ReviewPayload): Promise<void> {
   let lastError: unknown;
 
