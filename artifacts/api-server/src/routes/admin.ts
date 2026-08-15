@@ -5,8 +5,9 @@ import {
   type Response,
   type NextFunction,
 } from "express";
-import { db, reviewsTable } from "@workspace/db";
+import { db, reviewsTable, appSettingsTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
+import { NOTIFICATION_ERROR_KEY } from "../lib/gmail-notify";
 
 const router: IRouter = Router();
 
@@ -60,6 +61,27 @@ router.post("/admin/reviews/:id/approve", adminAuth, async (req, res) => {
     res.status(404).json({ error: "Review not found." });
     return;
   }
+  res.json({ ok: true });
+});
+
+// Return current notification error status (null when no error).
+router.get("/admin/notification-status", adminAuth, async (_req, res) => {
+  const [row] = await db
+    .select()
+    .from(appSettingsTable)
+    .where(eq(appSettingsTable.key, NOTIFICATION_ERROR_KEY));
+  if (!row) {
+    res.json({ error: null });
+    return;
+  }
+  res.json({ error: row.value, updatedAt: row.updatedAt });
+});
+
+// Dismiss the notification error banner (deletes the flag).
+router.delete("/admin/notification-status", adminAuth, async (_req, res) => {
+  await db
+    .delete(appSettingsTable)
+    .where(eq(appSettingsTable.key, NOTIFICATION_ERROR_KEY));
   res.json({ ok: true });
 });
 

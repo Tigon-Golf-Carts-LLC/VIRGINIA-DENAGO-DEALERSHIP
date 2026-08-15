@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Star, CheckCircle, XCircle, LogOut, Clock } from 'lucide-react';
 import { Seo } from '../components/seo';
+import { Star, CheckCircle, XCircle, LogOut, Clock, AlertTriangle, X } from 'lucide-react';
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
 
@@ -173,6 +173,10 @@ function ReviewCard({
   );
 }
 
+interface NotificationStatus {
+  error: string | null;
+  updatedAt?: string;
+}
 export default function AdminReviews() {
   const [secret, setSecret] = useState<string | null>(
     () => sessionStorage.getItem('admin_secret'),
@@ -216,6 +220,35 @@ export default function AdminReviews() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setAuthError(false);
       return res.json();
+    },
+  });
+
+  const { data: notificationStatus } = useQuery<NotificationStatus>({
+    queryKey: ['admin-notification-status', secret],
+    enabled: !!secret,
+    retry: false,
+    refetchInterval: 60_000,
+    queryFn: async () => {
+      const res = await fetch(`${API_BASE}/admin/notification-status`, {
+        headers: { 'x-admin-secret': secret! },
+      });
+      if (!res.ok) return { error: null };
+      return res.json();
+    },
+  });
+
+  const dismissBanner = useMutation({
+    mutationFn: async () => {
+      await fetch(`${API_BASE}/admin/notification-status`, {
+        method: 'DELETE',
+        headers: { 'x-admin-secret': secret! },
+      });
+    },
+    onSuccess: () => {
+      queryClient.setQueryData<NotificationStatus>(
+        ['admin-notification-status', secret],
+        { error: null },
+      );
     },
   });
 
@@ -273,6 +306,29 @@ export default function AdminReviews() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-10">
+        {/* Notification error banner */}
+        {notificationStatus?.error && (
+          <div className="mb-6 flex items-start gap-3 bg-amber-950/60 border border-amber-700/60 text-amber-200 rounded-xl px-5 py-4 text-sm">
+            <AlertTriangle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="font-semibold text-amber-300 mb-0.5">
+                Email notifications are failing — check your Gmail connection
+              </p>
+              <p className="text-amber-400/80 text-xs">
+                Last error: {notificationStatus.error}
+              </p>
+            </div>
+            <button
+              onClick={() => dismissBanner.mutate()}
+              disabled={dismissBanner.isPending}
+              aria-label="Dismiss notification error"
+              className="shrink-0 text-amber-500 hover:text-amber-300 transition-colors disabled:opacity-40"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+
         {/* Status */}
         {authError && (
           <div className="mb-6 bg-red-900/30 border border-red-800 text-red-300 rounded-xl px-5 py-4 text-sm">

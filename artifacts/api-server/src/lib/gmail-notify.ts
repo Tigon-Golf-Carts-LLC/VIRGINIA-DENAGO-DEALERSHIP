@@ -1,4 +1,6 @@
 import { ReplitConnectors } from "@replit/connectors-sdk";
+import { db, appSettingsTable } from "@workspace/db";
+import { eq } from "drizzle-orm";
 
 /**
  * Sends a notification email via the connected Gmail account.
@@ -6,13 +8,17 @@ import { ReplitConnectors } from "@replit/connectors-sdk";
  *
  * Failed attempts are retried up to MAX_RETRIES times with an exponential
  * back-off delay. If all retries are exhausted a structured error is emitted
- * so it surfaces clearly in logs / monitoring.
+ * so it surfaces clearly in logs / monitoring, and a flag is persisted in the
+ * database so the admin panel can show an in-app warning banner.
  *
  * Failures never propagate to the caller — review submissions are not blocked.
  */
 
 const MAX_RETRIES = 2; // total attempts = 1 initial + MAX_RETRIES retries
 const RETRY_BASE_DELAY_MS = 1_000; // 1 s → 2 s
+
+/** Database key used to store the last notification error message. */
+export const NOTIFICATION_ERROR_KEY = "notification_error";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -125,6 +131,32 @@ async function attemptSend(review: ReviewPayload): Promise<void> {
   }
 }
 
+/** Persist an error message in the DB so the admin panel can surface it. */
+async function setNotificationError(message: string): Promise<void> {
+  try {
+    await db
+      .insert(appSettingsTable)
+      .values({ key: NOTIFICATION_ERROR_KEY, value: message })
+      .onConflictDoUpdate({
+        target: appSettingsTable.key,
+        set: { value: message, updatedAt: new Date() },
+      });
+  } catch (err) {
+    console.warn("[review-notify] Failed to persist notification error flag:", err);
+  }
+}
+
+/** Clear the error flag after a successful send. */
+async function clearNotificationError(): Promise<void> {
+  try {
+    await db
+      .delete(appSettingsTable)
+      .where(eq(appSettingsTable.key, NOTIFICATION_ERROR_KEY));
+  } catch (err) {
+    console.warn("[review-notify] Failed to clear notification error flag:", err);
+  }
+}
+
 export async function sendReviewNotification(review: ReviewPayload): Promise<void> {
   let lastError: unknown;
 
@@ -139,7 +171,9 @@ export async function sendReviewNotification(review: ReviewPayload): Promise<voi
 
     try {
       await attemptSend(review);
-      return; // success — exit early
+      // Success — clear any previous error flag so the banner goes away.
+      await clearNotificationError();
+      return;
     } catch (err) {
       lastError = err;
       console.warn(
@@ -149,13 +183,19 @@ export async function sendReviewNotification(review: ReviewPayload): Promise<voi
     }
   }
 
-  // All retries exhausted — emit a structured error for monitoring.
+  // All retries exhausted — emit a structured error for monitoring and
+  // persist the error flag so the admin panel can show a warning banner.
+  const errorMessage =
+    lastError instanceof Error ? lastError.message : String(lastError);
+
   console.error("[review-notify] NOTIFICATION_FAILED", {
     event: "review_notification_failed",
     reviewer: review.author,
     rating: review.rating,
     attemptsTotal: MAX_RETRIES + 1,
-    error: lastError instanceof Error ? lastError.message : String(lastError),
+    error: errorMessage,
     timestamp: new Date().toISOString(),
   });
+
+  await setNotificationError(errorMessage);
 }
