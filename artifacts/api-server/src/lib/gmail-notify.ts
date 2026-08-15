@@ -232,9 +232,9 @@ export async function sendTestNotification(): Promise<{ ok: boolean; error?: str
         return { ok: false, error: message };
       }
 
-      let profileData: { emailAddress: string };
+      let profileData: unknown;
       try {
-        profileData = (await profileResp.json()) as { emailAddress: string };
+        profileData = await profileResp.json();
       } catch (err) {
         // JSON parse error — not a 5xx; report immediately.
         const message = err instanceof Error ? err.message : String(err);
@@ -242,13 +242,21 @@ export async function sendTestNotification(): Promise<{ ok: boolean; error?: str
         return { ok: false, error: message };
       }
 
-      if (typeof profileData.emailAddress !== "string" || !profileData.emailAddress) {
+      // Guard against non-object shapes (null, arrays, bare strings) that
+      // would throw if we accessed .emailAddress directly.
+      if (
+        profileData == null ||
+        typeof profileData !== "object" ||
+        Array.isArray(profileData) ||
+        typeof (profileData as Record<string, unknown>).emailAddress !== "string" ||
+        !(profileData as Record<string, unknown>).emailAddress
+      ) {
         const message = `Gmail profile response is missing the emailAddress field (unexpected API shape)`;
         await setNotificationError(message);
         return { ok: false, error: message };
       }
 
-      cachedEmail = profileData.emailAddress;
+      cachedEmail = (profileData as { emailAddress: string }).emailAddress;
       email = cachedEmail;
     }
 

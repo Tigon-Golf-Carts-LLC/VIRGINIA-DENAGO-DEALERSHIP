@@ -1323,6 +1323,94 @@ describe("sendTestNotification", () => {
     expect(deleteSpy).not.toHaveBeenCalled();
   });
 
+  it("returns ok:false and persists the error when the profile body is null — not just a missing field", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        // ok:true / 200 but the body is null — non-object API shape
+        return {
+          ok: true,
+          status: 200,
+          json: async () => null,
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class NullBodyConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: NullBodyConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — a null body is not a 5xx; must bail immediately.
+    const result = await sendTestNotification();
+
+    // Must resolve with ok:false, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toBeDefined();
+    expect(result.error).toMatch(/emailAddress/i);
+
+    // Must not retry — a malformed payload is not a transient 5xx
+    expect(profileCallCount).toBe(1);
+
+    // Error must be persisted so the admin panel can surface it
+    expect(insertSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
+  it("returns ok:false and persists the error when the profile body is an empty array — not just a missing field", async () => {
+    const { insertSpy, deleteSpy } = mockDb();
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        // ok:true / 200 but the body is [] — array instead of object
+        return {
+          ok: true,
+          status: 200,
+          json: async () => [],
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class ArrayBodyConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: ArrayBodyConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — an array body is not a 5xx; must bail immediately.
+    const result = await sendTestNotification();
+
+    // Must resolve with ok:false, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toBeDefined();
+    expect(result.error).toMatch(/emailAddress/i);
+
+    // Must not retry — a malformed payload is not a transient 5xx
+    expect(profileCallCount).toBe(1);
+
+    // Error must be persisted so the admin panel can surface it
+    expect(insertSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
   it("returns ok:false and persists the error when the proxy throws synchronously on every call (no OAuth session)", async () => {
     const { insertSpy, deleteSpy } = mockDb();
 
