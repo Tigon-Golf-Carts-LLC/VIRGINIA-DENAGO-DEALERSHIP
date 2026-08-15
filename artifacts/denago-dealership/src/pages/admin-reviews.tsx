@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Star, CheckCircle, XCircle, LogOut, Clock } from 'lucide-react';
+import { Seo } from '../components/seo';
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
 
@@ -231,10 +232,25 @@ export default function AdminReviews() {
   }, [reviews.length, isLoading, isError, secret]);
 
   if (!secret) {
-    return <LoginForm onLogin={handleLogin} />;
+    return (
+      <>
+        <Seo
+          title="Admin — DENAGO Dealership"
+          description=""
+          noindex
+        />
+        <LoginForm onLogin={handleLogin} />
+      </>
+    );
   }
 
   return (
+    <>
+    <Seo
+      title="Review Moderation — DENAGO Admin"
+      description=""
+      noindex
+    />
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Top bar */}
       <header className="border-b border-gray-800 bg-gray-900/80 backdrop-blur sticky top-0 z-10">
@@ -317,5 +333,6 @@ export default function AdminReviews() {
         )}
       </main>
     </div>
+    </>
   );
 }

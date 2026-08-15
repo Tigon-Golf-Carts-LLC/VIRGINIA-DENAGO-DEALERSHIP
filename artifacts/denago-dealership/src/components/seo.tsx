@@ -7,6 +7,7 @@ interface SeoProps {
   image?: string;
   type?: 'website' | 'product';
   schema?: Record<string, any>;
+  noindex?: boolean;
 }
 
 export function Seo({
@@ -16,8 +17,19 @@ export function Seo({
   image = 'https://denagodealership.com/og-image.png',
   type = 'website',
   schema,
+  noindex = false,
 }: SeoProps) {
   useEffect(() => {
+    // Update robots meta tag
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    const prevRobotsContent = metaRobots?.getAttribute('content') ?? null;
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', noindex ? 'noindex,nofollow' : 'index, follow');
+
     // Update title
     document.title = title;
 
@@ -85,13 +97,22 @@ export function Seo({
     }
 
     return () => {
+      // Restore robots tag to default on unmount
+      const robotsTag = document.querySelector('meta[name="robots"]');
+      if (robotsTag) {
+        if (prevRobotsContent !== null) {
+          robotsTag.setAttribute('content', prevRobotsContent);
+        } else {
+          robotsTag.setAttribute('content', 'index, follow');
+        }
+      }
       // Cleanup schema on unmount to avoid duplicates
       const scriptTag = document.querySelector('script[data-type="seo-schema"]');
       if (scriptTag) {
         document.head.removeChild(scriptTag);
       }
     };
-  }, [title, description, url, image, type, schema]);
+  }, [title, description, url, image, type, schema, noindex]);
 
   return null;
 }

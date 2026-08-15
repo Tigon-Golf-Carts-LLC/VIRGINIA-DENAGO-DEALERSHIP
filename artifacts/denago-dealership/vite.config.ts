@@ -27,12 +27,34 @@ if (!basePath) {
   );
 }
 
+/** Vite plugin that adds X-Robots-Tag: noindex, nofollow to /admin responses. */
+function adminNoindex() {
+  const adminMiddleware: import('connect').NextHandleFunction = (req, res, next) => {
+    const url = req.url ?? '';
+    // Match /admin and /admin/ (with or without trailing slash or query string)
+    if (url === '/admin' || url.startsWith('/admin/') || url.startsWith('/admin?')) {
+      res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    }
+    next();
+  };
+  return {
+    name: 'admin-noindex',
+    configureServer(server: import('vite').ViteDevServer) {
+      server.middlewares.use(adminMiddleware);
+    },
+    configurePreviewServer(server: import('vite').PreviewServer) {
+      server.middlewares.use(adminMiddleware);
+    },
+  };
+}
+
 export default defineConfig({
   base: basePath,
   plugins: [
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    adminNoindex(),
     ...(process.env.NODE_ENV !== 'production' &&
     process.env.REPL_ID !== undefined
       ? [
