@@ -253,16 +253,33 @@ export default function AdminReviews() {
   });
 
   const [testStatus, setTestStatus] = useState<'idle' | 'sending' | 'success' | 'failure'>('idle');
+  const [rateLimitCountdown, setRateLimitCountdown] = useState(0);
+
+  // Countdown tick
+  useEffect(() => {
+    if (rateLimitCountdown <= 0) return;
+    const timer = setTimeout(() => setRateLimitCountdown((c) => Math.max(0, c - 1)), 1_000);
+    return () => clearTimeout(timer);
+  }, [rateLimitCountdown]);
 
   const sendTestEmail = useCallback(async () => {
+    if (rateLimitCountdown > 0) return;
     setTestStatus('sending');
     try {
       const res = await fetch(`${API_BASE}/admin/test-notification`, {
         method: 'POST',
         headers: { 'x-admin-secret': secret! },
       });
+      if (res.status === 429) {
+        const body = await res.json().catch(() => ({}));
+        const retryAfter: number = (body as { retryAfter?: number }).retryAfter ?? 60;
+        setRateLimitCountdown(retryAfter);
+        setTestStatus('idle');
+        return;
+      }
       if (res.ok) {
         setTestStatus('success');
+        setRateLimitCountdown(60);
         // Clear the error banner since the send succeeded.
         queryClient.setQueryData<NotificationStatus>(
           ['admin-notification-status', secret],
@@ -282,7 +299,7 @@ export default function AdminReviews() {
     }
     // Reset button label after 4 s.
     setTimeout(() => setTestStatus('idle'), 4_000);
-  }, [secret, queryClient]);
+  }, [secret, queryClient, rateLimitCountdown]);
 
   useEffect(() => {
     const base = 'Review Moderation';
@@ -330,9 +347,12 @@ export default function AdminReviews() {
           <div className="flex items-center gap-3">
             <button
               onClick={sendTestEmail}
-              disabled={testStatus === 'sending'}
+              disabled={testStatus === 'sending' || rateLimitCountdown > 0}
+              title={rateLimitCountdown > 0 ? `Rate limited — wait ${rateLimitCountdown}s` : undefined}
               className={`flex items-center gap-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${
-                testStatus === 'success'
+                rateLimitCountdown > 0
+                  ? 'text-gray-500 cursor-not-allowed'
+                  : testStatus === 'success'
                   ? 'text-green-400'
                   : testStatus === 'failure'
                   ? 'text-red-400'
@@ -342,6 +362,8 @@ export default function AdminReviews() {
               <Send className="h-3.5 w-3.5" />
               {testStatus === 'sending'
                 ? 'Sending…'
+                : rateLimitCountdown > 0
+                ? `Wait ${rateLimitCountdown}s`
                 : testStatus === 'success'
                 ? 'Email sent!'
                 : testStatus === 'failure'

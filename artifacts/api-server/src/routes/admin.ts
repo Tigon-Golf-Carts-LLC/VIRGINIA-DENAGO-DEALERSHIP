@@ -12,6 +12,44 @@ import { NOTIFICATION_ERROR_KEY, sendTestNotification } from "../lib/gmail-notif
 const router: IRouter = Router();
 
 /* ------------------------------------------------------------------ */
+/* Per-IP rate limiter for test-notification (1 req / 60 s)           */
+/* ------------------------------------------------------------------ */
+
+const TEST_NOTIFICATION_WINDOW_MS = 60_000;
+/** Map of IP → timestamp of last accepted request */
+const testNotificationLastSent = new Map<string, number>();
+
+function testNotificationRateLimit(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  // Use the rightmost trusted forwarded IP, falling back to socket address.
+  const forwarded = req.headers["x-forwarded-for"];
+  const ip =
+    (Array.isArray(forwarded) ? forwarded[forwarded.length - 1] : forwarded?.split(",").pop()?.trim()) ??
+    req.socket.remoteAddress ??
+    "unknown";
+
+  const now = Date.now();
+  const last = testNotificationLastSent.get(ip) ?? 0;
+  const elapsed = now - last;
+
+  if (elapsed < TEST_NOTIFICATION_WINDOW_MS) {
+    const retryAfter = Math.ceil((TEST_NOTIFICATION_WINDOW_MS - elapsed) / 1000);
+    res.setHeader("Retry-After", String(retryAfter));
+    res.status(429).json({
+      error: "Too many requests. Please wait before sending another test email.",
+      retryAfter,
+    });
+    return;
+  }
+
+  testNotificationLastSent.set(ip, now);
+  next();
+}
+
+/* ------------------------------------------------------------------ */
 /* Auth middleware                                                      */
 /* ------------------------------------------------------------------ */
 
@@ -78,7 +116,7 @@ router.get("/admin/notification-status", adminAuth, async (_req, res) => {
 });
 
 // Send a test notification email to verify the Gmail connection.
-router.post("/admin/test-notification", adminAuth, async (_req, res) => {
+router.post("/admin/test-notification", adminAuth, testNotificationRateLimit, async (_req, res) => {
   const result = await sendTestNotification();
   if (result.ok) {
     res.json({ ok: true });
