@@ -4,6 +4,7 @@ import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
 import { expertReviews } from '@/data/expert-reviews';
 import { modelReviews } from '@/data/model-reviews';
 import { Seo } from '@/components/seo';
+import { CustomerReviews, REVIEW_MODEL_BY_SLUG } from '@/components/customer-reviews';
 import NotFound from './not-found';
 import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent, Star } from 'lucide-react';
 
@@ -355,6 +356,16 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
             </section>
           </div>
         )}
+
+        {/* Customer reviews for this model — same experience as the /reviews page */}
+        <div className="container mx-auto px-4 mt-16">
+          <section aria-label={`Customer reviews for the ${model.name}`}>
+            <h2 className="text-3xl lg:text-4xl font-display font-bold mb-8 uppercase tracking-tight">
+              {model.name} <span className="text-primary">Customer Reviews</span>
+            </h2>
+            <CustomerReviews model={REVIEW_MODEL_BY_SLUG[model.slug]} />
+          </section>
+        </div>
 
         {/* Expert Take */}
         {expertReview && (

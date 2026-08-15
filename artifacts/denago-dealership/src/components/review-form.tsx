@@ -7,14 +7,15 @@ const MODELS = [
   'EV City',
   'EV Nomad',
   'EV Nomad XL',
-  'EV Rover',
   'EV Rover XL',
+  'EV Rover XL6',
   'EV Rover XXL',
   'Scout 2',
   'OXEN',
 ];
 
-export function ReviewForm() {
+/** When `fixedModel` is provided (model pages), the model field is locked to it. */
+export function ReviewForm({ fixedModel }: { fixedModel?: string }) {
   const startedAt = useRef(Date.now());
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -38,7 +39,8 @@ export function ReviewForm() {
         body: JSON.stringify({
           author: data.get('author'),
           location: data.get('location'),
-          model: data.get('model') || undefined,
+          // Store the canonical uppercase label to match existing records.
+          model: ((fixedModel || data.get('model') || '') as string).toUpperCase() || undefined,
           rating,
           title: data.get('title'),
           text: data.get('text'),
@@ -147,19 +149,25 @@ export function ReviewForm() {
             <label className="block text-sm font-semibold mb-2" htmlFor="review-model">
               Your Model
             </label>
-            <select
-              id="review-model"
-              name="model"
-              className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
-              defaultValue=""
-            >
-              <option value="">Select a model (optional)</option>
-              {MODELS.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            {fixedModel ? (
+              <div className="w-full rounded-lg border border-border bg-muted/40 px-4 py-2.5 text-sm font-semibold">
+                {fixedModel}
+              </div>
+            ) : (
+              <select
+                id="review-model"
+                name="model"
+                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                defaultValue=""
+              >
+                <option value="">Select a model (optional)</option>
+                {MODELS.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
           <div>
             <label className="block text-sm font-semibold mb-2" htmlFor="review-title">
