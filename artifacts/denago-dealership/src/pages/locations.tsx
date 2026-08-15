@@ -2,9 +2,25 @@ import { useState, useCallback } from 'react';
 import { Seo } from '@/components/seo';
 import { DEALERSHIP } from '@/data/denago-models';
 import { dealershipLocations } from '@/data/locations';
-import { Phone, MapPin, Facebook, Youtube, Globe, Navigation, Loader2, Star } from 'lucide-react';
+import { Phone, MapPin, Facebook, Youtube, Globe, Navigation, Loader2, Star, X } from 'lucide-react';
 import { LocationsMap } from '@/components/locations-map';
 import { getMapsUrl } from '@/lib/maps';
+
+const LOCATION_STORAGE_KEY = 'denago_user_coords';
+
+function loadStoredCoords(): { lat: number; lng: number } | null {
+  try {
+    const raw = localStorage.getItem(LOCATION_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (typeof parsed.lat === 'number' && typeof parsed.lng === 'number') {
+      return parsed;
+    }
+  } catch {
+    // ignore corrupt data
+  }
+  return null;
+}
 
 function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 3958.8; // Earth radius in miles
@@ -19,7 +35,7 @@ function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: numbe
 }
 
 export default function Locations() {
-  const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(() => loadStoredCoords());
   const [geoState, setGeoState] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
 
   const schema = {
@@ -51,8 +67,14 @@ export default function Locations() {
     setGeoState('loading');
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setUserCoords(coords);
         setGeoState('idle');
+        try {
+          localStorage.setItem(LOCATION_STORAGE_KEY, JSON.stringify(coords));
+        } catch {
+          // storage unavailable — proceed without persisting
+        }
       },
       (err) => {
         if (err.code === err.PERMISSION_DENIED) {
@@ -63,6 +85,16 @@ export default function Locations() {
       },
       { timeout: 10000 }
     );
+  }, []);
+
+  const handleClearLocation = useCallback(() => {
+    setUserCoords(null);
+    setGeoState('idle');
+    try {
+      localStorage.removeItem(LOCATION_STORAGE_KEY);
+    } catch {
+      // ignore
+    }
   }, []);
 
   const locationsWithDistance = dealershipLocations.map((loc) => ({
@@ -112,8 +144,16 @@ export default function Locations() {
               </button>
 
               {userCoords && (
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-muted-foreground flex items-center gap-2">
                   Showing stores sorted by distance from you
+                  <button
+                    onClick={handleClearLocation}
+                    className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 hover:text-destructive transition-colors underline underline-offset-2"
+                    aria-label="Clear my saved location"
+                  >
+                    <X className="h-3 w-3" />
+                    Clear my location
+                  </button>
                 </span>
               )}
               {geoState === 'denied' && (
