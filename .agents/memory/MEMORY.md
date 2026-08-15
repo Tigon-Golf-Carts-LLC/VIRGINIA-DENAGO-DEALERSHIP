@@ -1,1 +1,3 @@
 - [API server conventions](api-server-conventions.md) — lib/db needs `tsc -b` after schema changes; use rightmost X-Forwarded-For for rate limits; reviews pending-until-approved.
+- [Admin secret rotation design](admin-secret-rotation.md) — scrypt hash in DB, advisory lock for concurrency, WeakMap to carry plaintext through to txn re-verify.
+- [Code review base drift](code-review-base-drift.md) — review system may compare against pre-merge base; if flagging code not in our diff, explain clearly in drift_reason with git evidence.

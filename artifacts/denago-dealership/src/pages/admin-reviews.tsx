@@ -270,7 +270,7 @@ export default function AdminReviews() {
       });
       if (res.status === 429) {
         const body = await res.json().catch(() => ({}));
-        const retryAfter: number = (body as { retryAfter?: number }).retryAfter ?? 60;
+        const retryAfter: number = (body as { retryAfterSeconds?: number }).retryAfterSeconds ?? 300;
         setRateLimitCountdown(retryAfter);
         setTestStatus('idle');
         return;
