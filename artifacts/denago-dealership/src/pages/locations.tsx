@@ -217,8 +217,17 @@ export default function Locations() {
                   </div>
 
                   <a
-                    href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
+                  >
+                    <Navigation className="h-4 w-4" />
+                    Get Directions
+                  </a>
+                  <a
+                    href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}
+                    className="flex items-center justify-center gap-2 border border-border text-foreground hover:bg-muted py-3 rounded-lg font-bold text-sm transition-colors"
                   >
                     <Phone className="h-4 w-4" />
                     {loc.phone}

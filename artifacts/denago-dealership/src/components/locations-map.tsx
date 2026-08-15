@@ -5,8 +5,8 @@ import 'leaflet/dist/leaflet.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import { Phone } from 'lucide-react';
 import type { DealershipLocation } from '@/data/locations';
+import { Phone, Navigation } from 'lucide-react';
 
 const defaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -98,6 +98,15 @@ export function LocationsMap({
                   >
                     <Phone className="h-3.5 w-3.5" />
                     {loc.phone}
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-semibold text-sm text-blue-600 hover:text-blue-800 mt-0.5"
+                  >
+                    <Navigation className="h-3.5 w-3.5" />
+                    Get directions
                   </a>
                 </div>
               </Popup>
