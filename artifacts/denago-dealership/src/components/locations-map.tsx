@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
@@ -17,7 +18,47 @@ const defaultIcon = L.icon({
   shadowSize: [41, 41],
 });
 
-export function LocationsMap({ locations }: { locations: DealershipLocation[] }) {
+// Highlighted icon: larger, primary-colored via SVG data URI
+const highlightedIcon = L.divIcon({
+  className: '',
+  html: `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="52" viewBox="0 0 36 52">
+    <path d="M18 0C8.059 0 0 8.059 0 18c0 12.765 18 34 18 34S36 30.765 36 18C36 8.059 27.941 0 18 0z" fill="#f97316"/>
+    <circle cx="18" cy="18" r="8" fill="white"/>
+  </svg>`,
+  iconSize: [36, 52],
+  iconAnchor: [18, 52],
+  popupAnchor: [0, -54],
+});
+
+function PanToNearest({
+  locations,
+  nearestPhone,
+}: {
+  locations: DealershipLocation[];
+  nearestPhone: string | null;
+}) {
+  const map = useMap();
+  const prevPhone = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!nearestPhone || nearestPhone === prevPhone.current) return;
+    const loc = locations.find((l) => l.phone === nearestPhone);
+    if (loc) {
+      map.flyTo([loc.lat, loc.lng], 12, { duration: 1.2 });
+      prevPhone.current = nearestPhone;
+    }
+  }, [nearestPhone, locations, map]);
+
+  return null;
+}
+
+export function LocationsMap({
+  locations,
+  nearestPhone = null,
+}: {
+  locations: DealershipLocation[];
+  nearestPhone?: string | null;
+}) {
   const bounds = L.latLngBounds(locations.map((loc) => [loc.lat, loc.lng]));
 
   return (
@@ -32,23 +73,37 @@ export function LocationsMap({ locations }: { locations: DealershipLocation[] })
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations.map((loc) => (
-          <Marker key={loc.phone} position={[loc.lat, loc.lng]} icon={defaultIcon}>
-            <Popup>
-              <div className="flex flex-col gap-1 min-w-[180px]">
-                <span className="font-bold">{loc.name}</span>
-                <span className="text-sm">{loc.address}</span>
-                <a
-                  href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}
-                  className="inline-flex items-center gap-1.5 font-semibold text-sm mt-1"
-                >
-                  <Phone className="h-3.5 w-3.5" />
-                  {loc.phone}
-                </a>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        <PanToNearest locations={locations} nearestPhone={nearestPhone} />
+        {locations.map((loc) => {
+          const isNearest = loc.phone === nearestPhone;
+          return (
+            <Marker
+              key={loc.phone}
+              position={[loc.lat, loc.lng]}
+              icon={isNearest ? highlightedIcon : defaultIcon}
+              zIndexOffset={isNearest ? 1000 : 0}
+            >
+              <Popup>
+                <div className="flex flex-col gap-1 min-w-[180px]">
+                  {isNearest && (
+                    <span className="text-xs font-bold text-orange-500 uppercase tracking-wide">
+                      ★ Nearest to you
+                    </span>
+                  )}
+                  <span className="font-bold">{loc.name}</span>
+                  <span className="text-sm">{loc.address}</span>
+                  <a
+                    href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}
+                    className="inline-flex items-center gap-1.5 font-semibold text-sm mt-1"
+                  >
+                    <Phone className="h-3.5 w-3.5" />
+                    {loc.phone}
+                  </a>
+                </div>
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );
