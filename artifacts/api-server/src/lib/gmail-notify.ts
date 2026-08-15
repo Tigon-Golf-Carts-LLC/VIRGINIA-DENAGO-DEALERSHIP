@@ -95,9 +95,11 @@ async function attemptSend(review: ReviewPayload): Promise<void> {
     .filter((l) => l !== null)
     .join("\n");
 
+  const recipient = process.env.REVIEW_NOTIFY_EMAIL || email;
+
   const raw = buildMessage(
     email,
-    email,
+    recipient,
     `[DENAGO] New review from ${review.author} — ${stars}`,
     body
   );
