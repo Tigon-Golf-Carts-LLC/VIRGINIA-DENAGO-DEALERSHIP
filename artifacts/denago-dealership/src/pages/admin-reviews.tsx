@@ -1,10 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Seo } from '../components/seo';
 import { Star, CheckCircle, XCircle, LogOut, Clock, AlertTriangle, X, Send } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
-
 interface PendingReview {
   id: number;
   author: string;
@@ -172,10 +171,9 @@ function ReviewCard({
     </article>
   );
 }
-
 interface NotificationStatus {
   error: string | null;
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export default function AdminReviews() {
   const [secret, setSecret] = useState<string | null>(
