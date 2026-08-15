@@ -1,6 +1,7 @@
 import { Router, type IRouter, type Request } from "express";
 import { db, reviewsTable, insertReviewSchema } from "@workspace/db";
 import { desc, eq } from "drizzle-orm";
+import { sendReviewNotification } from "../lib/gmail-notify.js";
 
 const router: IRouter = Router();
 
@@ -144,6 +145,10 @@ router.post("/reviews", async (req, res) => {
   }
 
   await db.insert(reviewsTable).values({ ...parsed.data, approved: false });
+
+  // Fire-and-forget: send notification email without blocking the response.
+  sendReviewNotification(parsed.data).catch(() => {/* already logged inside */});
+
   res.status(201).json({ status: "pending" });
 });
 
