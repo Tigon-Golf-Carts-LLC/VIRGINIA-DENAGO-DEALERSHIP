@@ -1,22 +1,10 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
-import { useQuery } from '@tanstack/react-query';
 import { Seo } from '@/components/seo';
 import { DEALERSHIP } from '@/data/denago-models';
 import { ReviewForm } from '@/components/review-form';
-import { Phone, Star } from 'lucide-react';
-
-interface ApiReview {
-  id: number;
-  author: string;
-  location: string;
-  model: string | null;
-  rating: number;
-  title: string;
-  text: string;
-  createdAt: string;
-}
-
-const API_URL = `${import.meta.env.BASE_URL}api/reviews`;
+import { useReviews, type ApiReview } from '@/hooks/use-reviews';
+import { Phone, Star, ChevronDown } from 'lucide-react';
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -31,22 +19,60 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-export default function Reviews() {
-  const { data: reviews = [] } = useQuery<ApiReview[]>({
-    queryKey: ['reviews'],
-    queryFn: async () => {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error('Failed to load reviews');
-      return res.json();
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+const INLINE_COUNT = 4; // shown inline on desktop; first 2 on mobile
+const SCROLL_BATCH = 9; // reviews loaded per infinite-scroll step
 
-  const reviewCount = reviews.length;
-  const ratingValue =
-    reviewCount === 0
-      ? 0
-      : Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount) * 10) / 10;
+function ReviewCard({ review, className = '' }: { review: ApiReview; className?: string }) {
+  return (
+    <article
+      className={`bg-card border border-border rounded-xl p-6 flex flex-col gap-3 ${className}`}
+    >
+      <div className="flex items-center justify-between">
+        <Stars rating={review.rating} />
+        <time className="text-xs text-muted-foreground" dateTime={review.createdAt}>
+          {new Date(review.createdAt).toLocaleDateString('en-US', {
+            month: 'long',
+            year: 'numeric',
+          })}
+        </time>
+      </div>
+      <h3 className="font-bold text-lg leading-snug">{review.title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{review.text}</p>
+      <div className="pt-2 border-t border-border text-sm">
+        <span className="font-semibold text-foreground">{review.author}</span>
+        {review.location && <span className="text-muted-foreground"> — {review.location}</span>}
+        {review.model && (
+          <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-1">
+            {review.model} owner
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
+export default function Reviews() {
+  const { reviews, reviewCount, ratingValue } = useReviews();
+  const [showAll, setShowAll] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(SCROLL_BATCH);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  // Infinite scroll: load the next batch when the sentinel enters the viewport.
+  useEffect(() => {
+    if (!showAll) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((c) => Math.min(c + SCROLL_BATCH, reviewCount));
+        }
+      },
+      { rootMargin: '400px' },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [showAll, reviewCount]);
 
   // Review/AggregateRating structured data — emitted only when verified,
   // approved customer reviews exist. Publishing placeholder ratings as schema
@@ -116,40 +142,49 @@ export default function Reviews() {
             )}
           </div>
 
-          {/* Review cards */}
+          {/* Review cards — 4 inline on desktop, 2 on mobile */}
           {reviewCount > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-6xl">
-              {reviews.map((review) => (
-                <article
-                  key={review.id}
-                  className="bg-card border border-border rounded-xl p-6 flex flex-col gap-3"
-                >
-                  <div className="flex items-center justify-between">
-                    <Stars rating={review.rating} />
-                    <time className="text-xs text-muted-foreground" dateTime={review.createdAt}>
-                      {new Date(review.createdAt).toLocaleDateString('en-US', {
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                  <h2 className="font-bold text-lg leading-snug">{review.title}</h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                    {review.text}
-                  </p>
-                  <div className="pt-2 border-t border-border text-sm">
-                    <span className="font-semibold text-foreground">{review.author}</span>
-                    {review.location && (
-                      <span className="text-muted-foreground"> — {review.location}</span>
-                    )}
-                    {review.model && (
-                      <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-1">
-                        {review.model} owner
+            <div className="mb-16 max-w-6xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {reviews.slice(0, INLINE_COUNT).map((review, i) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    className={i >= 2 ? 'hidden sm:flex' : ''}
+                  />
+                ))}
+              </div>
+
+              {/* Read all reviews (expand + infinite scroll) */}
+              {reviewCount > 2 && (
+                <div className="mt-8">
+                  {!showAll ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowAll(true)}
+                      className="inline-flex items-center gap-2 border border-border bg-card font-bold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors"
+                      aria-expanded={showAll}
+                    >
+                      Read All {reviewCount} Reviews
+                      <ChevronDown className="h-5 w-5" />
+                    </button>
+                  ) : (
+                    <>
+                      <h2 className="text-2xl font-display font-bold uppercase tracking-tight mb-6">
+                        All <span className="text-primary">Reviews</span>
+                      </h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {reviews.slice(0, visibleCount).map((review) => (
+                          <ReviewCard key={review.id} review={review} />
+                        ))}
                       </div>
-                    )}
-                  </div>
-                </article>
-              ))}
+                      {visibleCount < reviewCount && (
+                        <div ref={sentinelRef} className="h-10" aria-hidden="true" />
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           )}
 

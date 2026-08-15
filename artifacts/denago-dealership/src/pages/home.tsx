@@ -2,7 +2,8 @@ import { Link } from 'wouter';
 import { Seo } from '@/components/seo';
 import { denagoModels, DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { ModelCard } from '@/components/model-card';
-import { Phone, ArrowRight, ShieldCheck, Zap, Wrench, FileText } from 'lucide-react';
+import { useReviews } from '@/hooks/use-reviews';
+import { Phone, ArrowRight, ShieldCheck, Zap, Wrench, FileText, Star } from 'lucide-react';
 
 export default function Home() {
   const featuredModels = denagoModels;
@@ -34,6 +35,8 @@ export default function Home() {
     }
   ];
 
+  const { reviewCount, ratingValue } = useReviews();
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -51,7 +54,20 @@ export default function Home() {
           "addressRegion": HEADQUARTERS.state,
           "postalCode": HEADQUARTERS.zip,
           "addressCountry": HEADQUARTERS.countryCode
-        }
+        },
+        // Site-wide rating comes exclusively from approved customer reviews
+        // submitted on the /reviews page (never from per-model editorial reviews).
+        ...(reviewCount > 0
+          ? {
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": ratingValue,
+                "reviewCount": reviewCount,
+                "bestRating": 5,
+                "worstRating": 1
+              }
+            }
+          : {})
       },
       {
         "@type": "FAQPage",
@@ -101,9 +117,28 @@ export default function Home() {
             <p className="text-2xl md:text-3xl font-display font-bold text-primary mb-6 uppercase tracking-wide animate-in slide-in-from-bottom-6 duration-700 delay-150">
               Electrify Your Journey
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed animate-in slide-in-from-bottom-8 duration-700 delay-200">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl leading-relaxed animate-in slide-in-from-bottom-8 duration-700 delay-200">
               Experience the unmatched performance, style, and reliability of the DENAGO EV lineup. From street-legal city cruisers to rugged off-road adventurers.
             </p>
+
+            {/* Visible customer rating — keeps homepage schema honest (markup must match on-page content) */}
+            {reviewCount > 0 && (
+              <Link
+                href="/reviews"
+                className="inline-flex items-center gap-2 mb-10 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+              >
+                <span className="flex items-center gap-0.5" aria-hidden="true">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className={`h-4 w-4 ${i <= Math.round(ratingValue) ? 'text-primary fill-primary' : 'text-muted-foreground/30'}`}
+                    />
+                  ))}
+                </span>
+                {ratingValue.toFixed(1)} rated by {reviewCount} customer{reviewCount === 1 ? '' : 's'} — read reviews
+              </Link>
+            )}
+
             
             <div className="flex flex-col sm:flex-row gap-4 animate-in slide-in-from-bottom-10 duration-700 delay-300">
               <Link 
