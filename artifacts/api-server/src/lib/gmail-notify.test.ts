@@ -1499,6 +1499,69 @@ describe("sendTestNotification", () => {
     expect(deleteSpy).not.toHaveBeenCalled();
   });
 
+  it("returns ok:false and persists the error when emailAddress is an empty string — truthy check must hold", async () => {
+    // Use the full insert().values().onConflictDoUpdate() chain that setNotificationError
+    // actually calls, so the persistence assertion is meaningful.
+    const onConflictDoUpdateSpy = vi.fn().mockResolvedValue(undefined);
+    const valuesSpy = vi.fn().mockReturnValue({ onConflictDoUpdate: onConflictDoUpdateSpy });
+    const dbInsertSpy = vi.fn().mockReturnValue({ values: valuesSpy });
+    const dbDeleteSpy = vi.fn().mockReturnValue({
+      where: vi.fn().mockResolvedValue(undefined),
+    });
+
+    vi.doMock("@workspace/db", () => ({
+      db: { insert: dbInsertSpy, delete: dbDeleteSpy },
+      appSettingsTable: {},
+      reviewsTable: {},
+      eq: vi.fn(),
+    }));
+
+    let profileCallCount = 0;
+
+    const proxySpy = vi.fn(async (_service: string, path: string) => {
+      if (path.endsWith("/me/profile")) {
+        profileCallCount++;
+        // ok:true / 200, emailAddress field present but empty — guard must catch this
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ emailAddress: "" }),
+          text: async () => "",
+        };
+      }
+      return { ok: false, status: 500, text: async () => "error", json: async () => ({}) };
+    });
+
+    class EmptyEmailConnectors {
+      proxy = proxySpy;
+    }
+    vi.doMock("@replit/connectors-sdk", () => ({
+      ReplitConnectors: EmptyEmailConnectors,
+    }));
+
+    const { sendTestNotification } = await import("./gmail-notify.js");
+    // No runAllTimersAsync — an empty emailAddress is not a 5xx; must bail immediately.
+    const result = await sendTestNotification();
+
+    // Must resolve with ok:false, not throw
+    expect(result.ok).toBe(false);
+    expect(result.error).toBeDefined();
+    expect(result.error).toMatch(/emailAddress/i);
+
+    // Must not retry — a malformed payload is not a transient 5xx
+    expect(profileCallCount).toBe(1);
+
+    // Error must be persisted to the DB so the admin panel can surface it.
+    // Assert the full insert().values().onConflictDoUpdate() chain.
+    expect(dbInsertSpy).toHaveBeenCalled();
+    expect(valuesSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ value: expect.stringMatching(/emailAddress/i) })
+    );
+    expect(onConflictDoUpdateSpy).toHaveBeenCalled();
+    // clearNotificationError must NOT run on failure
+    expect(dbDeleteSpy).not.toHaveBeenCalled();
+  }, 15000);
+
   it("returns ok:false and persists the error when the proxy throws synchronously on every call (no OAuth session)", async () => {
     const { insertSpy, deleteSpy } = mockDb();
 
