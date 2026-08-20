@@ -92,7 +92,16 @@ export function Footer() {
           <p className="text-white/50 text-xs leading-relaxed max-w-4xl">
             <span className="font-semibold text-white/70">Independent Dealership Disclaimer:</span>{' '}
             We are not DENAGO EV, the manufacturer. This website is owned and operated by an
-            independent authorized DENAGO dealership and exists to provide you with model
+             independent{' '}
+             <a
+               href="https://tigongolfcarts.com/denago"
+               target="_blank"
+               rel="sponsored noopener noreferrer"
+               className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+             >
+               authorized DENAGO dealership
+             </a>{' '}
+             and exists to provide you with model
             information and a way to order. DENAGO and related trademarks are the property of
             DENAGO EV. For manufacturer-direct information, visit the official DENAGO EV website.
           </p>
