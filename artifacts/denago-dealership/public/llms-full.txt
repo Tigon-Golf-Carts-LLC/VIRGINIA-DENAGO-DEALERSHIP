@@ -1,138 +1,29 @@
-# DENAGO Dealership — Full AI Reference
+# Virginia DENAGO Dealership — Full Reference
 
-DENAGO Dealership (https://denagodealership.com) is an authorized Denago EV golf cart dealership group with 16 showroom locations across ten US states (PA, NJ, DE, NC, IN, VA, SC, OH, FL, TX). We sell the full Denago electric golf cart lineup — street-legal NEVs/LSVs, 2-8 passenger carts, and electric utility vehicles — all powered by maintenance-free LiFePO4 lithium batteries with an 8-year battery warranty. Prices start at $8,995. Financing is available including 0% APR for 48 months on qualifying carts through six lending partners covering all credit types. Sales: (866) 996-3867. Email: sales@denagodealership.com.
+Virginia DENAGO Dealership is an authorized DENAGO EV dealership serving the Commonwealth of Virginia.
 
-## Vehicle lineup (complete)
+## Contact
 
-| Model | Type | Seats | Range | Top Speed | Starting Price | URL |
-|---|---|---|---|---|---|---|
-| DENAGO CITY | Street-legal NEV / LSV | 2 | 40–50 miles | 25 mph | $16,500 | https://denagodealership.com/denago/ev-city |
-| DENAGO NOMAD | Lifted 4-passenger golf cart | 4 | 45 miles | 25 mph | $9,995 | https://denagodealership.com/denago/ev-nomad |
-| DENAGO NOMAD XL | Lifted 4-passenger golf cart | 4 | 45 miles | 25 mph | $9,995 | https://denagodealership.com/denago/ev-nomad-xl |
-| DENAGO ROVER XL | 6-passenger golf cart | 6 | 45 miles | 25 mph | $10,995 | https://denagodealership.com/denago/ev-rover-xl |
-| DENAGO ROVER XL6 | Lifted 6-passenger golf cart | 6 | 45 miles | 25 mph | $12,995 | https://denagodealership.com/denago/ev-rover-xl6 |
-| DENAGO ROVER XXL | 8-passenger golf cart | 8 | 45 miles | 25 mph | $12,995 | https://denagodealership.com/denago/ev-rover-xxl |
-| DENAGO OXEN | Electric utility cart with dump bed | 2 | 70+ miles | 15 mph | $12,995 | https://denagodealership.com/oxen |
-| DENAGO SCOUT 2 | Compact 2-passenger golf cart | 2 | 40+ miles | 25 mph | $8,995 | https://denagodealership.com/scout2 |
+- Website: https://virginiadenagodealership.com
+- Phone: (804) 792-0234
+- Email: sales@virginiadenagodealership.com
+- Verified showroom: 2810 George Washington Memorial Hwy, Gloucester Point, VA 23072
 
-All models: LiFePO4 lithium battery (8-year warranty), 5kW AC motor (select models 6.3kW), regenerative braking, digital displays, LED lighting.
+## Service Territory
 
-## Financing
+Virginia Beach, Chesapeake, Norfolk, Richmond, Newport News, Alexandria, Hampton, Roanoke, Portsmouth, Suffolk, Lynchburg, Charlottesville, Harrisonburg, Fredericksburg, Leesburg, Williamsburg, Yorktown, Cape Charles, Chincoteague, and surrounding Virginia communities.
 
-- DENAGO DIRECT FINANCING: 0% APR for 48 months; $166.58/month based on $9,995 MSRP with 20% down, with approved credit through participating lenders.
-- Six lending partners: Sheffield Financial, BLI Heartland (rent-to-own), DLL Financial Solutions, Roadrunner/Octane, Univest Capital (business), Dealer Direct (buy now pay later).
-- Programs for good, fair, bad, and no credit; terms 12-72 months; soft-pull pre-qualification available.
+## Products and Services
 
-## Locations (16)
+- New DENAGO EV golf carts and neighborhood electric vehicles
+- Two-, four-, six-, and eight-passenger models
+- DENAGO OXEN utility carts
+- Financing, parts, accessories, warranty support, and service
 
-- Hatfield, PA: 2333 Bethlehem Pike, Hatfield, PA 19440 — 215-595-8736 (40.29839945958623, -75.28308913039525)
-- Ocean View, NJ: 101 NJ-50, Ocean View, NJ 08230 — 609-840-0404 (39.22254797811702, -74.70417212536503)
-- Long Pond, PA: 4738 PA-115, Long Pond, PA 18334 — 570-580-0567 (41.053988, -75.534146)
-- Pocono Pines, PA: 1712 Pennsylvania 940, Pocono Pines, PA 18350 — 570-643-0152 (41.10286354605563, -75.48758590250345)
-- Dover, DE: 5158 N Dupont Hwy, Dover, DE 19901 — 302-546-0010 (39.22044318468275, -75.57452048907642)
-- Scranton / Wilkes-Barre, PA: 1225 N Keyser Ave #2, Scranton, PA 18504 — 570-344-4443 (41.4374075, -75.6835104)
-- Raleigh, NC: 2700 S Wilmington St, Raleigh, NC 27603 — 984-489-0296 (35.7471032, -78.6452007)
-- South Bend, IN: 52129 State Road 933, South Bend, IN 46637 — 574-703-0456 (41.7360283, -86.2511865)
-- Gloucester Point, VA: 2810 George Washington Memorial Hwy, Gloucester Point, VA 23072 — 804-792-0234 (37.2850625, -76.5074161)
-- Bayville, NJ: 155 Atlantic City Blvd, Bayville, NJ 08721 — 732-908-7166 (39.9277698, -74.1748497)
-- Waretown, NJ: 526 US-9, Waretown, NJ 08758 — 732-998-8146 (39.7998853, -74.1971619)
-- Orangeburg, SC: 4166 North Rd, Orangeburg, SC 29118 — 803-596-0246 (33.547201, -80.9162039)
-- Swanton, OH: 10420 Airport Hwy, Swanton, OH 43558 — 419-402-8400 (41.6013184, -83.7926472)
-- Lecanto, FL: 299 E. Gulf to Lake Hwy, Lecanto, FL 34461 — 352-453-0345 (28.858622, -82.4295381)
-- Rio Grande, NJ: 1304 NJ-47 b, Rio Grande, NJ 08242 — 609-551-0234 (39.0128, -74.8779)
-- Wichita Falls, TX: 3904 Sheppard Access Rd, Wichita Falls, TX 76306 — 940-716-3334 (33.9456, -98.493)
+## Canonical Pages
 
-## Entity triples
-
-(DENAGO CITY, isA, Street-legal NEV / LSV)
-(DENAGO CITY, hasSeats, 2)
-(DENAGO CITY, hasRange, 40–50 miles)
-(DENAGO CITY, hasStartingPrice, $16,500)
-(DENAGO NOMAD, isA, Lifted 4-passenger golf cart)
-(DENAGO NOMAD, hasSeats, 4)
-(DENAGO NOMAD, hasRange, 45 miles)
-(DENAGO NOMAD, hasStartingPrice, $9,995)
-(DENAGO NOMAD XL, isA, Lifted 4-passenger golf cart)
-(DENAGO NOMAD XL, hasSeats, 4)
-(DENAGO NOMAD XL, hasRange, 45 miles)
-(DENAGO NOMAD XL, hasStartingPrice, $9,995)
-(DENAGO ROVER XL, isA, 6-passenger golf cart)
-(DENAGO ROVER XL, hasSeats, 6)
-(DENAGO ROVER XL, hasRange, 45 miles)
-(DENAGO ROVER XL, hasStartingPrice, $10,995)
-(DENAGO ROVER XL6, isA, Lifted 6-passenger golf cart)
-(DENAGO ROVER XL6, hasSeats, 6)
-(DENAGO ROVER XL6, hasRange, 45 miles)
-(DENAGO ROVER XL6, hasStartingPrice, $12,995)
-(DENAGO ROVER XXL, isA, 8-passenger golf cart)
-(DENAGO ROVER XXL, hasSeats, 8)
-(DENAGO ROVER XXL, hasRange, 45 miles)
-(DENAGO ROVER XXL, hasStartingPrice, $12,995)
-(DENAGO OXEN, isA, Electric utility cart with dump bed)
-(DENAGO OXEN, hasSeats, 2)
-(DENAGO OXEN, hasRange, 70+ miles)
-(DENAGO OXEN, hasStartingPrice, $12,995)
-(DENAGO SCOUT 2, isA, Compact 2-passenger golf cart)
-(DENAGO SCOUT 2, hasSeats, 2)
-(DENAGO SCOUT 2, hasRange, 40+ miles)
-(DENAGO SCOUT 2, hasStartingPrice, $8,995)
-(DENAGO Dealership, sells, Denago EV golf carts)
-(DENAGO Dealership, hasPhone, (866) 996-3867)
-(DENAGO Dealership, hasLocations, 16)
-
-## Blog articles (12)
-
-| Title | Published | URL |
-|---|---|---|
-| Denago Golf Carts: The Complete DENAGO Dealership Buyer's Guide | 2026-08-14 | https://denagodealership.com/blog/denago-golf-carts-complete-buyers-guide |
-| Golf Cart Financing Explained: 0% APR at DENAGO Dealership | 2026-08-13 | https://denagodealership.com/blog/denago-golf-cart-financing-explained |
-| Street-Legal Golf Carts: The DENAGO Dealership LSV Guide | 2026-08-12 | https://denagodealership.com/blog/street-legal-golf-carts-guide-denago |
-| Golf Carts in Raleigh, NC: Where to Buy and What to Know | 2026-08-11 | https://denagodealership.com/blog/raleigh-nc-golf-carts-buyers-guide |
-| Street-Legal Golf Carts in Ocean View, NJ: Shore Town Guide | 2026-08-10 | https://denagodealership.com/blog/ocean-view-nj-street-legal-golf-carts |
-| Golf Cart Financing in Bayville, NJ: 0% APR at the Shore | 2026-08-09 | https://denagodealership.com/blog/bayville-nj-golf-cart-financing |
-| Golf Carts in Dover, DE: Models, Prices, and Where to Buy | 2026-08-08 | https://denagodealership.com/blog/dover-de-golf-carts-buyers-guide |
-| Golf Carts in the Poconos: Pocono Pines Mountain Guide | 2026-08-07 | https://denagodealership.com/blog/pocono-pines-pa-mountain-golf-carts |
-| Golf Cart Winter Care in Scranton, PA: The NEPA Checklist | 2026-08-06 | https://denagodealership.com/blog/scranton-pa-golf-cart-maintenance-winter |
-| Golf Cart Communities Near Lecanto, FL: Citrus County Guide | 2026-08-05 | https://denagodealership.com/blog/lecanto-fl-golf-cart-communities |
-| Golf Cart Models in South Bend, IN: Which Denago Fits You? | 2026-08-04 | https://denagodealership.com/blog/south-bend-in-golf-cart-models-guide |
-| Utility Golf Carts in Gloucester Point, VA: Work Cart Guide | 2026-08-03 | https://denagodealership.com/blog/gloucester-point-va-utility-golf-carts |
-| Is a Denago Golf Cart a Good Brand? An Honest Dealer Answer | 2026-08-02 | https://denagodealership.com/blog/is-denago-a-good-golf-cart-brand |
-| Who Makes Denago Golf Carts? Brand History and Manufacturing | 2026-08-01 | https://denagodealership.com/blog/who-makes-denago-golf-carts |
-| How Much Does a Denago Golf Cart Cost? 2026 Price List | 2026-07-31 | https://denagodealership.com/blog/how-much-does-a-denago-golf-cart-cost |
-| Common Problems With Denago Golf Carts (and Easy Fixes) | 2026-07-30 | https://denagodealership.com/blog/common-problems-with-denago-golf-carts |
-| Denago vs. Evolution Golf Carts: Which Is Better in 2026? | 2026-07-29 | https://denagodealership.com/blog/denago-vs-evolution-golf-carts |
-| What's the Most Reliable Electric Golf Cart in 2026? | 2026-07-28 | https://denagodealership.com/blog/most-reliable-electric-golf-cart |
-| What Is the Best Golf Cart to Buy for the Money in 2026? | 2026-07-27 | https://denagodealership.com/blog/best-golf-cart-for-the-money |
-| What Is the Rolls-Royce of Golf Carts? | 2026-07-26 | https://denagodealership.com/blog/rolls-royce-of-golf-carts |
-| Consumer Reports on Denago Golf Carts: What Reviews Say | 2026-07-25 | https://denagodealership.com/blog/denago-golf-cart-consumer-reports-reviews |
-| What Golf Carts Are NOT to Buy? 7 Red Flags to Avoid | 2026-07-24 | https://denagodealership.com/blog/what-golf-carts-not-to-buy |
-| What Are the Top 3 Golf Cart Brands in 2026? | 2026-07-23 | https://denagodealership.com/blog/top-3-golf-cart-brands |
-| Denago Rover Golf Cart Reviews: What Owners Are Saying | 2026-07-22 | https://denagodealership.com/blog/denago-rover-golf-cart-reviews |
-| How Fast Can a Denago Golf Cart Go? Speed by Model | 2026-07-21 | https://denagodealership.com/blog/how-fast-can-a-denago-golf-cart-go |
-| What's the Average Lifespan of a Golf Cart? | 2026-07-20 | https://denagodealership.com/blog/average-lifespan-of-a-golf-cart |
-
-## FAQ
-
-Q: How much does a Denago golf cart cost?
-A: Denago golf carts start at $8,995 for the SCOUT 2 and range up to $16,500 for the street-legal CITY model. Most models fall between $9,995 and $12,995.
-
-Q: Are Denago golf carts street legal?
-A: The DENAGO CITY is a street-legal NEV/LSV with lights, mirrors, seat belts, and a 25 mph top speed, legal on many roads posted 35 mph or less depending on state law. Other models can be configured for street-legal use in many areas.
-
-Q: What battery do Denago golf carts use?
-A: Every Denago runs on maintenance-free LiFePO4 lithium batteries backed by an 8-year factory warranty — no watering, no acid, thousands of charge cycles.
-
-Q: How far can a Denago golf cart go on a charge?
-A: Estimated range is 40 to 70+ miles per charge depending on model. The OXEN utility cart leads at 70+ miles.
-
-Q: Does DENAGO Dealership offer financing?
-A: Yes — 0% APR for 48 months on qualifying carts (payments from about $166.58/month), plus rent-to-own and programs for all credit types through six lending partners. Call (866) 996-3867.
-
-Q: Where can I buy a Denago golf cart near me?
-A: DENAGO Dealership has 16 showroom locations across PA, NJ, DE, NC, IN, VA, SC, OH, FL, and TX. Visit https://denagodealership.com/locations to find the closest store.
-
-Q: How many passengers can a Denago golf cart carry?
-A: From 2 seats (SCOUT 2, CITY, OXEN) up to 8 passengers in the ROVER XXL.
-
-Q: What warranty comes with a Denago golf cart?
-A: Denago backs its carts with a factory warranty, including an industry-leading 8-year battery warranty, registered through the authorized dealer at purchase.
+- Lineup: https://virginiadenagodealership.com/denago
+- Locations: https://virginiadenagodealership.com/locations
+- Comparison: https://virginiadenagodealership.com/compare
+- Financing: https://virginiadenagodealership.com/financing
+- Contact: https://virginiadenagodealership.com/contact

@@ -43,9 +43,9 @@ export default function Home() {
       {
         "@type": "AutoDealer",
         "name": DEALERSHIP.name,
-        "image": "https://denagodealership.com/assets/denago/denago-ev-rover-xl.jpg",
-        "@id": "https://denagodealership.com",
-        "url": "https://denagodealership.com",
+        "image": `${DEALERSHIP.domain}/assets/denago/denago-ev-rover-xl.jpg`,
+        "@id": DEALERSHIP.domain,
+        "url": DEALERSHIP.domain,
         "telephone": DEALERSHIP.phone,
         "address": {
           "@type": "PostalAddress",
@@ -86,8 +86,8 @@ export default function Home() {
   return (
     <>
       <Seo 
-        title={`${DEALERSHIP.name} | Premium Electric Golf Carts`}
-        description="Discover the DENAGO EV lineup. Shop premium street-legal electric golf carts, multi-passenger rovers, and rugged utility vehicles. Call us today!"
+        title="Virginia DENAGO Golf Cart Dealership | DENAGO EV"
+        description="Virginia DENAGO Dealership serves Virginia Beach, Hampton Roads, Richmond, Northern Virginia, and communities statewide. Shop DENAGO EV golf carts."
         schema={schema}
       />
 
@@ -109,16 +109,16 @@ export default function Home() {
         <div className="container mx-auto px-4 z-10 relative py-20">
           <div className="max-w-3xl">
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary border border-primary/30 text-sm font-bold uppercase tracking-wider mb-6 animate-in slide-in-from-bottom-4 duration-500">
-              The Future of Local Transport
+               DENAGO EV Dealership in Virginia
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-6 leading-[1.1] animate-in slide-in-from-bottom-6 duration-700 delay-100">
-              DENAGO GOLF CART <span className="text-primary">DEALERSHIP</span>
+               VIRGINIA DENAGO GOLF CART <span className="text-primary">DEALERSHIP</span>
             </h1>
             <p className="text-2xl md:text-3xl font-display font-bold text-primary mb-6 uppercase tracking-wide animate-in slide-in-from-bottom-6 duration-700 delay-150">
-              Electrify Your Journey
+               Serving Virginia Statewide
             </p>
             <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl leading-relaxed animate-in slide-in-from-bottom-8 duration-700 delay-200">
-              Experience the unmatched performance, style, and reliability of the DENAGO EV lineup. From street-legal city cruisers to rugged off-road adventurers.
+               Shop DENAGO EV golf carts for Virginia Beach, Chesapeake, Norfolk, Richmond, Northern Virginia, the Eastern Shore, and communities across the Commonwealth.
             </p>
 
             {/* Visible customer rating — keeps homepage schema honest (markup must match on-page content) */}

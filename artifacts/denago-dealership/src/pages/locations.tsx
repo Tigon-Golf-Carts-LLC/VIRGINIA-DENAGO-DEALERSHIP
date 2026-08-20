@@ -38,23 +38,33 @@ export default function Locations() {
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(() => loadStoredCoords());
   const [geoState, setGeoState] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
 
+  const showroom = dealershipLocations.find((loc) => loc.type === 'showroom');
+  const serviceAreas = dealershipLocations.filter((loc) => loc.type === 'service-area');
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": dealershipLocations.map((loc, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "AutoDealer",
-        "name": `${DEALERSHIP.name} – ${loc.name}`,
-        "telephone": `+1-${loc.phone}`,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": loc.address,
-          "addressRegion": loc.state,
-          "addressCountry": "US",
-        },
-        ...(loc.mapUrl ? { "hasMap": loc.mapUrl } : {}),
+    "@type": "AutoDealer",
+    "name": DEALERSHIP.name,
+    "url": `${DEALERSHIP.domain}/locations`,
+    "telephone": DEALERSHIP.phone,
+    ...(showroom
+      ? {
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2810 George Washington Memorial Hwy",
+            "addressLocality": showroom.city,
+            "addressRegion": showroom.state,
+            "postalCode": "23072",
+            "addressCountry": "US",
+          },
+          ...(showroom.mapUrl ? { "hasMap": showroom.mapUrl } : {}),
+        }
+      : {}),
+    "areaServed": serviceAreas.map((loc) => ({
+      "@type": "City",
+      "name": loc.city,
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Virginia",
       },
     })),
   };
@@ -108,13 +118,13 @@ export default function Locations() {
     ? [...locationsWithDistance].sort((a, b) => (a.distance ?? 0) - (b.distance ?? 0))
     : locationsWithDistance;
 
-  const nearestPhone = userCoords ? sortedLocations[0]?.phone ?? null : null;
+  const nearestName = userCoords ? sortedLocations[0]?.name ?? null : null;
 
   return (
     <>
       <Seo
-        title={`Locations | ${DEALERSHIP.name}`}
-        description="Find a DENAGO dealership location near you. 16 locations across PA, NJ, DE, NC, IN, VA, SC, OH, FL, and TX. Call or visit today."
+        title="Virginia DENAGO Dealership Locations & Service Areas"
+        description="Visit our Gloucester Point DENAGO showroom or call for DENAGO EV golf carts serving Virginia Beach, Chesapeake, Norfolk, Richmond, and communities statewide."
         url={`${DEALERSHIP.domain}/locations`}
         schema={schema}
       />
@@ -123,10 +133,10 @@ export default function Locations() {
         <div className="container mx-auto px-4">
           <div className="mb-12">
             <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-4 uppercase tracking-tight">
-              DENAGO DEALERSHIP <span className="text-primary">LOCATIONS</span>
+               VIRGINIA DENAGO <span className="text-primary">DEALERSHIP</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Visit any of our dealership locations to see the DENAGO lineup in person, take a test drive, and talk to our team.
+               Visit our verified Gloucester Point showroom for the DENAGO lineup and test drives. We serve Virginia Beach, Hampton Roads, Richmond, Northern Virginia, the Eastern Shore, and major communities statewide.
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
@@ -145,7 +155,7 @@ export default function Locations() {
 
               {userCoords && (
                 <span className="text-sm text-muted-foreground flex items-center gap-2">
-                  Showing stores sorted by distance from you
+                   Showing Virginia service areas sorted by distance from you
                   <button
                     onClick={handleClearLocation}
                     className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 hover:text-destructive transition-colors underline underline-offset-2"
@@ -170,15 +180,15 @@ export default function Locations() {
           </div>
 
           <div className="mb-12">
-            <LocationsMap locations={sortedLocations} nearestPhone={nearestPhone} />
+             <LocationsMap locations={sortedLocations} nearestName={nearestName} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedLocations.map((loc) => {
-              const isNearest = nearestPhone === loc.phone;
+               const isNearest = nearestName === loc.name;
               return (
                 <article
-                  key={loc.phone}
+                   key={loc.name}
                   className={`bg-card rounded-xl border shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col gap-4 ${
                     isNearest
                       ? 'border-primary ring-2 ring-primary/30'
@@ -189,10 +199,13 @@ export default function Locations() {
                     <h2 className="font-display font-bold text-xl tracking-tight text-card-foreground">
                       {loc.name}
                     </h2>
+                     <span className="shrink-0 bg-secondary text-secondary-foreground text-[11px] font-bold uppercase tracking-wide px-2 py-1 rounded-full">
+                       {loc.type === 'showroom' ? 'Showroom' : 'Service area'}
+                     </span>
                     {isNearest && (
                       <span className="inline-flex items-center gap-1 shrink-0 bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-full">
                         <Star className="h-3 w-3 fill-primary" />
-                        Nearest
+                         Nearest area
                       </span>
                     )}
                   </div>
@@ -264,7 +277,7 @@ export default function Locations() {
                     className="flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
                   >
                     <Navigation className="h-4 w-4" />
-                    Get Directions
+                     {loc.type === 'showroom' ? 'Get Directions' : 'View Service Area'}
                   </a>
                   <a
                     href={`tel:+1${loc.phone.replace(/[^0-9]/g, '')}`}

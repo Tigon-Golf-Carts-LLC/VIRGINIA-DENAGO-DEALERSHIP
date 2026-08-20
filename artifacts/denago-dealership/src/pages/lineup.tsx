@@ -18,7 +18,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: "Where can I find Denago golf cart models nearby?",
-    a: "We have 16 dealership locations across Pennsylvania, New Jersey, Delaware, North Carolina, Indiana, Virginia, South Carolina, Ohio, Florida, and Texas. Visit our Locations page to find the closest showroom, or call (866) 996-3867.",
+    a: "Virginia DENAGO Dealership serves Virginia Beach, Chesapeake, Norfolk, Richmond, Northern Virginia, the Eastern Shore, and communities statewide from our Gloucester Point showroom. Visit our Locations page or call (804) 792-0234.",
   },
   {
     q: "What colors do Denago golf cart models come in?",
@@ -47,7 +47,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: "Where can I get a Denago golf cart manual?",
-    a: "Owner's manuals for every Denago golf cart model are available through our dealership — including operation guides, battery care, charging instructions, and maintenance schedules. Call (866) 996-3867 or stop by any of our locations and we'll get you the manual for your model.",
+    a: "Owner's manuals for every Denago golf cart model are available through our dealership — including operation guides, battery care, charging instructions, and maintenance schedules. Call (804) 792-0234 or stop by our Gloucester Point showroom and we'll get you the manual for your model.",
   },
   {
     q: "Where can I find Denago golf cart specs?",
@@ -55,11 +55,11 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: "Are there Denago golf cart dealers near me?",
-    a: "With 16 authorized Denago dealership locations across PA, NJ, DE, NC, IN, VA, SC, OH, FL, and TX, there's likely a Denago golf cart dealer near you. Check our Locations page for addresses, phone numbers, and directions to your closest showroom.",
+    a: "Our authorized Virginia DENAGO dealership serves major cities and beach communities across the Commonwealth. Check our Locations page for the verified Gloucester Point showroom and the Virginia areas we serve.",
   },
   {
     q: "How do Denago dealers compare — Tigon Golf Carts, No Limit Carts, World Famous Golf Carts?",
-    a: "Denago EV models are sold through a network of authorized dealers. Our dealership group operates 16 locations and offers the complete current Denago lineup, transparent MSRP pricing, factory warranties, and in-house service — call us to compare pricing and availability before you buy anywhere else.",
+    a: "Denago EV models are sold through authorized dealers. Virginia DENAGO Dealership offers the complete current lineup, transparent MSRP pricing, factory warranties, and in-house service — call us to compare pricing and availability.",
   },
 ];
 
@@ -120,7 +120,7 @@ export default function Lineup() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                As an authorized Denago EV dealership with 16 locations, we stock the complete range of new
+                As an authorized Virginia Denago EV dealership, we stock the complete range of new
                 Denago golf cart models — from the entry-level 2-passenger Scout 2 at $8,995 to the lifted
                 Rover series, the street-legal Denago City NEV, and the hard-working Oxen utility cart.
                 Every cart is sold at transparent MSRP pricing with full factory warranty coverage, including

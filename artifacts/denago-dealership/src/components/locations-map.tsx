@@ -35,32 +35,32 @@ const highlightedIcon = L.divIcon({
 
 function PanToNearest({
   locations,
-  nearestPhone,
+  nearestName,
 }: {
   locations: LocationWithDistance[];
-  nearestPhone: string | null;
+  nearestName: string | null;
 }) {
   const map = useMap();
-  const prevPhone = useRef<string | null>(null);
+  const prevName = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!nearestPhone || nearestPhone === prevPhone.current) return;
-    const loc = locations.find((l) => l.phone === nearestPhone);
+    if (!nearestName || nearestName === prevName.current) return;
+    const loc = locations.find((l) => l.name === nearestName);
     if (loc) {
       map.flyTo([loc.lat, loc.lng], 12, { duration: 1.2 });
-      prevPhone.current = nearestPhone;
+      prevName.current = nearestName;
     }
-  }, [nearestPhone, locations, map]);
+  }, [nearestName, locations, map]);
 
   return null;
 }
 
 export function LocationsMap({
   locations,
-  nearestPhone = null,
+  nearestName = null,
 }: {
   locations: LocationWithDistance[];
-  nearestPhone?: string | null;
+  nearestName?: string | null;
 }) {
   const bounds = L.latLngBounds(locations.map((loc) => [loc.lat, loc.lng]));
 
@@ -76,12 +76,12 @@ export function LocationsMap({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <PanToNearest locations={locations} nearestPhone={nearestPhone} />
+        <PanToNearest locations={locations} nearestName={nearestName} />
         {locations.map((loc) => {
-          const isNearest = loc.phone === nearestPhone;
+          const isNearest = loc.name === nearestName;
           return (
             <Marker
-              key={loc.phone}
+              key={loc.name}
               position={[loc.lat, loc.lng]}
               icon={isNearest ? highlightedIcon : defaultIcon}
               zIndexOffset={isNearest ? 1000 : 0}
@@ -90,7 +90,7 @@ export function LocationsMap({
                 <div className="flex flex-col gap-1 min-w-[180px]">
                   {isNearest && (
                     <span className="text-xs font-bold text-orange-500 uppercase tracking-wide">
-                      ★ Nearest to you
+                      ★ Nearest Virginia area
                     </span>
                   )}
                   <span className="font-bold">{loc.name}</span>
@@ -116,7 +116,7 @@ export function LocationsMap({
                     className="inline-flex items-center gap-1.5 font-semibold text-sm text-blue-600 hover:text-blue-800 mt-0.5"
                   >
                     <Navigation className="h-3.5 w-3.5" />
-                    Get directions
+                    {loc.type === 'showroom' ? 'Get directions' : 'View service area'}
                   </a>
                 </div>
               </Popup>

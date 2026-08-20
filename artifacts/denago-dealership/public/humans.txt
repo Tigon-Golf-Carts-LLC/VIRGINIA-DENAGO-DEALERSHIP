@@ -1,12 +1,9 @@
-/* TEAM */
-Business: DENAGO Dealership
-Contact: sales@denagodealership.com
-Phone: (866) 996-3867
-Location: United States (16 showrooms in 10 states)
+/* BUSINESS */
+Name: Virginia DENAGO Dealership
+Website: https://virginiadenagodealership.com
+Location: Gloucester Point, Virginia
+Phone: (804) 792-0234
 
 /* SITE */
-Last update: 2026-08-14
+Updated: 2026-08-20
 Language: English
-Doctype: HTML5
-Stack: React, TypeScript, Vite, Tailwind CSS
-Standards: HTML5, CSS3, WCAG 2.1 AA

@@ -1,86 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>DENAGO Dealership Locations</name>
+    <name>Virginia DENAGO Dealership</name>
     <Placemark>
-      <name>DENAGO Dealership — Hatfield, PA</name>
-      <description>2333 Bethlehem Pike, Hatfield, PA 19440 · 215-595-8736</description>
-      <Point><coordinates>-75.28308913039525,40.29839945958623,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Ocean View, NJ</name>
-      <description>101 NJ-50, Ocean View, NJ 08230 · 609-840-0404</description>
-      <Point><coordinates>-74.70417212536503,39.22254797811702,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Long Pond, PA</name>
-      <description>4738 PA-115, Long Pond, PA 18334 · 570-580-0567</description>
-      <Point><coordinates>-75.534146,41.053988,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Pocono Pines, PA</name>
-      <description>1712 Pennsylvania 940, Pocono Pines, PA 18350 · 570-643-0152</description>
-      <Point><coordinates>-75.48758590250345,41.10286354605563,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Dover, DE</name>
-      <description>5158 N Dupont Hwy, Dover, DE 19901 · 302-546-0010</description>
-      <Point><coordinates>-75.57452048907642,39.22044318468275,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Scranton / Wilkes-Barre, PA</name>
-      <description>1225 N Keyser Ave #2, Scranton, PA 18504 · 570-344-4443</description>
-      <Point><coordinates>-75.6835104,41.4374075,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Raleigh, NC</name>
-      <description>2700 S Wilmington St, Raleigh, NC 27603 · 984-489-0296</description>
-      <Point><coordinates>-78.6452007,35.7471032,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — South Bend, IN</name>
-      <description>52129 State Road 933, South Bend, IN 46637 · 574-703-0456</description>
-      <Point><coordinates>-86.2511865,41.7360283,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Gloucester Point, VA</name>
-      <description>2810 George Washington Memorial Hwy, Gloucester Point, VA 23072 · 804-792-0234</description>
-      <Point><coordinates>-76.5074161,37.2850625,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Bayville, NJ</name>
-      <description>155 Atlantic City Blvd, Bayville, NJ 08721 · 732-908-7166</description>
-      <Point><coordinates>-74.1748497,39.9277698,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Waretown, NJ</name>
-      <description>526 US-9, Waretown, NJ 08758 · 732-998-8146</description>
-      <Point><coordinates>-74.1971619,39.7998853,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Orangeburg, SC</name>
-      <description>4166 North Rd, Orangeburg, SC 29118 · 803-596-0246</description>
-      <Point><coordinates>-80.9162039,33.547201,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Swanton, OH</name>
-      <description>10420 Airport Hwy, Swanton, OH 43558 · 419-402-8400</description>
-      <Point><coordinates>-83.7926472,41.6013184,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Lecanto, FL</name>
-      <description>299 E. Gulf to Lake Hwy, Lecanto, FL 34461 · 352-453-0345</description>
-      <Point><coordinates>-82.4295381,28.858622,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Rio Grande, NJ</name>
-      <description>1304 NJ-47 b, Rio Grande, NJ 08242 · 609-551-0234</description>
-      <Point><coordinates>-74.8779,39.0128,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>DENAGO Dealership — Wichita Falls, TX</name>
-      <description>3904 Sheppard Access Rd, Wichita Falls, TX 76306 · 940-716-3334</description>
-      <Point><coordinates>-98.493,33.9456,0</coordinates></Point>
+      <name>Virginia DENAGO Dealership — Gloucester Point</name>
+      <description>2810 George Washington Memorial Hwy, Gloucester Point, VA 23072 | 804-792-0234</description>
+      <Point>
+        <coordinates>-76.5074161,37.2850625,0</coordinates>
+      </Point>
     </Placemark>
   </Document>
 </kml>

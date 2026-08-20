@@ -20,11 +20,11 @@ export const denagoResources: DenagoResource[] = [
     cardTitle: 'DENAGO Dealership',
     title: 'DENAGO',
     titleAccent: 'DEALERSHIP',
-    seoTitle: 'Authorized DENAGO Golf Cart Dealership | 16 Locations',
+    seoTitle: 'Authorized Virginia DENAGO Golf Cart Dealership',
     seoDescription:
-      'Buy your Denago golf cart from an authorized dealership — transparent MSRP pricing, factory warranty registration, financing, trade-ins, and in-house service at 16 locations.',
+      'Buy your Denago golf cart from an authorized Virginia dealership with transparent MSRP pricing, factory warranty registration, financing, trade-ins, and in-house service.',
     intro:
-      'We are an authorized Denago EV dealership group with 16 showroom locations across ten states, offering the complete Denago lineup with transparent pricing and full factory support.',
+      'We are an authorized Virginia Denago EV dealership serving Virginia Beach, Hampton Roads, Richmond, Northern Virginia, the Eastern Shore, and communities statewide.',
     sections: [
       {
         heading: 'Why Buy From an Authorized Dealer',
@@ -32,7 +32,7 @@ export const denagoResources: DenagoResource[] = [
       },
       {
         heading: 'Test Drive Before You Buy',
-        text: 'Visit any of our 16 showrooms to sit in, drive, and compare Denago models side by side. Our staff will walk you through options, colors, and street-legal configurations for your area.',
+        text: 'Visit our Gloucester Point showroom to sit in, drive, and compare Denago models side by side. Our staff will walk you through options, colors, and street-legal configurations for your Virginia community.',
       },
       {
         heading: 'Trade-Ins Welcome',
@@ -164,7 +164,7 @@ export const denagoResources: DenagoResource[] = [
       },
       {
         heading: 'Warranty Service Done Here',
-        text: 'Warranty repairs go through approved dealers, and we\'re one — all 16 locations handle claims, stock genuine parts, and register your warranty on delivery day.',
+        text: 'Warranty repairs go through approved dealers, and we\'re one — our Virginia team handles claims, stocks genuine parts, and registers your warranty on delivery day.',
       },
     ],
   },
@@ -226,7 +226,7 @@ export const denagoResources: DenagoResource[] = [
       },
       {
         heading: 'Owner Support',
-        text: 'Questions about your touchscreen, charger, or street-legal registration? Call any of our 16 locations and talk to a Denago specialist.',
+        text: 'Questions about your touchscreen, charger, or Virginia street-legal registration? Call our dealership and talk to a Denago specialist.',
       },
       {
         heading: 'Recall Check (Free Fix)',

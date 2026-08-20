@@ -1,7 +1,7 @@
 {
-  "name": "DENAGO Dealership",
-  "short_name": "DENAGO",
-  "description": "Denago electric golf carts for sale — 16 dealership locations, 0% financing available.",
+  "name": "Virginia DENAGO Dealership",
+  "short_name": "Virginia DENAGO",
+  "description": "DENAGO EV golf carts for sale in Virginia, serving Virginia Beach, Hampton Roads, Richmond, and communities statewide.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

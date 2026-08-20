@@ -139,7 +139,7 @@ export function ReviewForm({ fixedModel }: { fixedModel?: string }) {
               name="location"
               maxLength={80}
               className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
-              placeholder="e.g. Hatfield, PA"
+              placeholder="e.g. Virginia Beach, VA"
             />
           </div>
         </div>

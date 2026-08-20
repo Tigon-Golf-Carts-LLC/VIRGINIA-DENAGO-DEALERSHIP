@@ -6,8 +6,8 @@ export default function Contact() {
   return (
     <>
       <Seo 
-        title={`Contact Us | ${DEALERSHIP.name}`}
-        description="Call or visit our dealership today to test drive a DENAGO electric vehicle. We offer full sales, service, and support."
+        title={`Contact Virginia DENAGO Dealership | Sales & Service`}
+        description="Call Virginia DENAGO Dealership for DENAGO EV golf cart sales, service, financing, and test drives in Gloucester Point and across Virginia."
         url={`${DEALERSHIP.domain}/contact`}
       />
 
@@ -19,7 +19,7 @@ export default function Contact() {
                 CONTACT <span className="text-primary">US</span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                Ready to electrify your ride? Our team is standing by to answer your questions and schedule a test drive.
+                 Ready to find your DENAGO EV in Virginia? Our Gloucester Point team serves Virginia Beach, Hampton Roads, Richmond, and communities statewide.
               </p>
             </div>
 

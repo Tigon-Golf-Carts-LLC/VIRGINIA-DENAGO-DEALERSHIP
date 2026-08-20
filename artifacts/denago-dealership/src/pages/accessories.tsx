@@ -58,7 +58,7 @@ const accessoryFaqs = [
   },
   {
     q: 'Where can I buy replacement parts for my Denago golf cart?',
-    a: 'Genuine Denago replacement parts — chargers, controllers, tires, brakes, lights, seats, and body panels — are available through our 16 dealership parts departments. Call (866) 996-3867 and we can ship parts to your closest location or install them in our service centers.',
+    a: 'Genuine Denago replacement parts — chargers, controllers, tires, brakes, lights, seats, and body panels — are available through our Virginia dealership. Call (804) 792-0234 to order parts or schedule installation at our Gloucester Point service center.',
   },
   {
     q: 'Do accessories void the Denago factory warranty?',
@@ -84,7 +84,7 @@ export default function Accessories() {
           position: index + 1,
           name: cat.title,
           description: cat.description,
-          url: 'https://denagodealership.com/accessories',
+          url: `${DEALERSHIP.domain}/accessories`,
         })),
       },
       {
@@ -102,8 +102,8 @@ export default function Accessories() {
     <>
       <Seo
         title="Denago Golf Cart Accessories & Replacement Parts | Call to Order"
-        description="Shop Denago golf cart accessories — golf bag holders, cargo racks, enclosures, covers, chargers & genuine replacement parts. In stock at 16 dealership locations. Call (866) 996-3867 to order."
-        url="https://denagodealership.com/accessories"
+        description="Shop Denago golf cart accessories in Virginia — golf bag holders, cargo racks, enclosures, covers, chargers, and genuine replacement parts. Call (804) 792-0234."
+        url={`${DEALERSHIP.domain}/accessories`}
         schema={schema}
       />
 

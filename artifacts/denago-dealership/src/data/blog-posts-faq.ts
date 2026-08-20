@@ -57,7 +57,7 @@ We sell and service these carts across [16 stores](/locations), and the service 
     heroImage: '/assets/blog/denago-golf-cart-manufacturer.jpg',
     heroAlt: 'DENAGO NOMAD golf cart in a modern assembly facility',
     relatedSlugs: ['is-denago-a-good-golf-cart-brand', 'denago-golf-carts-complete-buyers-guide', 'most-reliable-electric-golf-cart'],
-    body: `Denago golf carts are made by Denago EV, an electric-vehicle brand focused exclusively on lithium-powered personal transport — golf carts, street-legal NEVs, and utility carts. The carts are sold and supported in the United States through authorized dealers like DENAGO Dealership, which operates [16 showrooms in 10 states](/locations).
+    body: `Denago golf carts are made by Denago EV, an electric-vehicle brand focused exclusively on lithium-powered personal transport — golf carts, street-legal NEVs, and utility carts. The carts are sold and supported in the United States through authorized dealers like Virginia DENAGO Dealership, serving major communities throughout Virginia from our [Gloucester Point showroom](/locations).
 
 ## What Is Denago EV?
 
@@ -69,7 +69,7 @@ Denago backs its carts with one of the stronger warranty stacks in the industry 
 
 ## Where Do You Buy and Service One?
 
-Through authorized dealers. DENAGO Dealership stocks the [full lineup](/denago), holds [genuine parts](/parts), and runs [factory-trained service](/service-center) at every location — Pennsylvania, New Jersey, Delaware, North Carolina, Virginia, South Carolina, Ohio, Indiana, Florida, and Texas. Call (866) 996-3867 with brand questions; we answer them all day.
+Through authorized dealers. Virginia DENAGO Dealership stocks the [full lineup](/denago), holds [genuine parts](/parts), and provides [factory-trained service](/service-center) from Gloucester Point for customers across Virginia. Call (804) 792-0234 with brand questions.
 
 ## Why Does the Maker Matter Less Than You Think?
 
@@ -147,7 +147,7 @@ The failure modes that plague older electric carts mostly don't apply: no lead-a
 
 ## When Should You Call the Dealer?
 
-Anything electrical beyond the disconnect switch, any error code on the digital display, and anything covered by warranty — don't open sealed components yourself, because that can void coverage. Every one of our [16 stores](/locations) has factory-trained techs and [genuine parts](/parts), and phone triage at (866) 996-3867 solves a surprising number of issues in five minutes.
+Anything electrical beyond the disconnect switch, any error code on the digital display, and anything covered by warranty — don't open sealed components yourself, because that can void coverage. Our [Virginia service team](/locations) has factory-trained techs and [genuine parts](/parts), and phone triage at (804) 792-0234 solves a surprising number of issues in five minutes.
 
 ## The Bottom Line
 
@@ -295,7 +295,7 @@ A [DENAGO ROVER XL6](/denago/ev-rover-xl6) at $12,995 delivers the component lis
 
 ## So Which Should You Buy?
 
-If the badge is the point, the answer was never in question — luxury doesn't optimize. If the experience is the point, drive a ROVER XL6 back-to-back with anything at twice the price and score it on silence, ride, and finish. Our [16 showrooms](/locations) will happily arrange the test. For the broader landscape, read [the top 3 golf cart brands](/blog/top-3-golf-cart-brands).`,
+If the badge is the point, the answer was never in question — luxury doesn't optimize. If the experience is the point, drive a ROVER XL6 back-to-back with anything at twice the price and score it on silence, ride, and finish. Our [Gloucester Point showroom](/locations) will happily arrange the test. For the broader landscape, read [the top 3 golf cart brands](/blog/top-3-golf-cart-brands).`,
   },
   {
     slug: 'denago-golf-cart-consumer-reports-reviews',
@@ -410,7 +410,7 @@ That's the case for putting Denago in any 2026 top-three conversation, alongside
 
 ## How to Pick Your Own Top Three
 
-Score any three carts on battery chemistry, frame material, warranty terms, and as-equipped price — the [reliability checklist](/blog/most-reliable-electric-golf-cart) walks through it. Then drive them. Our [16 showrooms](/locations) keep the full lineup charged for exactly that.`,
+Score any three carts on battery chemistry, frame material, warranty terms, and as-equipped price — the [reliability checklist](/blog/most-reliable-electric-golf-cart) walks through it. Then drive them. Our [Gloucester Point showroom](/locations) keeps the full lineup charged for exactly that.`,
   },
   {
     slug: 'denago-rover-golf-cart-reviews',

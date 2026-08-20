@@ -13,8 +13,8 @@ interface SeoProps {
 export function Seo({
   title,
   description,
-  url = 'https://denagodealership.com',
-  image = 'https://denagodealership.com/og-image.png',
+  url = 'https://virginiadenagodealership.com',
+  image = 'https://virginiadenagodealership.com/og-image.png',
   type = 'website',
   schema,
   noindex = false,

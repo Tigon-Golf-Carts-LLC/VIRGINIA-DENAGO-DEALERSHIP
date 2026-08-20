@@ -22,27 +22,27 @@ export interface VehicleModel {
 }
 
 export const DEALERSHIP = {
-  name: "DENAGO Dealership",
-  legalName: "DENAGO Dealership",
-  domain: "https://denagodealership.com",
-  phone: "1-866-996-3867",
-  phoneDisplay: "(866) 996-3867",
+  name: "Virginia DENAGO Dealership",
+  legalName: "Virginia DENAGO Dealership",
+  domain: "https://virginiadenagodealership.com",
+  phone: "1-804-792-0234",
+  phoneDisplay: "(804) 792-0234",
   brand: "DENAGO EV",
 };
 
 /** Single source of truth for the headquarters address & contact info. */
 export const HEADQUARTERS = {
-  street: "2333 Bethlehem Pike",
-  city: "Hatfield",
-  state: "PA",
-  zip: "19440",
+  street: "2810 George Washington Memorial Hwy",
+  city: "Gloucester Point",
+  state: "VA",
+  zip: "23072",
   country: "United States",
   countryCode: "US",
   mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=2333+Bethlehem+Pike,+Hatfield,+PA+19440",
+    "https://www.google.com/maps/search/?api=1&query=2810+George+Washington+Memorial+Hwy,+Gloucester+Point,+VA+23072",
   phone: DEALERSHIP.phone,
   phoneDisplay: DEALERSHIP.phoneDisplay,
-  email: "sales@denagodealership.com",
+  email: "sales@virginiadenagodealership.com",
 };
 
 /** Single source of truth for showroom hours. Edit here to update the whole site. */
@@ -62,7 +62,7 @@ export const denagoModels: VehicleModel[] = [
       "The DENAGO CITY is a street-legal Neighborhood Electric Vehicle built for city transportation, campuses, and neighborhood use. Featuring a sleek design, efficient battery system, and all required DOT safety equipment, it's the ideal urban companion.",
     price: "$16,500",
     priceNumber: 16500,
-    seats: "2",
+    seats: "5",
     range: "40–50 miles",
     topSpeed: "25 mph",
     driveType: "2x4",
@@ -81,7 +81,7 @@ export const denagoModels: VehicleModel[] = [
     specs: [
       { label: "Top Speed", value: "25 mph" },
       { label: "Range", value: "40–50 miles" },
-      { label: "Seating", value: "2 Passengers" },
+      { label: "Seating", value: "5 Passengers" },
       { label: "Motor", value: "AC Electric Motor" },
       { label: "Battery", value: "Lithium Ion" },
       { label: "Charging", value: "6–8 hours (110V)" },
@@ -172,7 +172,7 @@ export const denagoModels: VehicleModel[] = [
       "The DENAGO ROVER XL delivers six-passenger comfort in a street-capable electric vehicle. Ideal for families, resorts, and communities that need more seating without sacrificing style or capability.",
     price: "$10,995",
     priceNumber: 10995,
-    seats: "6",
+    seats: "4",
     range: "45 miles",
     topSpeed: "25 mph",
     driveType: "2x4",
@@ -191,7 +191,7 @@ export const denagoModels: VehicleModel[] = [
     specs: [
       { label: "Top Speed", value: "25 mph" },
       { label: "Range", value: "45 miles" },
-      { label: "Seating", value: "6 Passengers" },
+      { label: "Seating", value: "4 Passengers" },
       { label: "Motor", value: "AC Electric Motor" },
       { label: "Battery", value: "Lithium Ion" },
       { label: "Charging", value: "6–8 hours (110V)" },
@@ -242,7 +242,7 @@ export const denagoModels: VehicleModel[] = [
       "The DENAGO ROVER XXL is the flagship people-mover of the lineup with eight-passenger seating — perfect for resorts, event venues, large families, and commercial transport applications.",
     price: "$12,995",
     priceNumber: 12995,
-    seats: "8",
+    seats: "6",
     range: "45 miles",
     topSpeed: "25 mph",
     driveType: "2x4",
@@ -261,7 +261,7 @@ export const denagoModels: VehicleModel[] = [
     specs: [
       { label: "Top Speed", value: "25 mph" },
       { label: "Range", value: "45 miles" },
-      { label: "Seating", value: "8 Passengers" },
+      { label: "Seating", value: "6 Passengers" },
       { label: "Motor", value: "AC Electric Motor" },
       { label: "Battery", value: "Lithium Ion" },
       { label: "Charging", value: "6–8 hours (110V)" },

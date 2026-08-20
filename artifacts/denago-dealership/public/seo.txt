@@ -1,50 +1,12 @@
-# seo.txt — SEO Keyword Strategy for DENAGO Dealership
+# SEO Strategy — Virginia DENAGO Dealership
 
-Domain: https://denagodealership.com
-All search engines are granted full crawl and index permission.
+Domain: https://virginiadenagodealership.com
+Primary market: Virginia
+Primary location: Gloucester Point, VA
+Primary keywords:
+- Virginia DENAGO golf cart dealership
+- Virginia DENAGO dealership
+- DENAGO EV dealership in Virginia
 
-## Primary keywords
-
-denago golf carts, denago golf carts for sale, denago golf cart price, denago dealership, denago dealer near me, denago ev, buy denago golf cart, new denago golf carts, denago city, denago nomad, denago nomad xl, denago rover xl, denago rover xl6, denago rover xxl, denago oxen, denago scout 2
-
-## Model keywords
-
-denago city: denago city for sale, denago city price, denago city review, denago city specs
-denago nomad: denago nomad for sale, denago nomad price, denago nomad review, denago nomad specs
-denago nomad xl: denago nomad xl for sale, denago nomad xl price, denago nomad xl review, denago nomad xl specs
-denago rover xl: denago rover xl for sale, denago rover xl price, denago rover xl review, denago rover xl specs
-denago rover xl6: denago rover xl6 for sale, denago rover xl6 price, denago rover xl6 review, denago rover xl6 specs
-denago rover xxl: denago rover xxl for sale, denago rover xxl price, denago rover xxl review, denago rover xxl specs
-denago oxen: denago oxen for sale, denago oxen price, denago oxen review, denago oxen specs
-denago scout 2: denago scout 2 for sale, denago scout 2 price, denago scout 2 review, denago scout 2 specs
-
-## Service & intent keywords
-
-golf cart financing, 0% apr golf cart financing, golf cart financing bad credit, golf cart dealership near me, street legal golf cart, lsv nev for sale, lithium golf cart, electric golf cart dealer, golf cart service center, golf cart parts, golf cart warranty, golf cart trade in
-
-## Local keywords
-
-denago golf carts hatfield pa, golf cart dealer hatfield pa
-denago golf carts ocean view nj, golf cart dealer ocean view nj
-denago golf carts long pond pa, golf cart dealer long pond pa
-denago golf carts pocono pines pa, golf cart dealer pocono pines pa
-denago golf carts dover de, golf cart dealer dover de
-denago golf carts scranton pa, golf cart dealer scranton pa
-denago golf carts raleigh nc, golf cart dealer raleigh nc
-denago golf carts south bend in, golf cart dealer south bend in
-denago golf carts gloucester point va, golf cart dealer gloucester point va
-denago golf carts bayville nj, golf cart dealer bayville nj
-denago golf carts waretown nj, golf cart dealer waretown nj
-denago golf carts orangeburg sc, golf cart dealer orangeburg sc
-denago golf carts swanton oh, golf cart dealer swanton oh
-denago golf carts lecanto fl, golf cart dealer lecanto fl
-denago golf carts rio grande nj, golf cart dealer rio grande nj
-denago golf carts wichita falls tx, golf cart dealer wichita falls tx
-
-## Long-tail & voice search
-
-how much does a denago golf cart cost, where to buy a denago golf cart near me, what is the best 6 passenger electric golf cart, are denago golf carts street legal, denago vs other golf cart brands, golf cart with 8 year battery warranty, electric golf cart with 70 mile range, golf cart 0 down financing near me
-
-## Seasonal & trending
-
-spring golf cart sale, summer beach cart, holiday golf cart gift, new 2026 denago models, golf cart tax season deals
+Priority local markets:
+Virginia Beach, Chesapeake, Norfolk, Richmond, Newport News, Alexandria, Hampton, Roanoke, Portsmouth, Suffolk, Lynchburg, Charlottesville, Harrisonburg, Fredericksburg, Leesburg, Williamsburg, Yorktown, Cape Charles, and Chincoteague.

@@ -84,7 +84,7 @@ Buy the seats you'll need in two years, not just today — upgrading later costs
 
 ## Where Can You See a Denago Golf Cart in Person?
 
-DENAGO Dealership operates 16 showrooms across Pennsylvania, New Jersey, Delaware, North Carolina, Indiana, Virginia, South Carolina, Ohio, Florida, and Texas. Find your closest store on the [locations page](/locations) or call (866) 996-3867. See our city guides for [Raleigh](/blog/raleigh-nc-golf-carts-buyers-guide), [Dover](/blog/dover-de-golf-carts-buyers-guide), and [South Bend](/blog/south-bend-in-golf-cart-models-guide).`,
+Virginia DENAGO Dealership serves Virginia Beach, Hampton Roads, Richmond, Northern Virginia, the Eastern Shore, and communities statewide from our Gloucester Point showroom. See our [Virginia service areas](/locations) or call (804) 792-0234.`,
   },
   // ---------- PILLAR 2 ----------
   {
@@ -135,7 +135,7 @@ At 0% APR, financing costs nothing extra — many cash buyers finance anyway and
 
 ## How Do You Apply?
 
-Start on the [financing page](/financing), pick the lender that fits your situation, and apply online in about 10 minutes — or call (866) 996-3867 and we'll match you to the right program. Then visit any of our [16 locations](/locations) to take delivery. Read the [complete buyer's guide](/blog/denago-golf-carts-complete-buyers-guide) first if you're still choosing a model.`,
+Start on the [financing page](/financing), pick the lender that fits your situation, and apply online in about 10 minutes — or call (804) 792-0234 and we'll match you to the right program. Then visit our [Gloucester Point showroom](/locations) to take delivery. Read the [complete buyer's guide](/blog/denago-golf-carts-complete-buyers-guide) first if you're still choosing a model.`,
   },
   // ---------- PILLAR 3 ----------
   {
@@ -587,7 +587,10 @@ Our showroom at 2810 George Washington Memorial Hwy sits just north of the Colem
   },
 ];
 
-export const blogPosts: BlogPost[] = [...corePosts, ...faqPosts];
+export const blogPosts: BlogPost[] = [
+  ...corePosts.filter((post) => !post.targetCity || post.targetCity.endsWith(', VA')),
+  ...faqPosts,
+];
 
 export const POSTS_PER_PAGE = 6;
 

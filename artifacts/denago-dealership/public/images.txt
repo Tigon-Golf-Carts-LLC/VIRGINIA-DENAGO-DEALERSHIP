@@ -1,19 +1,5 @@
-# images.txt — Image Optimization Rules for DENAGO Dealership
+# Virginia DENAGO Dealership Image Information
 
-- Every image includes descriptive alt text with model name and context
-- File naming: denago-<model>-<variant>.<ext> (lowercase, hyphenated)
-- Formats: JPEG/PNG served today; WebP/AVIF conversion planned for heavy pages
-- Lazy loading enabled for below-the-fold images
-- Model card images: 4:3 aspect, object-cover
-- Image sitemap: https://denagodealership.com/sitemap-images.xml
-
-## Key images
-
-https://denagodealership.com/assets/denago/denago-ev-city.jpg — DENAGO CITY (Street-legal NEV / LSV)
-https://denagodealership.com/assets/denago/denago-ev-nomad.jpg — DENAGO NOMAD (Lifted 4-passenger golf cart)
-https://denagodealership.com/assets/denago/denago-ev-nomad-xl.jpg — DENAGO NOMAD XL (Lifted 4-passenger golf cart)
-https://denagodealership.com/assets/denago/denago-ev-rover-xl.jpg — DENAGO ROVER XL (6-passenger golf cart)
-https://denagodealership.com/assets/denago/denago-ev-rover-xl6.jpg — DENAGO ROVER XL6 (Lifted 6-passenger golf cart)
-https://denagodealership.com/assets/denago/denago-ev-rover-xxl.jpg — DENAGO ROVER XXL (8-passenger golf cart)
-https://denagodealership.com/assets/denago/denago-ev-oxen.jpg — DENAGO OXEN (Electric utility cart with dump bed)
-https://denagodealership.com/assets/denago/denago-ev-scout-2.png — DENAGO SCOUT 2 (Compact 2-passenger golf cart)
+Open Graph image: https://virginiadenagodealership.com/og-image.png
+Logo: https://virginiadenagodealership.com/brand/denago-logo.png
+Vehicle images are available under https://virginiadenagodealership.com/assets/denago/

@@ -70,7 +70,7 @@ const programs = [
 const steps = [
   {
     title: 'Choose Your Cart',
-    text: 'Browse the Denago lineup online or visit any of our 16 locations. Our team will help you match a cart to your budget and use case.',
+    text: 'Browse the Denago lineup online or visit our Gloucester Point showroom. Our Virginia team will help you match a cart to your budget and use case.',
   },
   {
     title: 'Apply in Minutes',

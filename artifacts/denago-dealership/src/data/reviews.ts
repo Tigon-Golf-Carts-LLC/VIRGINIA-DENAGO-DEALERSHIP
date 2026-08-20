@@ -31,7 +31,7 @@ export interface SeedReview {
 export const seedReviews: SeedReview[] = [
   {
     author: 'Patricia L.',
-    location: 'New Hope, PA',
+    location: 'Virginia Beach, VA',
     model: 'EV ROVER XL',
     rating: 5,
     title: "Best purchase we've made for the neighborhood",
@@ -40,7 +40,7 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Greg T.',
-    location: 'Chalfont, PA',
+    location: 'Chesapeake, VA',
     model: 'EV NOMAD',
     rating: 5,
     title: 'Switched from gas and never looking back',
@@ -49,16 +49,16 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Susan M.',
-    location: 'Doylestown, PA',
+    location: 'Norfolk, VA',
     model: 'EV CITY',
     rating: 5,
     title: 'Finally a golf cart I can use in the rain',
-    text: "The enclosed cab is what got me. Every other cart I looked at was open-air and useless half the year in Pennsylvania. The CITY has real doors, heat, and a proper windshield. My husband and I use it year-round for everything inside our community. The 8-year battery warranty gave us a lot of confidence on the investment too.",
+    text: "The enclosed cab is what got me. Every other cart I looked at was open-air and less practical in changing Virginia weather. The CITY has real doors, heat, and a proper windshield. My husband and I use it year-round for everything inside our community. The 8-year battery warranty gave us a lot of confidence in the investment too.",
     date: '2026-06-03',
   },
   {
     author: 'Dave R.',
-    location: 'Warminster, PA',
+    location: 'Richmond, VA',
     model: 'EV NOMAD XL',
     rating: 5,
     title: 'Handles our property like it owns the place',
@@ -67,7 +67,7 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Joan F.',
-    location: 'Horsham, PA',
+    location: 'Newport News, VA',
     model: null,
     rating: 5,
     title: 'The dealership experience was refreshingly easy',
@@ -76,7 +76,7 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Mike A.',
-    location: 'Lansdale, PA',
+    location: 'Hampton, VA',
     model: 'EV ROVER XL6',
     rating: 4,
     title: 'Six seats means the whole family goes every time',
@@ -85,7 +85,7 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Karen B.',
-    location: 'Blue Bell, PA',
+    location: 'Williamsburg, VA',
     model: 'EV NOMAD',
     rating: 5,
     title: 'Exactly what we needed — no more, no less',
@@ -94,7 +94,7 @@ export const seedReviews: SeedReview[] = [
   },
   {
     author: 'Bill S.',
-    location: 'Souderton, PA',
+    location: 'Gloucester Point, VA',
     model: 'OXEN',
     rating: 5,
     title: 'Replaced our gas UTV — quieter and cheaper to run',

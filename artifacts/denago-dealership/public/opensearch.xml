@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>DENAGO</ShortName>
-  <Description>Search DENAGO Dealership — Denago golf carts, models, locations, and resources</Description>
-  <Url type="text/html" template="https://denagodealership.com/denago?q={searchTerms}"/>
+  <ShortName>Virginia DENAGO</ShortName>
+  <Description>Search Virginia DENAGO Dealership</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image height="16" width="16" type="image/png">https://denagodealership.com/favicon-16.png</Image>
+  <Url type="text/html" template="https://virginiadenagodealership.com/?q={searchTerms}"/>
 </OpenSearchDescription>

@@ -16,7 +16,7 @@ export interface ModelReview {
 export const modelReviews: Record<string, ModelReview> = {
   'ev-city': {
     author: 'Marlene G.',
-    location: 'Doylestown, PA',
+    location: 'Virginia Beach, VA',
     rating: 5,
     date: '2026-06-18',
     title: 'Feels more like a small car than a golf cart',
@@ -24,7 +24,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'ev-nomad': {
     author: 'Rick D.',
-    location: 'Hatfield, PA',
+    location: 'Gloucester Point, VA',
     rating: 5,
     date: '2026-05-30',
     title: 'Perfect first golf cart — nothing to fuss with',
@@ -32,7 +32,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'ev-nomad-xl': {
     author: 'Sandra K.',
-    location: 'Quakertown, PA',
+    location: 'Chesapeake, VA',
     rating: 5,
     date: '2026-07-06',
     title: 'The lifted XL handles our gravel roads with ease',
@@ -40,7 +40,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'ev-rover-xl': {
     author: 'Tom B.',
-    location: 'Collegeville, PA',
+    location: 'Richmond, VA',
     rating: 5,
     date: '2026-06-02',
     title: 'Our whole family fits — and it is street legal',
@@ -48,7 +48,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'ev-rover-xl6': {
     author: 'Denise W.',
-    location: 'West Chester, PA',
+    location: 'Alexandria, VA',
     rating: 4,
     date: '2026-04-22',
     title: 'Six seats means nobody stays home',
@@ -56,7 +56,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'ev-rover-xxl': {
     author: 'Carlos M.',
-    location: 'Phoenixville, PA',
+    location: 'Norfolk, VA',
     rating: 5,
     date: '2026-07-14',
     title: 'The XXL replaced our second car around the resort',
@@ -64,7 +64,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'oxen': {
     author: 'Jim H.',
-    location: 'Pottstown, PA',
+    location: 'Newport News, VA',
     rating: 5,
     date: '2026-05-11',
     title: 'A real utility machine, not a dressed-up golf cart',
@@ -72,7 +72,7 @@ export const modelReviews: Record<string, ModelReview> = {
   },
   'scout2': {
     author: 'Angela R.',
-    location: 'Lansdale, PA',
+    location: 'Williamsburg, VA',
     rating: 4,
     date: '2026-06-25',
     title: 'Great value — all the essentials done right',

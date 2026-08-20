@@ -117,7 +117,7 @@ export default function BlogPost() {
                   Ready to See One in Person?
                 </h2>
                 <p className="text-muted-foreground">
-                  Test drive any Denago model at one of our <Link href="/locations" className="text-primary font-semibold hover:underline">16 showrooms</Link>, or ask about <Link href="/financing" className="text-primary font-semibold hover:underline">0% APR financing</Link>.
+                  Test drive any Denago model at our <Link href="/locations" className="text-primary font-semibold hover:underline">Gloucester Point showroom</Link>, or ask about <Link href="/financing" className="text-primary font-semibold hover:underline">0% APR financing</Link>.
                 </p>
               </div>
               <a
@@ -125,7 +125,7 @@ export default function BlogPost() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-lg font-bold text-lg flex items-center gap-3 transition-colors shadow-lg clip-path-slant shrink-0"
               >
                 <Phone className="h-6 w-6" />
-                {DEALERSHIP.phoneDisplay ?? '(866) 996-3867'}
+                {DEALERSHIP.phoneDisplay}
               </a>
             </div>
 

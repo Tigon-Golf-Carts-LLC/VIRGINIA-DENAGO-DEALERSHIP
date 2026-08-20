@@ -103,7 +103,7 @@ export default function Reviews() {
             </h2>
             <p className="text-muted-foreground mb-6">
               We'd love to hear about your experience — scroll up to write a review, call us, or
-              stop by any of our 16 locations. Still deciding? Shop the lineup.
+              stop by our Gloucester Point showroom. Still deciding? Shop the lineup.
             </p>
             <div className="flex flex-wrap gap-4">
               <a

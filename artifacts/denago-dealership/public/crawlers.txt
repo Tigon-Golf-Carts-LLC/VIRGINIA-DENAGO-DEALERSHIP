@@ -1,55 +1,5 @@
-# crawlers.txt — Annotated Crawler Directory for DENAGO Dealership
-# All listed crawlers: ALLOWED, crawl-delay 0, full site access.
+# Crawler Guidance
 
-Googlebot: Google web search — ALLOWED
-Googlebot-Image: Google image search — ALLOWED
-Googlebot-Mobile: Google mobile indexing — ALLOWED
-Googlebot-Video: Google video search — ALLOWED
-Googlebot-News: Google News — ALLOWED
-AdsBot-Google: Google Ads landing page checks — ALLOWED
-Mediapartners-Google: Google AdSense — ALLOWED
-Google-Extended: Google AI (Gemini) training — ALLOWED
-Bingbot: Microsoft Bing search — ALLOWED
-BingPreview: Bing page previews — ALLOWED
-Slurp: Yahoo search — ALLOWED
-DuckDuckBot: DuckDuckGo search — ALLOWED
-Baiduspider: Baidu search (China) — ALLOWED
-YandexBot: Yandex search (Russia) — ALLOWED
-SeznamBot: Seznam search (Czech) — ALLOWED
-NaverBot: Naver search (Korea) — ALLOWED
-Sogou web spider: Sogou search (China) — ALLOWED
-Qwantify: Qwant search (EU) — ALLOWED
-MojeekBot: Mojeek independent search — ALLOWED
-Applebot: Apple Siri & Spotlight — ALLOWED
-GPTBot: OpenAI model training — ALLOWED
-ChatGPT-User: ChatGPT live browsing — ALLOWED
-OAI-SearchBot: OpenAI search — ALLOWED
-anthropic-ai: Anthropic model training — ALLOWED
-ClaudeBot: Anthropic Claude crawling — ALLOWED
-Claude-Web: Claude web access — ALLOWED
-CCBot: Common Crawl open dataset — ALLOWED
-PerplexityBot: Perplexity AI search — ALLOWED
-cohere-ai: Cohere model training — ALLOWED
-Amazonbot: Amazon Alexa answers — ALLOWED
-Bytespider: ByteDance search/AI — ALLOWED
-facebookexternalhit: Facebook link previews — ALLOWED
-Twitterbot: X/Twitter cards — ALLOWED
-LinkedInBot: LinkedIn previews — ALLOWED
-Pinterestbot: Pinterest rich pins — ALLOWED
-InstagramBot: Instagram previews — ALLOWED
-WhatsApp: WhatsApp link previews — ALLOWED
-TelegramBot: Telegram previews — ALLOWED
-Slackbot: Slack unfurls — ALLOWED
-Discordbot: Discord embeds — ALLOWED
-AhrefsBot: Ahrefs SEO analysis — ALLOWED
-SemrushBot: Semrush SEO analysis — ALLOWED
-MJ12bot: Majestic link index — ALLOWED
-DotBot: Moz link index — ALLOWED
-rogerbot: Moz site crawl — ALLOWED
-ScreamingFrogSEOSpider: Screaming Frog audits — ALLOWED
-ia_archiver: Internet Archive — ALLOWED
-archive.org_bot: Wayback Machine preservation — ALLOWED
-YelpBot: Yelp business data — ALLOWED
-TrustpilotBot: Trustpilot reviews — ALLOWED
-
-Sitemap: https://denagodealership.com/sitemap.xml
+Canonical domain: https://virginiadenagodealership.com
+Sitemap: https://virginiadenagodealership.com/sitemap.xml
+Robots policy: https://virginiadenagodealership.com/robots.txt
