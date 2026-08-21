@@ -1,0 +1,22 @@
+{
+  // Cloudflare Workers configuration for the Denago dealership site.
+  //
+  // Build:  pnpm run build          (or the faster `pnpm run build:cloudflare`)
+  // Deploy: npx wrangler deploy
+  //
+  // The `assets.directory` below is produced by the denago-dealership Vite
+  // build, so the build command must run before `wrangler deploy`.
+  "name": "virginia-denago-dealership",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "artifacts/denago-dealership/dist/public",
+    "binding": "ASSETS",
+    // The Worker does the SPA fallback itself (see worker/index.js) so that a
+    // missing file still returns a real 404 instead of the HTML shell.
+    "not_found_handling": "none"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

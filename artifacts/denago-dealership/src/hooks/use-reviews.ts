@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
-export interface ApiReview {
+import { seedReviews } from '@/data/reviews';
+
+export interface CustomerReview {
   id: number;
   author: string;
   location: string;
@@ -8,28 +10,36 @@ export interface ApiReview {
   rating: number;
   title: string;
   text: string;
+  /** ISO date the review was written. */
   createdAt: string;
 }
 
-const API_URL = `${import.meta.env.BASE_URL}api/reviews`;
+/**
+ * Reviews are static site content -- they ship in the bundle from
+ * `@/data/reviews` rather than coming from an API, so the site deploys as a
+ * plain Cloudflare Worker with no backend behind it. To publish a new review,
+ * add it to `src/data/reviews.ts` and redeploy.
+ */
+const reviews: CustomerReview[] = seedReviews
+  .map((review, index) => ({
+    id: index + 1,
+    author: review.author,
+    location: review.location,
+    model: review.model,
+    rating: review.rating,
+    title: review.title,
+    text: review.text,
+    createdAt: review.date,
+  }))
+  .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
-/** Approved site-wide customer reviews (from the reviews page form). */
+const reviewCount = reviews.length;
+const ratingValue =
+  reviewCount === 0
+    ? 0
+    : Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount) * 10) / 10;
+
+/** Site-wide customer reviews, newest first. */
 export function useReviews() {
-  const { data: reviews = [] } = useQuery<ApiReview[]>({
-    queryKey: ['reviews'],
-    queryFn: async () => {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error('Failed to load reviews');
-      return res.json();
-    },
-    staleTime: 5 * 60 * 1000,
-  });
-
-  const reviewCount = reviews.length;
-  const ratingValue =
-    reviewCount === 0
-      ? 0
-      : Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount) * 10) / 10;
-
-  return { reviews, reviewCount, ratingValue };
+  return useMemo(() => ({ reviews, reviewCount, ratingValue }), []);
 }

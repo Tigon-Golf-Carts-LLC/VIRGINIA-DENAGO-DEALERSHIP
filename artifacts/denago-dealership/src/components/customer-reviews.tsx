@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Star, ChevronDown } from 'lucide-react';
-import { ReviewForm } from '@/components/review-form';
-import { useReviews, type ApiReview } from '@/hooks/use-reviews';
+import { useReviews, type CustomerReview } from '@/hooks/use-reviews';
 
-/** Maps model slugs to the review "model" labels stored in the database. */
+/** Maps model slugs to the review "model" labels used in the review data. */
 export const REVIEW_MODEL_BY_SLUG: Record<string, string> = {
   'ev-city': 'EV City',
   'ev-nomad': 'EV Nomad',
@@ -31,7 +30,13 @@ export function Stars({ rating, size = 'h-4 w-4' }: { rating: number; size?: str
   );
 }
 
-export function ReviewCard({ review, className = '' }: { review: ApiReview; className?: string }) {
+export function ReviewCard({
+  review,
+  className = '',
+}: {
+  review: CustomerReview;
+  className?: string;
+}) {
   return (
     <article
       className={`bg-card border border-border rounded-xl p-6 flex flex-col gap-3 ${className}`}
@@ -62,14 +67,14 @@ export function ReviewCard({ review, className = '' }: { review: ApiReview; clas
 
 /**
  * Full customer-reviews experience: aggregate badge, 4 inline cards on
- * desktop (2 on mobile), a "Read All" expander with infinite scroll, and the
- * write-a-review form. Pass `model` to scope everything to one model
- * (model pages); omit it for the site-wide reviews page.
+ * desktop (2 on mobile), and a "Read All" expander with infinite scroll.
+ * Pass `model` to scope everything to one model (model pages); omit it for
+ * the site-wide reviews page.
  */
 export function CustomerReviews({ model }: { model?: string }) {
   const { reviews: allReviews } = useReviews();
-  // Case-insensitive match: stored model labels are canonically uppercase
-  // (e.g. "EV NOMAD"), but be tolerant of any legacy casing.
+  // Case-insensitive match: review model labels are canonically uppercase
+  // (e.g. "EV NOMAD"), but be tolerant of any other casing.
   const reviews = useMemo(
     () =>
       model
@@ -164,8 +169,6 @@ export function CustomerReviews({ model }: { model?: string }) {
           )}
         </div>
       )}
-
-      <ReviewForm fixedModel={model} />
     </div>
   );
 }
