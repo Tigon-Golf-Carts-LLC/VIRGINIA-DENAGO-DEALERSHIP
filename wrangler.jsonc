@@ -1,0 +1,26 @@
+{
+  // Cloudflare Workers configuration for the Denago dealership site.
+  //
+  // Build:  pnpm run build          (or the faster `pnpm run build:cloudflare`)
+  // Deploy: npx wrangler deploy
+  //
+  // The `assets.directory` below is produced by the denago-dealership Vite
+  // build, so the build command must run before `wrangler deploy`.
+  "name": "virginia-denago-dealership",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "artifacts/denago-dealership/dist/public",
+    "binding": "ASSETS",
+    // The Worker itself does the SPA fallback (see worker/index.js) so that
+    // /api/* requests still reach the Worker instead of being answered with
+    // index.html.
+    "not_found_handling": "none"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // Set API_ORIGIN (dashboard -> Settings -> Variables, or `wrangler secret
+  // put API_ORIGIN`) to the base URL of the api-server deployment to enable
+  // the review submission and /admin endpoints.
+}
