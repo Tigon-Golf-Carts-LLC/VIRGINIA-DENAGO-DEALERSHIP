@@ -42,7 +42,7 @@ export const HEADQUARTERS = {
     "https://www.google.com/maps/search/?api=1&query=2810+George+Washington+Memorial+Hwy,+Gloucester+Point,+VA+23072",
   phone: DEALERSHIP.phone,
   phoneDisplay: DEALERSHIP.phoneDisplay,
-  email: "sales@virginiadenagodealership.com",
+  email: "denagodealership@gmail.com",
 };
 
 /** Single source of truth for showroom hours. Edit here to update the whole site. */

@@ -2,7 +2,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /admin
 Crawl-delay: 0
 
 Sitemap: https://virginiadenagodealership.com/sitemap.xml

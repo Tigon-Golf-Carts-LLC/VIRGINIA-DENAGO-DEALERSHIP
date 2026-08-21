@@ -12,15 +12,11 @@
   "assets": {
     "directory": "artifacts/denago-dealership/dist/public",
     "binding": "ASSETS",
-    // The Worker itself does the SPA fallback (see worker/index.js) so that
-    // /api/* requests still reach the Worker instead of being answered with
-    // index.html.
+    // The Worker does the SPA fallback itself (see worker/index.js) so that a
+    // missing file still returns a real 404 instead of the HTML shell.
     "not_found_handling": "none"
   },
   "observability": {
     "enabled": true
   }
-  // Set API_ORIGIN (dashboard -> Settings -> Variables, or `wrangler secret
-  // put API_ORIGIN`) to the base URL of the api-server deployment to enable
-  // the review submission and /admin endpoints.
 }

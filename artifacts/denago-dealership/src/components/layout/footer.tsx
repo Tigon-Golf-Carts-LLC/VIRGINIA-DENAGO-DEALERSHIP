@@ -35,10 +35,13 @@ export function Footer() {
               <Phone className="h-4 w-4 text-primary" />
               <span>{DEALERSHIP.phoneDisplay}</span>
             </a>
-            <div className="flex items-center gap-3 text-white/70 text-sm">
+            <a
+              href={`mailto:${HEADQUARTERS.email}`}
+              className="flex items-center gap-3 text-white/70 hover:text-primary transition-colors text-sm"
+            >
               <Mail className="h-4 w-4 text-primary" />
               <span>{HEADQUARTERS.email}</span>
-            </div>
+            </a>
           </div>
 
           {/* Hours */}

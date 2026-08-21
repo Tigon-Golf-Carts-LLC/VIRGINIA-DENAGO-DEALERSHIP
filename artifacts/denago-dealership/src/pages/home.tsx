@@ -55,8 +55,8 @@ export default function Home() {
           "postalCode": HEADQUARTERS.zip,
           "addressCountry": HEADQUARTERS.countryCode
         },
-        // Site-wide rating comes exclusively from approved customer reviews
-        // submitted on the /reviews page (never from per-model editorial reviews).
+        // Site-wide rating comes exclusively from the verified customer reviews
+        // in src/data/reviews.ts (never from per-model editorial reviews).
         ...(reviewCount > 0
           ? {
               "aggregateRating": {

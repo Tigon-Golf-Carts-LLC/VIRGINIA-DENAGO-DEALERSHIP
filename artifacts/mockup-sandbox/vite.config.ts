@@ -52,11 +52,11 @@ function resolveBasePath(isServing: boolean): string {
 
 export default defineConfig(
   async ({ command }): Promise<UserConfig> => {
-  const isServing = command === "serve";
-  const port = resolvePort(isServing);
-  const basePath = resolveBasePath(isServing);
+    const isServing = command === "serve";
+    const port = resolvePort(isServing);
+    const basePath = resolveBasePath(isServing);
 
-  return {
+    return {
       base: basePath,
       plugins: [
         mockupPreviewPlugin(),

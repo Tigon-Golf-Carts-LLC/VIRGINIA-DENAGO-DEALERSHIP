@@ -50,63 +50,33 @@ function resolveBasePath(isServing: boolean): string {
   return basePath;
 }
 
-/** Vite plugin that adds X-Robots-Tag: noindex, nofollow to /admin responses. */
-function adminNoindex() {
-  const adminMiddleware: import('connect').NextHandleFunction = (req, res, next) => {
-    const url = req.url ?? '';
-    // Match /admin and /admin/ (with or without trailing slash or query string)
-    if (url === '/admin' || url.startsWith('/admin/') || url.startsWith('/admin?')) {
-      res.setHeader('X-Robots-Tag', 'noindex, nofollow');
-    }
-    next();
-  };
-  return {
-    name: 'admin-noindex',
-    configureServer(server: import('vite').ViteDevServer) {
-      server.middlewares.use(adminMiddleware);
-    },
-    configurePreviewServer(server: import('vite').PreviewServer) {
-      server.middlewares.use(adminMiddleware);
-    },
-  };
-}
-
 export default defineConfig(
   async ({ command }): Promise<UserConfig> => {
-  const isServing = command === 'serve';
-  const port = resolvePort(isServing);
-  const basePath = resolveBasePath(isServing);
+    const isServing = command === 'serve';
+    const port = resolvePort(isServing);
+    const basePath = resolveBasePath(isServing);
 
-  return {
+    return {
       base: basePath,
       plugins: [
         react(),
         tailwindcss(),
         runtimeErrorOverlay(),
-        adminNoindex(),
-        ...(process.env.NODE_ENV !== 'production' &&
-        process.env.REPL_ID !== undefined
+        ...(process.env.NODE_ENV !== 'production' && process.env.REPL_ID !== undefined
           ? [
               await import('@replit/vite-plugin-cartographer').then((m) =>
                 m.cartographer({
                   root: path.resolve(import.meta.dirname, '..'),
                 }),
               ),
-              await import('@replit/vite-plugin-dev-banner').then((m) =>
-                m.devBanner(),
-              ),
+              await import('@replit/vite-plugin-dev-banner').then((m) => m.devBanner()),
             ]
           : []),
       ],
       resolve: {
         alias: {
           '@': path.resolve(import.meta.dirname, 'src'),
-          '@assets': path.resolve(
-            import.meta.dirname,
-            '..',
-            '..',
-            'attached_assets',
-          ),
+          '@assets': path.resolve(import.meta.dirname, '..', '..', 'attached_assets'),
         },
         dedupe: ['react', 'react-dom'],
       },

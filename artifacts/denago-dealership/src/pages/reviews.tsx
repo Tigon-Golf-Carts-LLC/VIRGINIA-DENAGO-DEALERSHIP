@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
 import { Seo } from '@/components/seo';
-import { DEALERSHIP } from '@/data/denago-models';
+import { DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { CustomerReviews } from '@/components/customer-reviews';
 import { useReviews } from '@/hooks/use-reviews';
-import { Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { REVIEWS_ARE_REAL } from '@/data/reviews';
 
 export default function Reviews() {
@@ -65,7 +65,7 @@ export default function Reviews() {
             </p>
           </div>
 
-          {/* Rating badge, review cards, expander + infinite scroll, and form */}
+          {/* Rating badge, review cards, expander + infinite scroll */}
           <div className="mb-16">
             <CustomerReviews />
           </div>
@@ -99,18 +99,24 @@ export default function Reviews() {
           {/* CTA */}
           <div className="max-w-3xl bg-card border border-border rounded-xl p-8">
             <h2 className="text-2xl font-display font-bold uppercase tracking-tight mb-3">
-              Own a Denago? <span className="text-primary">Share Your Review</span>
+              Own a Denago? <span className="text-primary">Tell Us About It</span>
             </h2>
             <p className="text-muted-foreground mb-6">
-              We'd love to hear about your experience — scroll up to write a review, call us, or
-              stop by our Gloucester Point showroom. Still deciding? Shop the lineup.
+              We'd love to hear about your experience — call us, email us, or stop by our
+              Gloucester Point showroom. Still deciding? Shop the lineup.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href={`tel:${DEALERSHIP.phone}`}
+                href={`tel:${DEALERSHIP.phone.replace(/[^0-9+]/g, '')}`}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
               >
                 <Phone className="h-5 w-5" /> {DEALERSHIP.phoneDisplay}
+              </a>
+              <a
+                href={`mailto:${HEADQUARTERS.email}`}
+                className="inline-flex items-center gap-2 border border-border bg-background font-bold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors"
+              >
+                <Mail className="h-5 w-5" /> Email Us
               </a>
               <Link
                 href="/denago"

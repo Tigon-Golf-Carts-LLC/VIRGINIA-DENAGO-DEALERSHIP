@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'wouter';
-import { getModelBySlug, getModelPath, DEALERSHIP } from '@/data/denago-models';
+import { getModelBySlug, getModelPath, DEALERSHIP, HEADQUARTERS } from '@/data/denago-models';
 import { expertReviews } from '@/data/expert-reviews';
 import { modelReviews } from '@/data/model-reviews';
 import { Seo } from '@/components/seo';
@@ -348,10 +348,20 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
                 </div>
               </article>
               <p className="text-sm text-muted-foreground mt-4">
-                Own a {model.name}?{' '}
-                <Link href="/reviews" className="text-primary font-semibold hover:underline">
-                  Share your review
-                </Link>.
+                Own a {model.name}? Tell us about it — call{' '}
+                <a
+                  href={`tel:${DEALERSHIP.phone.replace(/[^0-9+]/g, '')}`}
+                  className="text-primary font-semibold hover:underline"
+                >
+                  {DEALERSHIP.phoneDisplay}
+                </a>{' '}
+                or email{' '}
+                <a
+                  href={`mailto:${HEADQUARTERS.email}`}
+                  className="text-primary font-semibold hover:underline"
+                >
+                  {HEADQUARTERS.email}
+                </a>.
               </p>
             </section>
           </div>

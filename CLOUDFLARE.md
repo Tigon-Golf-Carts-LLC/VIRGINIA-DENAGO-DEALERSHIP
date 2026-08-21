@@ -1,18 +1,24 @@
 # Deploying to Cloudflare Workers
 
-The dealership site is a Vite + React SPA (`artifacts/denago-dealership`). It is
-deployed as a Cloudflare Worker with static assets: the build output in
-`artifacts/denago-dealership/dist/public` is uploaded as the asset bundle, and
-`worker/index.js` handles SPA routing plus `/api/*` forwarding.
+The dealership site is a Vite + React SPA (`artifacts/denago-dealership`) with
+no backend. It deploys as a Cloudflare Worker with static assets: the build
+output in `artifacts/denago-dealership/dist/public` is uploaded as the asset
+bundle, and `worker/index.js` serves it and handles client-side routing.
+
+Every contact path on the site is a `tel:` or `mailto:` link — phone
+`(804) 792-0234` and email `denagodealership@gmail.com`, both defined once in
+`artifacts/denago-dealership/src/data/denago-models.ts` (`DEALERSHIP` and
+`HEADQUARTERS`). There are no forms and nothing to submit, so the Worker never
+needs to talk to a server, a database, or a mail service.
 
 ## Cloudflare dashboard settings
 
-| Setting          | Value                |
-| ---------------- | -------------------- |
-| Build command    | `pnpm run build`     |
+| Setting          | Value                 |
+| ---------------- | --------------------- |
+| Build command    | `pnpm run build`      |
 | Deploy command   | `npx wrangler deploy` |
-| Root directory   | `/`                  |
-| Build variables  | none required        |
+| Root directory   | `/`                   |
+| Build variables  | none required         |
 
 `pnpm run build` typechecks and builds every workspace package. To build only
 what the Worker needs, use `pnpm run build:cloudflare` instead — it is a drop-in
@@ -22,35 +28,25 @@ No build variables are needed. `PORT` and `BASE_PATH` are Replit runtime
 variables; the Vite configs only require them when starting a server, and fall
 back to defaults during `vite build`.
 
-## The `/api/*` routes
+## Editing site content
 
-The site's review list, review submission form and `/admin` page call
-`/api/reviews` and `/api/admin/*`. Those endpoints are served by
-`artifacts/api-server`, an Express app backed by Postgres — it cannot run on
-Workers as-is, so the Worker forwards `/api/*` to a separate deployment.
-
-Set the `API_ORIGIN` variable on the Worker to that deployment's base URL:
-
-```
-npx wrangler secret put API_ORIGIN
-# or: Workers & Pages -> virginia-denago-dealership -> Settings -> Variables
-```
-
-Until `API_ORIGIN` is set, `/api/*` responds `503` with a JSON error. The rest
-of the site — every marketing page, the model catalogue and the blog — works
-without it; only the review widgets and `/admin` degrade.
-
-The api-server also needs `CORS`/cookie configuration that accepts the Worker's
-hostname, since the browser talks to the Worker and the Worker talks to it.
+- **Contact details** — `src/data/denago-models.ts` (`DEALERSHIP.phone`,
+  `DEALERSHIP.phoneDisplay`, `HEADQUARTERS.email`). Changing them there updates
+  the navbar, footer, contact page, every call/email CTA, and the JSON-LD.
+  The same address also appears in `public/` text files (`llms.txt`,
+  `security.txt`, `accessibility.txt`, `schema.json`).
+- **Customer reviews** — `src/data/reviews.ts`. Reviews ship in the bundle, so
+  adding one means editing that file and redeploying. `REVIEWS_ARE_REAL` gates
+  the Review/AggregateRating structured data; keep it true only while every
+  entry is a genuine customer review.
 
 ## Local checks
 
 ```sh
 pnpm install
 pnpm run build:cloudflare
-npx wrangler dev                      # serves the built site on 127.0.0.1:8787
-npx wrangler dev --var API_ORIGIN:http://127.0.0.1:3000   # with a local api-server
-npx wrangler deploy --dry-run         # validates wrangler.jsonc without deploying
+npx wrangler dev                # serves the built site on 127.0.0.1:8787
+npx wrangler deploy --dry-run   # validates wrangler.jsonc without deploying
 ```
 
 ## Package manager
@@ -66,3 +62,11 @@ If an install still fails with a lockfile/config mismatch, clear the build cache
 in the Cloudflare dashboard (Settings -> Build -> clear cache) and retry: the
 build log line `Restoring from dependencies cache` means a previous build's
 `node_modules` was reused.
+
+## The api-server package is no longer used by the site
+
+`artifacts/api-server` (Express + Postgres + Gmail notifications) existed to
+receive review submissions and serve the `/admin` moderation page. Both are
+gone, so nothing the Worker serves calls it. It is left in the repo untouched —
+it still builds and typechecks — but it is not part of the Cloudflare
+deployment and does not need to be running for the site to work.
