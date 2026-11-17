@@ -4,6 +4,7 @@ import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { LineupOverview } from '@/components/lineup-overview';
 import { ResourcesSection } from '@/components/resources-section';
+import { ContactWidget } from '@/components/contact-widget';
 
 function isModelPage(location: string): boolean {
   const path = location.replace(/\/$/, '') || '/';
@@ -19,6 +20,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <LineupOverview />
       {isModelPage(location) && <ResourcesSection />}
       <Footer />
+      <ContactWidget />
     </div>
   );
 }

@@ -31,6 +31,19 @@ Set the secret one of two ways:
    Settings -> Variables and Secrets -> Add -> type *Secret*, name
    `LEAD_WEBHOOK_URL`.
 
+## Floating contact bubble
+
+`src/components/contact-widget.tsx` (mounted in `layout/shell.tsx`) is the only
+floating button on the site. It opens a menu with three options:
+
+1. **Send Us a Message**: the lead form above, in a modal (pre-filled with the
+   cart on model pages).
+2. **Direct Message**: the Tigon DMS chat plugin, loaded by the
+   `chat-plugin.js` script tag at the end of `index.html`. The plugin's own
+   bubble and "Chat With Us" callout are hidden and its colour is set to the
+   site's orange; the widget opens and closes its chat window.
+3. **Call Now**: `tel:` link to `DEALERSHIP.phone`.
+
 If the secret is missing, `/api/lead` answers 503 and the form tells the
 visitor to call. For local testing put `LEAD_WEBHOOK_URL="..."` in a
 `.dev.vars` file (git-ignored) and run `npx wrangler dev`.

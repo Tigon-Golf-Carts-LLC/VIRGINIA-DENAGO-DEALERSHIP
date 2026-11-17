@@ -159,10 +159,16 @@ export function LeadForm({
   cart,
   title = 'Send Us a Message',
   intro = "Tell us what you're looking for and our team will get back to you shortly.",
+  idPrefix = 'lead',
+  bare = false,
 }: {
   cart?: LeadCart;
   title?: string;
   intro?: string;
+  /** Prefix for element ids; give each form on a page its own (e.g. the floating widget's modal). */
+  idPrefix?: string;
+  /** Render without the card frame and heading (used inside the contact modal). */
+  bare?: boolean;
 }) {
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
@@ -173,7 +179,7 @@ export function LeadForm({
     setHidden(tracking());
   }, []);
 
-  const id = (name: string) => `lead-${name}`;
+  const id = (name: string) => `${idPrefix}-${name}`;
   const describedBy = (name: string) => (errors[name] ? `${id(name)}-error` : undefined);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -237,12 +243,16 @@ export function LeadForm({
   );
 
   return (
-    <div className="bg-card border border-border p-8 md:p-12 rounded-2xl shadow-xl">
-      <h2 className="text-3xl font-display font-bold mb-2 uppercase tracking-tight">{title}</h2>
-      <p className="text-muted-foreground mb-8">{intro}</p>
+    <div className={bare ? '' : 'bg-card border border-border p-8 md:p-12 rounded-2xl shadow-xl'}>
+      {!bare && (
+        <>
+          <h2 className="text-3xl font-display font-bold mb-2 uppercase tracking-tight">{title}</h2>
+          <p className="text-muted-foreground mb-8">{intro}</p>
+        </>
+      )}
 
       <form
-        id="tigon-form-p48nmmgd"
+        id={idPrefix === 'lead' ? 'tigon-form-p48nmmgd' : `tigon-form-p48nmmgd-${idPrefix}`}
         method="post"
         action={ENDPOINT}
         encType="multipart/form-data"
@@ -311,8 +321,8 @@ export function LeadForm({
 
         {/* Spam trap: real visitors never see this field. It must be sent empty. */}
         <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
-          <label htmlFor="lead-website">Leave this field empty</label>
-          <input type="text" id="lead-website" name={HONEYPOT} tabIndex={-1} autoComplete="off" defaultValue="" />
+          <label htmlFor={id('website')}>Leave this field empty</label>
+          <input type="text" id={id('website')} name={HONEYPOT} tabIndex={-1} autoComplete="off" defaultValue="" />
         </div>
 
         {/* Filled in automatically (again right before sending). */}
