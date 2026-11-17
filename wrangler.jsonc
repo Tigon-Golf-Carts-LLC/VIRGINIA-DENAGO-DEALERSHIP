@@ -14,8 +14,14 @@
     "binding": "ASSETS",
     // The Worker does the SPA fallback itself (see worker/index.js) so that a
     // missing file still returns a real 404 instead of the HTML shell.
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    // The lead relay (POST /api/lead) must always reach the Worker.
+    "run_worker_first": ["/api/*"]
   },
+  // Secret (not committed): LEAD_WEBHOOK_URL = the TIGON IOT webhook URL for
+  // the "Contact form". Set it in Cloudflare (Settings -> Variables and
+  // Secrets) or let .github/workflows/sync-lead-webhook-secret.yml copy it
+  // from the GitHub secret of the same name.
   "observability": {
     "enabled": true
   }

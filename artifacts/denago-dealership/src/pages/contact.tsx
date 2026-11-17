@@ -1,4 +1,5 @@
 import { Seo } from '@/components/seo';
+import { LeadForm } from '@/components/lead-form';
 import { DEALERSHIP, HEADQUARTERS, HOURS } from '@/data/denago-models';
 import { Phone, MapPin, Mail, Clock, ShieldCheck } from 'lucide-react';
 
@@ -30,7 +31,7 @@ export default function Contact() {
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl -ml-10 -mb-10 pointer-events-none"></div>
                 
                 <h2 className="text-3xl font-display font-bold mb-6 relative z-10">CALL SALES DIRECT</h2>
-                <p className="text-muted-foreground mb-10 relative z-10">Skip the forms and get immediate answers. Call our knowledgeable sales staff today.</p>
+                <p className="text-muted-foreground mb-10 relative z-10">Want immediate answers? Call our knowledgeable sales staff today — or send us a message below.</p>
                 
                 <a 
                   href={`tel:${DEALERSHIP.phone.replace(/[^0-9+]/g, '')}`}
@@ -81,6 +82,10 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-12">
+              <LeadForm />
             </div>
           </div>
         </div>

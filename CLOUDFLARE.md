@@ -5,11 +5,48 @@ no backend. It deploys as a Cloudflare Worker with static assets: the build
 output in `artifacts/denago-dealership/dist/public` is uploaded as the asset
 bundle, and `worker/index.js` serves it and handles client-side routing.
 
-Every contact path on the site is a `tel:` or `mailto:` link — phone
-`(804) 792-0234` and email `denagodealership@gmail.com`, both defined once in
-`artifacts/denago-dealership/src/data/denago-models.ts` (`DEALERSHIP` and
-`HEADQUARTERS`). There are no forms and nothing to submit, so the Worker never
-needs to talk to a server, a database, or a mail service.
+Phone `(804) 792-0234` and email `denagodealership@gmail.com` are defined once
+in `artifacts/denago-dealership/src/data/denago-models.ts` (`DEALERSHIP` and
+`HEADQUARTERS`).
+
+## Lead form (TIGON IOT Webhook Flows)
+
+The site has one lead form, `form_name` **"Contact form"**
+(`src/components/lead-form.tsx`). It appears on `/contact` and, pre-filled with
+the cart's brand / model / SKU, on every model page (`/denago/*`, `/oxen`,
+`/scout2`).
+
+The browser posts it (multipart, with up to 3 photos) to the Worker at
+`POST /api/lead`. `worker/index.js` forwards the body unchanged to the TIGON
+webhook URL in the **`LEAD_WEBHOOK_URL` secret** and passes TIGON's JSON reply
+back. The webhook URL contains a private key, so it is never committed and
+never shipped to the browser.
+
+Set the secret one of two ways:
+
+1. **GitHub (recommended):** add repository secrets `LEAD_WEBHOOK_URL`,
+   `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit) and `CLOUDFLARE_ACCOUNT_ID`,
+   then run *Actions -> Sync lead webhook secret -> Run workflow*.
+2. **Cloudflare dashboard:** Workers & Pages -> `virginia-denago-dealership` ->
+   Settings -> Variables and Secrets -> Add -> type *Secret*, name
+   `LEAD_WEBHOOK_URL`.
+
+## Floating contact bubble
+
+`src/components/contact-widget.tsx` (mounted in `layout/shell.tsx`) is the only
+floating button on the site. It opens a menu with three options:
+
+1. **Send Us a Message**: the lead form above, in a modal (pre-filled with the
+   cart on model pages).
+2. **Direct Message**: the Tigon DMS chat plugin, loaded by the
+   `chat-plugin.js` script tag at the end of `index.html`. The plugin's own
+   bubble and "Chat With Us" callout are hidden and its colour is set to the
+   site's orange; the widget opens and closes its chat window.
+3. **Call Now**: `tel:` link to `DEALERSHIP.phone`.
+
+If the secret is missing, `/api/lead` answers 503 and the form tells the
+visitor to call. For local testing put `LEAD_WEBHOOK_URL="..."` in a
+`.dev.vars` file (git-ignored) and run `npx wrangler dev`.
 
 ## Cloudflare dashboard settings
 
@@ -19,12 +56,13 @@ needs to talk to a server, a database, or a mail service.
 | Deploy command   | `npx wrangler deploy` |
 | Root directory   | `/`                   |
 | Build variables  | none required         |
+| Worker secret    | `LEAD_WEBHOOK_URL`    |
 
 `pnpm run build` typechecks and builds every workspace package. To build only
 what the Worker needs, use `pnpm run build:cloudflare` instead — it is a drop-in
 replacement for the build command and is considerably faster.
 
-No build variables are needed. `PORT` and `BASE_PATH` are Replit runtime
+No build variables are needed (the webhook URL is a runtime Worker secret, not a build variable). `PORT` and `BASE_PATH` are Replit runtime
 variables; the Vite configs only require them when starting a server, and fall
 back to defaults during `vite build`.
 

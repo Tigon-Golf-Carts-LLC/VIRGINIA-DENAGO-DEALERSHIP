@@ -4,6 +4,7 @@ import { getModelBySlug, getModelPath, DEALERSHIP, HEADQUARTERS } from '@/data/d
 import { expertReviews } from '@/data/expert-reviews';
 import { modelReviews } from '@/data/model-reviews';
 import { Seo } from '@/components/seo';
+import { LeadForm } from '@/components/lead-form';
 import { CustomerReviews, REVIEW_MODEL_BY_SLUG } from '@/components/customer-reviews';
 import NotFound from './not-found';
 import { Phone, ChevronRight, CheckCircle2, ShieldCheck, Battery, Gauge, ArrowLeft, BadgePercent, Star } from 'lucide-react';
@@ -366,6 +367,15 @@ export default function ModelDetail({ slugOverride }: { slugOverride?: string; p
             </section>
           </div>
         )}
+
+        {/* Inventory inquiry: same TIGON "Contact form", pre-filled with this cart */}
+        <div className="container mx-auto px-4 mt-16 max-w-4xl" id="inquire">
+          <LeadForm
+            cart={{ brand: 'DENAGO', model: model.name, sku: model.slug }}
+            title={`Ask About the ${model.name}`}
+            intro={`Questions on price, availability, financing or a test drive? Send us a message about the ${model.name} and we'll get right back to you.`}
+          />
+        </div>
 
         {/* Customer reviews for this model — same experience as the /reviews page */}
         <div className="container mx-auto px-4 mt-16">
